@@ -29,11 +29,16 @@
 
 <body>
   <script>
-      var myData;
+ 
+var myData;
+
+async function init() {
+    
 d3.csv("https://rahulpatel23.github.io/nyfldata.csv").then (function(data)
 {
 myData = data; 
 });
+}
 
 
     var margin = {
