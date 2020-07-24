@@ -80,7 +80,7 @@ myData = data;
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var data = d3.tsv.parse(myData);
+    var data = d3.dsv.parse(myData);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
