@@ -30,17 +30,18 @@
 <body>
   <script>
  
-var myData;
     
 //d3.csv("https://rahulpatel23.github.io/nyfldata.csv",function(data){
 
 //myData = data; 
 //});
+   var myData = "date	New York	San Francisco	Austin\n\
+
 var myData = "date	Florida New York\n\
-20200301    2   1\n\
-20200302    2   1\n\
-20200303    3   2\n\
-20200304    3   11\n";
+20200301,2.0,1.0\n\
+20200302,2.0,1.0\n\
+20200303,3.0,2.0\n\
+20200304,3,11.0\n";
 
 
     var margin = {
@@ -85,7 +86,7 @@ var myData = "date	Florida New York\n\
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var data = d3.tsv.parse(myData);
+    var data = d3.dsv.parse(myData);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
