@@ -1,0 +1,12 @@
+for line in `cat florida.csv`
+do
+DT=`echo $line | cut -f1 -d ","`
+FCASES=`echo $line | cut -f4 -d ","`
+echo $DT
+echo "Florida cases:$FCASES"
+gline=`grep $DT newyork.csv`
+NCASES=`echo $gline | cut -f4 -d ","`
+echo "New York cases:$NCASES"
+#read
+echo "$DT	$FCASES	$NCASES" >>nyfldata.csv
+done
