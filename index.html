@@ -301,9 +301,9 @@ var myData = "date	Florida	New York\n\
       });
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
-    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircle").data(adata).enter().append("circle").attr("r", 7)
-      .attr("cx",function(d,i){return d3.sum(500,i)})
-      .attr("cy","50")
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircle").data(data).enter().append("circle").attr("r", 7)
+      .attr("cx","500")
+      .attr("cy","60")
       .attr("class","TimeLineCircle")
       .style("stroke", "purple").style("fill", "purple")
       .style("stroke-width", "2px")
