@@ -315,18 +315,18 @@ var myData = "date	Florida	New York\n\
       });
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
-    svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 7)
+    svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 6)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","30")
+      .attr("cy","25")
       .attr("class","TimeLineCircleNY")
       .style("stroke", "black").style("fill", "purple")
       .style("stroke-width", "1px")
       .style("opacity", "1");
 
 
-    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 7)
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 6)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","40")
+      .attr("cy","25")
       .attr("class","TimeLineCircleFL")
       .style("stroke", "black").style("fill", "yellow")
       .style("stroke-width", "1px")
