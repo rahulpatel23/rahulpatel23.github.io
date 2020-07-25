@@ -276,10 +276,11 @@ circle2.transition()
 	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
 
     
-
+     var data;
     //var data = d3.tsv.parse(myData);
     d3.csv("./nyfldata_part1.csv").then (function(d){
       d.date=parseDate(d.date)
+      data=d
       console.log(data);
     });
 
