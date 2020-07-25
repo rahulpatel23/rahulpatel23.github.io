@@ -194,7 +194,7 @@ var myData = "date	Florida	New York\n\
 20200721	9440	855\n\
 20200722	9785	706\n";*/
 
-    var margin = {
+var margin = {
         top: 60,
         right: 80,
         bottom: 30,
@@ -202,6 +202,30 @@ var myData = "date	Florida	New York\n\
       },
       width = 900 - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom;
+
+
+var circle2 = svg.append("g").append("circle")
+    .attr("class", "FlashingTimelineCircle")
+    .attr("cx", margin.left + 8)
+    .attr("cy", margin.top+ 8)
+    .attr("r", 5)
+    .attr("fill", "blue")
+    .attr("stroke", "black")
+
+circle2.transition()
+ .ease(d3.easeQuad)
+ .on("start", function repeat() {
+    d3.active(this)
+        .attr("fill", "blue")
+        .attr("r", 8)
+        .transition()
+          .duration(3000)
+          .attr("fill", "grey")
+        .transition()
+          .duration(3000)
+          .on("start", repeat);
+ })
+    
 
     var parseDate = d3.time.format("%Y%m%d").parse;
 
@@ -323,6 +347,7 @@ var myData = "date	Florida	New York\n\
       });
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
+
     svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","514")
