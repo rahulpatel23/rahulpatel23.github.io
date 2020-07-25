@@ -299,8 +299,8 @@ var myData = "date	Florida	New York\n\
       .text(function(d) {
         return d.name;
       });
-    console.log(adata.date);
-    console.log(x(adata.date));
+    console.log(function(adata){return adata.date});
+    console.log(function(adata){return x(adata.date)});
     svg.append("g").attr("class","ActionTimeLine").selectAll("circle").data(adata).enter().append("circle").attr("r", 7)
       .attr("cx",function(adata){return x(adata.date)})
       .attr("cy","50")
