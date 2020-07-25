@@ -322,7 +322,7 @@ var myData = "date	Florida	New York\n\
       });
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
-    svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 6)
+    svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","515")
       .attr("class","TimeLineCircleNY")
@@ -331,9 +331,9 @@ var myData = "date	Florida	New York\n\
       .style("opacity", "1");
 
 
-    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 6)
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 4)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","510")
+      .attr("cy","515")
       .attr("class","TimeLineCircleFL")
       .style("stroke", "black").style("fill", "steelblue")
       .style("stroke-width", "1px")
