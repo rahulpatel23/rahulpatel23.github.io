@@ -204,6 +204,12 @@ var margin = {
       height = 600 - margin.top - margin.bottom;
 
 
+var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 var circle2 = svg.append("circle")
     .attr("class", "FlashingTimelineCircle")
     .attr("cx", margin.left + 8)
@@ -261,11 +267,7 @@ circle2.transition()
       .attr("transform", "translate(" + margin.left + "," + 40 + ")");
 	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
 
-    var svg = d3.select("body").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
 
     var data = d3.tsv.parse(myData);
     var adata = d3.tsv.parse(actionDataNY);
