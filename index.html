@@ -221,7 +221,7 @@ var circle2 = svg.append("circle")
     .attr("stroke", "black")
 
 circle2.transition()
- //.ease(d3.easeQuad)
+ .ease(d3.easeQuad)
  .on("start", function repeat() {
     d3.active(this)
         .attr("fill", "blue")
