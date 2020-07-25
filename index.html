@@ -40,7 +40,7 @@
 var actionData = "date	Action\n\
 20200301	'Complete Lockdown'\n\
 20200302	'Partial Lockdown'\n\
-20200303	'NO Opening\n'";
+20200303	'NO Opening'\n";
 
 var myData = "date	Florida	New York\n\
 20200301	2	1\n\
@@ -242,6 +242,10 @@ var myData = "date	Florida	New York\n\
     data.forEach(function(d) {
       d.date = parseDate(d.date);
     });
+
+    adata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    }
 
     var cities = color.domain().map(function(name) {
       return {
