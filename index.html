@@ -324,7 +324,7 @@ var myData = "date	Florida	New York\n\
     //console.log(function(adata){return x(adata.date)});
     svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 6)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","550")
+      .attr("cy","500")
       .attr("class","TimeLineCircleNY")
       .style("stroke", "black").style("fill", "orange")
       .style("stroke-width", "1px")
@@ -333,7 +333,7 @@ var myData = "date	Florida	New York\n\
 
     svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 6)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","550")
+      .attr("cy","500")
       .attr("class","TimeLineCircleFL")
       .style("stroke", "black").style("fill", "steelblue")
       .style("stroke-width", "1px")
