@@ -258,7 +258,8 @@ circle2.transition()
 
    // var line = d3.svg.line()
     var line = d3.line()
-      .interpolate("basis")
+      //.interpolate("basis")
+      .curve(d3.curveNatural)
       .x(function(d) {
         return x(d.date);
       })
