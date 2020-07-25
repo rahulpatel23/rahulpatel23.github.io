@@ -302,7 +302,7 @@ var myData = "date	Florida	New York\n\
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
     svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircle").data(data).enter().append("circle").attr("r", 7)
-      .attr("cx","500")
+      .attr("cx",function(d){return x(d.date)})
       .attr("cy","60")
       .attr("class","TimeLineCircle")
       .style("stroke", "purple").style("fill", "purple")
