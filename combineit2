@@ -1,0 +1,20 @@
+FCASESPREV=0
+NCASESPREV=0
+for line in `cat florida.csv`
+do
+DT=`echo $line | cut -f1 -d ","`
+FCASES=`echo $line | cut -f4 -d ","`
+echo $DT
+gline=`grep $DT newyork.csv`
+NCASES=`echo $gline | cut -f4 -d ","`
+NCASESD=`expr $NCASES - $NCASESPREV`
+FCASESD=`expr $FCASES - $FCASESPREV`
+echo "Florida cases:$FCASES"
+echo "Florida dailycases:$FCASESD"
+echo "New York cases:$NCASES"
+echo "New York dailycases:$NCASESD"
+FCASESPREV=$FCASES
+NCASESPREV=$NCASES
+#read
+echo "$DT	$FCASESD	$NCASESD" >>nyfldailydata.csv
+done
