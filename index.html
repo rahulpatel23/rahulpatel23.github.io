@@ -38,8 +38,8 @@
    //var myData = "date	New York	San Francisco	Austin\n\
 //Latest
 var actionData = "date  Action\n\
-20200510  Complete Lockdown\n\
-20200605  NO Opening\n";
+20200510  'Complete Lockdown'\n\
+20200605  'NO Opening'\n";
 
 var myData = "date	Florida	New York\n\
 20200301	2	1\n\
@@ -231,6 +231,7 @@ var myData = "date	Florida	New York\n\
 
     var data = d3.tsv.parse(myData);
     var adata = d3.tsv.parse(actionData);
+    console.log(data)
     console.log(adata);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
