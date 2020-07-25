@@ -231,9 +231,9 @@ var myData = "date	Florida	New York\n\
 
     var hdrsvg = d3.select("body").append("svg")
       .attr("width", width + margin.left + margin.right)
-      .attr("height", "100")
+      .attr("height", "60")
       .append("g")
-      .attr("transform", "translate(" + margin.left + "," + 20 + ")");
+      .attr("transform", "translate(" + margin.left + "," + 40 + ")");
 	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
 
     var svg = d3.select("body").append("svg")
@@ -324,18 +324,18 @@ var myData = "date	Florida	New York\n\
     //console.log(function(adata){return x(adata.date)});
     svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 6)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","25")
+      .attr("cy","585")
       .attr("class","TimeLineCircleNY")
-      .style("stroke", "black").style("fill", "purple")
+      .style("stroke", "black").style("fill", "orange")
       .style("stroke-width", "1px")
       .style("opacity", "1");
 
 
     svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 6)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","25")
+      .attr("cy","585")
       .attr("class","TimeLineCircleFL")
-      .style("stroke", "black").style("fill", "yellow")
+      .style("stroke", "black").style("fill", "steelblue")
       .style("stroke-width", "1px")
       .style("opacity", "1");
 
