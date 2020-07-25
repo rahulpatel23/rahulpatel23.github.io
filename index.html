@@ -253,6 +253,10 @@ var myData = "date	Florida	New York\n\
       d.date = parseDate(d.date);
     });
 
+    bdata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
     var cities = color.domain().map(function(name) {
       return {
         name: name,
