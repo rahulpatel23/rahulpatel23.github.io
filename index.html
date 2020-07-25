@@ -37,6 +37,10 @@
 //});
    //var myData = "date	New York	San Francisco	Austin\n\
 
+var actionData = "date  Action\n\
+20200510  Complete Lockdown\n\
+20200605  NO Opening\n";
+
 var myData = "date	Florida	New York\n\
 20200301	2	1\n\
 20200302	0	0\n\
@@ -264,6 +268,8 @@ var myData = "date	Florida	New York\n\
       })
     ]);
 
+  
+
     var legend = svg.selectAll('g')
       .data(cities)
       .enter()
@@ -289,6 +295,15 @@ var myData = "date	Florida	New York\n\
       .text(function(d) {
         return d.name;
       });
+
+    svg.append("g").attr("class","ActionTimeLine").selectAll("circle").data(actionData).enter().append("circle").attr("r", 10)
+      .attr("cx",function(actionData){return actionData.date})
+      .attr("cy","50")
+      .style("stroke", "purple").style("fill", "none")
+      .style("stroke-width", "2px")
+      .style("opacity", "1");
+
+
 
     svg.append("g")
       .attr("class", "x axis")
