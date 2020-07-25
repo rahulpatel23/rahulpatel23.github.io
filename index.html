@@ -277,10 +277,10 @@ circle2.transition()
     
 
     //var data = d3.tsv.parse(myData);
-    data =d3.csv("./nyfldata_part1.csv",function(d) {
+    data =d3.csv("./nyfldata_part1.csv").then.function(d) {
       d.date=parseDate(d.date)
       console.log(data);
-    });
+    };
 
     //var adata = d3.tsv.parse(actionDataNY);
    // var bdata = d3.tsv.parse(actionDataFL);
