@@ -299,11 +299,12 @@ var myData = "date	Florida	New York\n\
       .text(function(d) {
         return d.name;
       });
-    console.log(function(adata){return adata.date});
-    console.log(function(adata){return x(adata.date)});
-    svg.append("g").attr("class","ActionTimeLine").selectAll("circle").data(adata).enter().append("circle").attr("r", 7)
-      .attr("cx",function(adata){return x(adata.date)})
+    //console.log(function(adata){return adata.date});
+    //console.log(function(adata){return x(adata.date)});
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircle").data(adata).enter().append("circle").attr("r", 7)
+      .attr("cx",function(d){return x(d.date)})
       .attr("cy","50")
+      .attr("class","TimeLineCircle")
       .style("stroke", "purple").style("fill", "purple")
       .style("stroke-width", "2px")
       .style("opacity", "1");
