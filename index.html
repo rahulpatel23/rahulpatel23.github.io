@@ -37,10 +37,15 @@
 //});
    //var myData = "date	New York	San Francisco	Austin\n\
 //Latest
-var actionData = "date	Action\n\
-20200301	'Complete Lockdown'\n\
-20200302	'Partial Lockdown'\n\
-20200303	'NO Opening'\n";
+var actionDataNY = "date	Action\n\
+20200528	'Complete Lockdown'\n\
+20200602	'Partial Lockdown'\n\
+20200605	'NO Opening'\n";
+
+var actionDataFL = "date	Action\n\
+20200511	'Open Lockdown'\n\
+20200522	'Open  Lockdown'\n\
+20200605	'Opening'\n";
 
 var myData = "date	Florida	New York\n\
 20200301	2	1\n\
@@ -231,7 +236,8 @@ var myData = "date	Florida	New York\n\
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var data = d3.tsv.parse(myData);
-    var adata = d3.tsv.parse(actionData);
+    var adata = d3.tsv.parse(actionDataNY);
+    var bdata = d3.tsv.parse(actionDataFL);
     console.log(data)
     console.log(adata);
 
@@ -305,15 +311,22 @@ var myData = "date	Florida	New York\n\
       });
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
-    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircle").data(adata).enter().append("circle").attr("r", 7)
+    svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 7)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","60")
-      .attr("class","TimeLineCircle")
-      .style("stroke", "purple").style("fill", "purple")
-      .style("stroke-width", "2px")
+      .attr("cy","30")
+      .attr("class","TimeLineCircleNY")
+      .style("stroke", "black").style("fill", "purple")
+      .style("stroke-width", "1px")
       .style("opacity", "1");
 
 
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 7)
+      .attr("cx",function(d){return x(d.date)})
+      .attr("cy","40")
+      .attr("class","TimeLineCircleFL")
+      .style("stroke", "black").style("fill", "yellow")
+      .style("stroke-width", "1px")
+      .style("opacity", "1");
 
     svg.append("g")
       .attr("class", "x axis")
