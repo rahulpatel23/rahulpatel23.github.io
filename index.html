@@ -39,8 +39,8 @@
 //Latest
 var actionData = "date	Action\n\
 20200510	Complete Lockdown\n\
-20200530	Partial Lockdown\n\
-20200605	NO Opening\n";
+20200511	Partial Lockdown\n\
+20200512	NO Opening\n";
 
 var myData = "date	Florida	New York\n\
 20200301	2	1\n\
@@ -301,7 +301,7 @@ var myData = "date	Florida	New York\n\
       });
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
-    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircle").data(data).enter().append("circle").attr("r", 7)
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircle").data(adata).enter().append("circle").attr("r", 7)
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","60")
       .attr("class","TimeLineCircle")
