@@ -229,6 +229,13 @@ var myData = "date	Florida	New York\n\
         return y(d.cases);
       });
 
+    var hdrsvg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", "100")
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + 20 + ")");
+	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
+
     var svg = d3.select("body").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
