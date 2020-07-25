@@ -324,16 +324,16 @@ var myData = "date	Florida	New York\n\
     //console.log(function(adata){return x(adata.date)});
     svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","515")
+      .attr("cy","514")
       .attr("class","TimeLineCircleNY")
       .style("stroke", "black").style("fill", "orange")
       .style("stroke-width", "1px")
       .style("opacity", "1");
 
 
-    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 4)
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","515")
+      .attr("cy","514")
       .attr("class","TimeLineCircleFL")
       .style("stroke", "black").style("fill", "steelblue")
       .style("stroke-width", "1px")
