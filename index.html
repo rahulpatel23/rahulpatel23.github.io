@@ -418,7 +418,7 @@ var myData = "date	Florida	New York\n\
             
             d3.select(this).select('text')
               //.text(y.invert(pos.y).toFixed(2));
-              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).format("%Y%m%d") + ")")
+              .text("(" + y.invert(pos.y).toFixed(0) + "," + D3.time.format("%Y%m%d").parseDate(x.invert(pos.x)) + ")")
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
       });
