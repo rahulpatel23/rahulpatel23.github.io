@@ -231,6 +231,7 @@ var myData = "date	Florida	New York\n\
 
     var data = d3.tsv.parse(myData);
     var adata = d3.tsv.parse(actionData);
+    console.log(adata);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
@@ -297,8 +298,8 @@ var myData = "date	Florida	New York\n\
         return d.name;
       });
 
-    svg.append("g").attr("class","ActionTimeLine").selectAll("circle").data(adata).enter().append("circle").attr("r", 10)
-      .attr("cx",function(adata){return adata.date})
+    svg.append("g").attr("class","ActionTimeLine").selectAll("circle").data(adata).enter().append("circle").attr("r", 7)
+      .attr("cx",function(adata){return x(adata.date)})
       .attr("cy","50")
       .style("stroke", "purple").style("fill", "purple")
       .style("stroke-width", "2px")
