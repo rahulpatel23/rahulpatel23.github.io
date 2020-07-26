@@ -313,6 +313,7 @@ var myData = "date	Florida	New York\n\
       .style("text-anchor", "end")
       .text("New Cases");
       }
+
       function drawLegend(){
         var legend = svg.selectAll('g')
       .data(cities)
@@ -345,7 +346,7 @@ var myData = "date	Florida	New York\n\
       }
       */
 
-var circle2 = svg.append("circle")
+var startCircle = svg.append("circle")
     .attr("class", "FlashingTimelineCircle")
     .attr("cx", margin.left + 8)
     .attr("cy", margin.top+ 8)
@@ -436,6 +437,7 @@ var circle2 = svg.append("circle")
       */
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
+    /*Rahul circles
     svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","514")
@@ -452,6 +454,7 @@ var circle2 = svg.append("circle")
       .style("stroke", "black").style("fill", "steelblue")
       .style("stroke-width", "1px")
       .style("opacity", "1");
+      */
 /* Rahul commentin axis out
     svg.append("g")
       .attr("class", "x axis")
@@ -468,7 +471,7 @@ var circle2 = svg.append("circle")
       .style("text-anchor", "end")
       .text("Cases");
   */
-
+/*Rahul drawing state lines
     var city = svg.selectAll(".city")
       .data(cities)
       .enter().append("g")
@@ -498,6 +501,7 @@ var circle2 = svg.append("circle")
       .text(function(d) {
         return d.name;
       });
+      */
 /*Rahul  Entire Mouse movement plus verticle line
     var mouseG = svg.append("g")
       .attr("class", "mouse-over-effects");
