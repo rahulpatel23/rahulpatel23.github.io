@@ -52,6 +52,52 @@ var actionDataFL = "date	Action\n\
 20200522	'Open  Lockdown'\n\
 20200605	'Opening'\n";
 
+var part3Data = "date	Florida	New York\n\
+20200610	1371	664\n\
+20200611	1698	724\n\
+20200612	1902	821\n\
+20200613	2581	912\n\
+20200614	2016	694\n\
+20200615	1758	623\n\
+20200616	2783	630\n\
+20200617	2610	561\n\
+20200618	3207	626\n\
+20200619	3822	794\n\
+20200620	4049	707\n\
+20200621	3494	665\n\
+20200622	2926	555\n\
+20200623	3286	598\n\
+20200624	5511	575\n\
+20200625	5004	738\n\
+20200626	8942	804\n\
+20200627	9585	697\n\
+20200628	8530	624\n\
+20200629	5266	391\n\
+20200630	6093	458\n\
+20200701	6563	628\n\
+20200702	10109	872\n\
+20200703	9488	919\n\
+20200704	11458	725\n\
+20200705	10059	536\n\
+20200706	6336	516\n\
+20200707	7347	590\n\
+20200708	9989	691\n\
+20200709	8935	588\n\
+20200710	11433	790\n\
+20200711	10360	727\n\
+20200712	15300	679\n\
+20200713	12624	559\n\
+20200714	9194	913\n\
+20200715	10181	834\n\
+20200716	13965	767\n\
+20200717	11466	778\n\
+20200718	10328	752\n\
+20200719	12478	509\n\
+20200720	10347	519\n\
+20200721	9440	855\n\
+20200722	9785	706\n";
+
+
 var part2Data = "date	Florida	New York\n\
 20200415	906	11755\n\
 20200416	806	8631\n\
@@ -343,6 +389,7 @@ var myData = "date	Florida	New York\n\
       var data = d3.tsv.parse(myData);
     var cdata = d3.tsv.parse(chapterData);
     var p1data = d3.tsv.parse(part1Data);
+    var p3data = d3.tsv.parse(part3Data);
     var p2data = d3.tsv.parse(part2Data);
     var adata = d3.tsv.parse(actionDataNY);
     var bdata = d3.tsv.parse(actionDataFL);
@@ -376,6 +423,23 @@ var myData = "date	Florida	New York\n\
     p2data.forEach(function(d) {
       d.date = parseDate(d.date);
     });
+
+    p3data.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    var cities3 = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: p3data.map(function(d) {
+          return {
+            date: d.date,
+            cases: +d[name]
+          };
+        })
+      };
+    });
+
 
     var cities2 = color.domain().map(function(name) {
       return {
@@ -480,6 +544,39 @@ var myData = "date	Florida	New York\n\
       .text("New Cases");
       }
 
+      function drawPart3(){
+        var city3 = svg.selectAll(".city3")
+      .data(cities3)
+      .enter().append("g")
+      .attr("class", "city3");
+
+    city2.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
+
+    city3.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
+      })
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
+
+      }
+
       function drawPart2(){
         var city2 = svg.selectAll(".city2")
       .data(cities2)
@@ -546,6 +643,27 @@ var myData = "date	Florida	New York\n\
 
       }
 
+function drawChapter3Circle(){
+	console.log(cdata[2].date);
+
+    svg.append("circle").attr("r", 5)
+     // .attr("cx",function(d){return x(d.date)})
+      .attr("cx",x(cdata[2].date))
+      .attr("cy","514")
+      .attr("class", "Chapter3Circle")
+      .attr("stroke", "black")
+      .attr("fill", "blue")
+      .style("stroke-width", "1px")
+      .style("opacity", "1")
+    .on ('click', function() {
+      svg.select(".Chapter2Circle").attr("fill","grey");
+      svg.append("text").attr("x",90).attr("y",35).text(cdata[2].title);
+      drawPart3();
+      //drawChapter2Circle();
+      //drawLegend();
+      //showAxis();
+    });
+}
 function drawChapter2Circle(){
 	console.log(cdata[1].date);
 
@@ -562,7 +680,7 @@ function drawChapter2Circle(){
       svg.select(".Chapter1Circle").attr("fill","grey");
       svg.append("text").attr("x",50).attr("y",35).text(cdata[0].title);
       drawPart2();
-      //drawChapter2Circle();
+      drawChapter3Circle();
       //drawLegend();
       //showAxis();
     });
