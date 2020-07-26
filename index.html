@@ -47,6 +47,16 @@ var chapter1News = "date	state	news\n\
 20200327	New York	We are in trouble\n\
 20200415	New York 	Seven hundred daily cases\n";
 
+var chapter2News = "date	state	news\n\
+20200506	Florida	Governor announce we areOpening Up\n\
+20200527	New York	We are not opening trouble\n\
+20200605	Florida	Opened Beaches are not opening trouble\n;
+
+var chapter3News = "date	state	news\n\
+20200620	Florida	Florida Daily cases are rising\n\
+20200627	New York	Daily cases continue to go down\n\
+20200705	Florida	Broke the dubios record of Daily cases\n;
+
 var actionDataNY = "date	Action\n\
 20200528	'Complete Lockdown'\n\
 20200602	'Partial Lockdown'\n\
@@ -400,6 +410,8 @@ var myData = "date	Florida	New York\n\
     var adata = d3.tsv.parse(actionDataNY);
     var bdata = d3.tsv.parse(actionDataFL);
     var c1news = d3.tsv.parse(chapter1News);
+    var c2news = d3.tsv.parse(chapter2News);
+    var c3news = d3.tsv.parse(chapter3News);
     console.log(data)
     console.log(cdata);
 
@@ -436,6 +448,12 @@ var myData = "date	Florida	New York\n\
     });
 
     c1news.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+    c2news.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+    c3news.forEach(function(d) {
       d.date = parseDate(d.date);
     });
 
@@ -704,6 +722,28 @@ function drawChapter1NewsCircles(){
 
 }
 
+function drawChapter2NewsCircles(){
+    svg.append("g").selectAll(".Chapter1NewsCircle").data(c2news).enter().append("circle").attr("r", 5)
+      .attr("cx",function(d){return x(d.date)})
+      .attr("cy","562")
+      .attr("class","Chapter1NewsCircle")
+      .style("stroke", "black").style("fill", "orange")
+      .style("stroke-width", "1px")
+      .style("opacity", "1");
+
+}
+
+function drawChapter3NewsCircles(){
+    svg.append("g").selectAll(".Chapter1NewsCircle").data(c3news).enter().append("circle").attr("r", 5)
+      .attr("cx",function(d){return x(d.date)})
+      .attr("cy","562")
+      .attr("class","Chapter1NewsCircle")
+      .style("stroke", "black").style("fill", "orange")
+      .style("stroke-width", "1px")
+      .style("opacity", "1");
+
+}
+
 function drawChapter3Circle(){
 	console.log(cdata[2].date);
 
@@ -721,6 +761,7 @@ function drawChapter3Circle(){
       //svg.append("text").attr("x",290).attr("y",0).text(cdata[2].title);
       drawPart3();
       showChapter3Box();
+      drawChapter3NewsCircles();
       //drawChapter2Circle();
       //drawLegend();
       //showAxis();
@@ -743,6 +784,7 @@ function drawChapter2Circle(){
       //svg.append("text").attr("x",150).attr("y",35).text(cdata[1].title);
       showChapter2Box()
       drawPart2();
+      drawChapter2NewsCircles();
       drawChapter3Circle();
       //drawLegend();
       //showAxis();
