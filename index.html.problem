@@ -2,7 +2,10 @@
 <html>
 
 <head>
-  <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+  //<script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+  //<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+  //<script src='https://d3js.org/d3.v5.min.js'></script>
+
   <style>
     body {
       font: 10px sans-serif;
@@ -93,7 +96,8 @@ var myData = "date	Florida	New York\n\
 20200412	877	8435\n\
 20200413	1156	6548\n\
 20200414	609	7402\n\
-20200415	906	11755\n\
+20200415	906	11755\n";
+/*
 20200416	806	8631\n\
 20200417	1413	7532\n\
 20200418	739	7249\n\
@@ -191,9 +195,9 @@ var myData = "date	Florida	New York\n\
 20200719	12478	509\n\
 20200720	10347	519\n\
 20200721	9440	855\n\
-20200722	9785	706\n";
+20200722	9785	706\n";*/
 
-    var margin = {
+var margin = {
         top: 60,
         right: 80,
         bottom: 30,
@@ -202,7 +206,38 @@ var myData = "date	Florida	New York\n\
       width = 900 - margin.left - margin.right,
       height = 600 - margin.top - margin.bottom;
 
-    var parseDate = d3.time.format("%Y%m%d").parse;
+
+var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var circle2 = svg.append("circle")
+    .attr("class", "FlashingTimelineCircle")
+    .attr("cx", margin.left + 8)
+    .attr("cy", margin.top+ 8)
+    .attr("r", 5)
+    .attr("fill", "blue")
+    .attr("stroke", "black")
+
+circle2.transition()
+ .ease(d3.easeQuad)
+ .on("start", function repeat() {
+    d3.active(this)
+        .attr("fill", "blue")
+        .attr("r", 8)
+        .transition()
+          .duration(3000)
+          .attr("fill", "grey")
+        .transition()
+          .duration(3000)
+          .on("start", repeat);
+ })
+    
+
+    //var parseDate = d3.time.format("%Y%m%d").parse;
+    var parseDate = d3.timeParse("%Y%m%d");
 
     var x = d3.time.scale()
       .range([0, width]);
@@ -212,16 +247,20 @@ var myData = "date	Florida	New York\n\
 
     var color = d3.scale.category10();
 
-    var xAxis = d3.svg.axis()
+    /*var xAxis = d3.svg.axis()
       .scale(x)
-      .orient("bottom");
+      .orient("bottom");*/
+      var xAxis = d3.axisBottom(x);
 
-    var yAxis = d3.svg.axis()
+    /*var yAxis = d3.svg.axis()
       .scale(y)
-      .orient("left");
+      .orient("left");*/
+      var yAxis = d3.axisLeft(y);
 
-    var line = d3.svg.line()
-      .interpolate("basis")
+   // var line = d3.svg.line()
+    var line = d3.line()
+      //.interpolate("basis")
+      .curve(d3.curveNatural)
       .x(function(d) {
         return x(d.date);
       })
@@ -236,33 +275,37 @@ var myData = "date	Florida	New York\n\
       .attr("transform", "translate(" + margin.left + "," + 40 + ")");
 	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
 
-    var svg = d3.select("body").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+     var data;
+     //var datap;
+    //var data = d3.tsv.parse(myData);
+    //d3.csv("./nyfldata_part1.csv").then (function(d){
+      d3.text("./nyfldata_part1.csv",function(d){
+        data=d3.csv.parse(d);
+      data.date=parseDate(data.date);
+      console.log(data);
+    });
 
-    var data = d3.tsv.parse(myData);
-    var adata = d3.tsv.parse(actionDataNY);
-    var bdata = d3.tsv.parse(actionDataFL);
-    console.log(data)
-    console.log(adata);
+    //var adata = d3.tsv.parse(actionDataNY);
+   // var bdata = d3.tsv.parse(actionDataFL);
+    //console.log(data)
+    //console.log(adata);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
     }));
 
-    data.forEach(function(d) {
+    /*data.forEach(function(d) {
       d.date = parseDate(d.date);
-    });
+    });*/
 
-    adata.forEach(function(d) {
+    /*adata.forEach(function(d) {
       d.date = parseDate(d.date);
     });
 
     bdata.forEach(function(d) {
       d.date = parseDate(d.date);
-    });
+    });*/
 
     var cities = color.domain().map(function(name) {
       return {
@@ -322,29 +365,30 @@ var myData = "date	Florida	New York\n\
       });
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
-    svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
+
+   /* svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","514")
       .attr("class","TimeLineCircleNY")
       .style("stroke", "black").style("fill", "orange")
       .style("stroke-width", "1px")
-      .style("opacity", "1");
+      .style("opacity", "1");*/
 
 
-    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 5)
+    /*svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","514")
       .attr("class","TimeLineCircleFL")
       .style("stroke", "black").style("fill", "steelblue")
       .style("stroke-width", "1px")
-      .style("opacity", "1");
+      .style("opacity", "1");*/
 
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-    svg.append("g")
+    /*svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
       .append("text")
@@ -352,7 +396,7 @@ var myData = "date	Florida	New York\n\
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Cases");
+      .text("Cases");*/
 
     var city = svg.selectAll(".city")
       .data(cities)
