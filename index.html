@@ -369,25 +369,26 @@ function drawChapter1Circle(){
       .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
-      svg.select("Chapter1Circle").attr("fill","grey");
-      svg.append("text").attr("x",30).attr("y",30).text(cdata[0].title);
+      svg.select("Chapter1Circle").attr("fill","black");
+      svg.append("text").attr("x",50).attr("y",35).text(cdata[0].title);
       //drawChapter2Circle();
       //drawLegend();
       //showAxis();
     });
 }
 var startCircle = svg.append("circle")
-    .attr("class", "FlashingTimelineCircle")
+    .attr("class", "StartingCircle")
     .attr("cx", margin.left + 8)
     .attr("cy", margin.top+ 8)
     .attr("r", 5)
     .attr("fill", "blue")
     .attr("stroke", "black")
     .on ('click', function() {
+      svg.select("StartingCircle").attr("fill","black");
       showTitle();
-      drawChapter1Circle();
       drawLegend();
       showAxis();
+      drawChapter1Circle();
     });
 
 
