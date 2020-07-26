@@ -296,7 +296,34 @@ var myData = "date	Florida	New York\n\
       function showTitle(){
         svg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
       }
+      var legend;
+      function drawLegend(){
+      legend = svg.selectAll('g')
+      .data(cities)
+      .enter()
+      .append('g')
+      .attr('class', 'legend');
 
+      legend.append('rect')
+      .attr('x', width - 20)
+      .attr('y', function(d, i) {
+        return i * 20;
+      })
+      .attr('width', 10)
+      .attr('height', 10)
+      .style('fill', function(d) {
+        return color(d.name);
+      });
+
+      legend.append('text')
+      .attr('x', width - 8)
+      .attr('y', function(d, i) {
+        return (i * 20) + 9;
+      })
+      .text(function(d) {
+        return d.name;
+      }); 
+      }
       function showAxis(){
         svg.append("g")
       .attr("class", "x axis")
@@ -314,33 +341,7 @@ var myData = "date	Florida	New York\n\
       .text("New Cases");
       }
 
-      function drawLegend(){
-        var legend = svg.selectAll('g')
-      .data(cities)
-      .enter()
-      .append('g')
-      .attr('class', 'legend');
-
-    legend.append('rect')
-      .attr('x', width - 20)
-      .attr('y', function(d, i) {
-        return i * 20;
-      })
-      .attr('width', 10)
-      .attr('height', 10)
-      .style('fill', function(d) {
-        return color(d.name);
-      });
-
-    legend.append('text')
-      .attr('x', width - 8)
-      .attr('y', function(d, i) {
-        return (i * 20) + 9;
-      })
-      .text(function(d) {
-        return d.name;
-      }); 
-      }
+      
       /*Rahul function drawPart1(){
 
       }
@@ -355,9 +356,8 @@ var startCircle = svg.append("circle")
     .attr("stroke", "black")
     .on ('click', function() {
       showTitle();
-      showAxis();
       drawLegend();
-
+      showAxis();
     });
 
 
