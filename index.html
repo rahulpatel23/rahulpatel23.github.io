@@ -504,9 +504,10 @@ var myData = "date	Florida	New York\n\
        .attr("transform", "translate(" + margin.left + "," + margin.atop + ")");
 */
 
-      svg.append("rect").attr("x",0).attr("y",-900).attr("width","300").attr("height","200");
+      
 
       function showTitle(){
+        svg.append("rect").attr("x",0).attr("y",-200).attr("width","300").attr("height","200");
         svg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
       }
       var legend;
