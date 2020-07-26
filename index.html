@@ -740,10 +740,10 @@ var startTriangle = svg.append('path')
         .attr("transform", function(d) { return "translate(" + -16 + "," + 560 + ")"; });
  var stopSquare = svg.append('rect')
         .attr("class","stop-square")
-        .attr("x","-27")
-        .attr("y","552")
-        .attr("width","18")
-        .attr("height","18")
+        .attr("x","-26")
+        .attr("y","554")
+        .attr("width","16")
+        .attr("height","16")
         .attr("opacity",".5")
         .style('fill', 'red')
          
@@ -753,11 +753,11 @@ var startOuterCircle= svg.append("circle")
     .attr("cy", "562")
     .attr("r", 11)
     .attr("fill", "white")
-    .attr("opacity",".2")
+    .attr("opacity",".05")
     .attr("stroke", "black")
     .style("stroke-width", "2px")
     .on ('click', function() {
-      svg.select(".start-triangle").style("fill","white");
+      svg.select(".start-triangle").attr("opacity","0");
       svg.select("stop-square").attr("opacity","1");
       showTitle();
       drawLegend();
