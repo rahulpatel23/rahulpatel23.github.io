@@ -52,6 +52,55 @@ var actionDataFL = "date	Action\n\
 20200522	'Open  Lockdown'\n\
 20200605	'Opening'\n";
 
+
+var Part1Data = "date	Florida	New York\n\
+20200301	2	1\n\
+20200302	0	0\n\
+20200303	1	1\n\
+20200304	0	9\n\
+20200305	1	11\n\
+20200306	3	22\n\
+20200307	5	45\n\
+20200308	1	17\n\
+20200309	1	36\n\
+20200310	9	31\n\
+20200311	3	44\n\
+20200312	20	109\n\
+20200313	24	95\n\
+20200314	0	189\n\
+20200315	39	122\n\
+20200316	32	218\n\
+20200317	69	425\n\
+20200318	116	1012\n\
+20200319	108	1774\n\
+20200320	130	2952\n\
+20200321	200	3258\n\
+20200322	236	4817\n\
+20200323	222	5711\n\
+20200324	245	4805\n\
+20200325	504	7413\n\
+20200326	507	5941\n\
+20200327	720	5688\n\
+20200328	840	8771\n\
+20200329	905	6266\n\
+20200330	752	7721\n\
+20200331	1047	8707\n\
+20200401	1027	8153\n\
+20200402	1231	8996\n\
+20200403	1260	10329\n\
+20200404	1277	12274\n\
+20200405	805	8122\n\
+20200406	1279	9304\n\
+20200407	1118	8314\n\
+20200408	951	9568\n\
+20200409	1129	10765\n\
+20200410	1141	10794\n\
+20200411	1018	10160\n\
+20200412	877	8435\n\
+20200413	1156	6548\n\
+20200414	609	7402\n\
+20200415	906	11755\n";
+
 var myData = "date	Florida	New York\n\
 20200301	2	1\n\
 20200302	0	0\n\
@@ -235,6 +284,7 @@ var myData = "date	Florida	New York\n\
       });
       var data = d3.tsv.parse(myData);
     var cdata = d3.tsv.parse(chapterData);
+    var p1data = d3.tsv.parse(part1Data);
     var adata = d3.tsv.parse(actionDataNY);
     var bdata = d3.tsv.parse(actionDataFL);
     console.log(data)
@@ -260,10 +310,14 @@ var myData = "date	Florida	New York\n\
       d.date = parseDate(d.date);
     });
 
+    p1data.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
     var cities = color.domain().map(function(name) {
       return {
         name: name,
-        values: data.map(function(d) {
+        values: p1data.map(function(d) {
           return {
             date: d.date,
             cases: +d[name]
@@ -398,7 +452,7 @@ function drawChapter1Circle(){
       .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
-      svg.select("Chapter1Circle").attr("fill","black");
+      svg.select(".Chapter1Circle").attr("fill","black");
       svg.append("text").attr("x",50).attr("y",35).text(cdata[0].title);
       drawPart1();
       //drawChapter2Circle();
@@ -414,7 +468,7 @@ var startCircle = svg.append("circle")
     .attr("fill", "blue")
     .attr("stroke", "black")
     .on ('click', function() {
-      svg.select("StartingCircle").attr("fill","black");
+      svg.select(".StartingCircle").attr("fill","black");
       showTitle();
       drawLegend();
       showAxis();
