@@ -358,9 +358,10 @@ var myData = "date	Florida	New York\n\
       */
 function drawChapter1Circle(){
 	console.log(cdata[1].date);
+
     svg.append("circle").attr("r", 5)
      // .attr("cx",function(d){return x(d.date)})
-      .attr("cx",x(cdata[1].date))
+      .attr("cx",x(cdata[0].date))
       .attr("cy","514")
       .attr("class", "Chapter1Circle")
       .attr("stroke", "black")
@@ -368,8 +369,11 @@ function drawChapter1Circle(){
       .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
-      drawLegend();
-      showAxis();
+      svg.select("Chapter1Circle").attr("fill","grey");
+      svg.append("text").attr("x",30).attr("y",30).text(cdata[0].title);
+      //drawChapter2Circle();
+      //drawLegend();
+      //showAxis();
     });
 }
 var startCircle = svg.append("circle")
@@ -382,8 +386,8 @@ var startCircle = svg.append("circle")
     .on ('click', function() {
       showTitle();
       drawChapter1Circle();
-      //drawLegend();
-      //showAxis();
+      drawLegend();
+      showAxis();
     });
 
 
