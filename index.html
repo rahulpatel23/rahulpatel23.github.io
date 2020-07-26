@@ -735,7 +735,8 @@ function drawChapter1Circle(){
 
 var startTriangle = svg.append('path')
         .attr('d', d3.svg.symbol().type("triangle-up").size(200))
-        .style('fill', 'green');
+        .style('fill', 'green')
+        .attr("transform", function(d) { return "translate(" + 100 + "," + 100 + ")"; });
 var startOuterCircle= svg.append("circle")
     .attr("class", "StartingCircle")
     .attr("cx", -16)
