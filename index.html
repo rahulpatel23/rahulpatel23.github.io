@@ -497,14 +497,14 @@ var myData = "date	Florida	New York\n\
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      var svgdisp = d3.select("body").append("svg")
+      /*var svgdisp = d3.select("body").append("svg")
        .attr("width",width + margin.left + margin.right)
        .attr("height",margin.top)
        .append("g")
        .attr("transform", "translate(" + margin.left + "," + margin.atop + ")");
+*/
 
-
-      svgdisp.append("rect").attr("x",0).attr("y",0).attr("width","100").attr("height","200");
+      svg.append("rect").attr("x",0).attr("y",).attr("width","300").attr("height","200");
 
       function showTitle(){
         svg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
