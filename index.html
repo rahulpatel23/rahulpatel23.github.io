@@ -39,7 +39,7 @@
 //Latest 
 var chapterData = "date	title\n\
 20200301	'Unprecedented'\n\
-20200415	'Pivotal Decisions'\n\
+20200416	'Pivotal Decisions'\n\
 20200615	'Reversal Of Fortune'\n";
 
 var chapter1News = "date	state	news\n\
@@ -696,7 +696,7 @@ var myData = "date	Florida	New York\n\
 function drawChapter1NewsCircles(){
     svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
-      .attr("cy","514")
+      .attr("cy","562")
       .attr("class","Chapter1NewsCircle")
       .style("stroke", "black").style("fill", "orange")
       .style("stroke-width", "1px")
