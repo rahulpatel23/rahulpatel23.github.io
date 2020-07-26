@@ -233,38 +233,6 @@ var myData = "date	Florida	New York\n\
     var bdata = d3.tsv.parse(actionDataFL);
     console.log(data)
     console.log(adata);
-    
-    /*var hdrsvg = d3.select("body").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", "60")
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + 40 + ")");
-	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");*/
-
-    var svg = d3.select("body").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-      function showTitle(){
-        svg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
-      }
-
-var circle2 = svg.append("circle")
-    .attr("class", "FlashingTimelineCircle")
-    .attr("cx", margin.left + 8)
-    .attr("cy", margin.top+ 8)
-    .attr("r", 5)
-    .attr("fill", "blue")
-    .attr("stroke", "black")
-    .on ('click', function() {
-      showTitle();
-      //showAxis();
-
-    });
-
-
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
@@ -311,7 +279,102 @@ var circle2 = svg.append("circle")
       })
     ]);
 
-  
+    
+    /*var hdrsvg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", "60")
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + 40 + ")");
+	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");*/
+
+    var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      function showTitle(){
+        svg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
+      }
+
+      function showAxis(){
+        svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("New Cases");
+      }
+
+var circle2 = svg.append("circle")
+    .attr("class", "FlashingTimelineCircle")
+    .attr("cx", margin.left + 8)
+    .attr("cy", margin.top+ 8)
+    .attr("r", 5)
+    .attr("fill", "blue")
+    .attr("stroke", "black")
+    .on ('click', function() {
+      showTitle();
+      //showAxis();
+
+    });
+
+
+/*
+    color.domain(d3.keys(data[0]).filter(function(key) {
+      return key !== "date";
+    }));
+
+    data.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    adata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    bdata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    var cities = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: data.map(function(d) {
+          return {
+            date: d.date,
+            cases: +d[name]
+          };
+        })
+      };
+    });
+
+    x.domain(d3.extent(data, function(d) {
+      return d.date;
+    }));
+
+    y.domain([
+      d3.min(cities, function(c) {
+        return d3.min(c.values, function(v) {
+          return v.cases;
+        });
+      }),
+      d3.max(cities, function(c) {
+        return d3.max(c.values, function(v) {
+          return v.cases;
+        });
+      })
+    ]);
+
+  */
 
     var legend = svg.selectAll('g')
       .data(cities)
@@ -356,7 +419,7 @@ var circle2 = svg.append("circle")
       .style("stroke", "black").style("fill", "steelblue")
       .style("stroke-width", "1px")
       .style("opacity", "1");
-
+/* Rahul commentin axis out
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -371,6 +434,7 @@ var circle2 = svg.append("circle")
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .text("Cases");
+  */
 
     var city = svg.selectAll(".city")
       .data(cities)
@@ -401,7 +465,7 @@ var circle2 = svg.append("circle")
       .text(function(d) {
         return d.name;
       });
-/*Rahul
+/*Rahul  Entire Mouse movement plus verticle line
     var mouseG = svg.append("g")
       .attr("class", "mouse-over-effects");
 
