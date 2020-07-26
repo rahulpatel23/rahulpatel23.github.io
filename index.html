@@ -277,10 +277,12 @@ circle2.transition()
 
     
      var data;
+     //var datap;
     //var data = d3.tsv.parse(myData);
-    d3.csv("./nyfldata_part1.csv").then (function(d){
-      d.date=parseDate(d.date)
-      data=d
+    //d3.csv("./nyfldata_part1.csv").then (function(d){
+      d3.text("./nyfldata_part1.csv",function(d){
+        data=d3.csv.parse(d);
+      data.date=parseDate(data.date);
       console.log(data);
     });
 
