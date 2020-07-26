@@ -657,7 +657,7 @@ function drawChapter3Circle(){
       .style("opacity", "1")
     .on ('click', function() {
       svg.select(".Chapter2Circle").attr("fill","grey");
-      svg.append("text").attr("x",90).attr("y",35).text(cdata[2].title);
+      svg.append("text").attr("x",290).attr("y",35).text(cdata[2].title);
       drawPart3();
       //drawChapter2Circle();
       //drawLegend();
@@ -678,7 +678,7 @@ function drawChapter2Circle(){
       .style("opacity", "1")
     .on ('click', function() {
       svg.select(".Chapter1Circle").attr("fill","grey");
-      svg.append("text").attr("x",50).attr("y",35).text(cdata[0].title);
+      svg.append("text").attr("x",150).attr("y",35).text(cdata[1].title);
       drawPart2();
       drawChapter3Circle();
       //drawLegend();
