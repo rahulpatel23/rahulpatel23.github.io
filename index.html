@@ -758,7 +758,7 @@ var startOuterCircle= svg.append("circle")
     .style("stroke-width", "2px")
     .on ('click', function() {
       svg.select(".start-triangle").attr("opacity","0");
-      svg.select("stop-square").attr("opacity","1");
+      svg.select("stop-square").attr("opacity","1").attr("fill","red");
       showTitle();
       drawLegend();
       showAxis();
