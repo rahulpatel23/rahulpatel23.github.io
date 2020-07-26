@@ -42,11 +42,6 @@ var chapterData = "date	title\n\
 20200415	'Pivotal Decisions'\n\
 20200615	'Reversal Of Fortune'\n";
 
-var chapter1News = "date	state	news\n\
-20200306	Florida	We are great\n\
-20200327	New York	We are in trouble\n\
-20200415	New York 	Seven hundred daily cases\n";
-
 var actionDataNY = "date	Action\n\
 20200528	'Complete Lockdown'\n\
 20200602	'Partial Lockdown'\n\
@@ -399,7 +394,6 @@ var myData = "date	Florida	New York\n\
     var p2data = d3.tsv.parse(part2Data);
     var adata = d3.tsv.parse(actionDataNY);
     var bdata = d3.tsv.parse(actionDataFL);
-    var c1news = d3.tsv.parse(chapter1News);
     console.log(data)
     console.log(cdata);
 
@@ -432,10 +426,6 @@ var myData = "date	Florida	New York\n\
     });
 
     p3data.forEach(function(d) {
-      d.date = parseDate(d.date);
-    });
-
-    c1news.forEach(function(d) {
       d.date = parseDate(d.date);
     });
 
@@ -693,17 +683,6 @@ var myData = "date	Florida	New York\n\
 
       }
 
-function drawChapter1NewsCircles(){
-    svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 5)
-      .attr("cx",function(d){return x(d.date)})
-      .attr("cy","514")
-      .attr("class","Chapter1NewsCircle")
-      .style("stroke", "black").style("fill", "orange")
-      .style("stroke-width", "1px")
-      .style("opacity", "1");
-
-}
-
 function drawChapter3Circle(){
 	console.log(cdata[2].date);
 
@@ -766,14 +745,11 @@ function drawChapter1Circle(){
       //svg.append("text").attr("x",50).attr("y",0).text(cdata[0].title);
       drawPart1();
       showChapter1Box();
-      drawChapter1NewsCircles();
       drawChapter2Circle();
       //drawLegend();
       //showAxis();
     });
 }
-
-
 
 var startTriangle = svg.append('path')
         .attr("class","start-triangle")
