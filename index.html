@@ -353,12 +353,14 @@ var myData = "date	Florida	New York\n\
       }
       */
 function drawChapter1Circle(){
-    svg.append("g").append("circle").attr("r", 5)
+	console.log(cdata[1].date);
+    svg.append("circle").attr("r", 5)
      // .attr("cx",function(d){return x(d.date)})
       .attr("cx",x(cdata[1].date))
       .attr("cy","514")
-		.attr("class", "Chapter1Circle")
-      .style("stroke", "black").style("fill", "blue")
+      .attr("class", "Chapter1Circle")
+      .attr("stroke", "black")
+      .attr("fill", "blue")
       .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
