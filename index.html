@@ -238,7 +238,7 @@ var myData = "date	Florida	New York\n\
     var adata = d3.tsv.parse(actionDataNY);
     var bdata = d3.tsv.parse(actionDataFL);
     console.log(data)
-    console.log(adata);
+    console.log(cdata);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
@@ -253,6 +253,10 @@ var myData = "date	Florida	New York\n\
     });
 
     bdata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    cdata.forEach(function(d) {
       d.date = parseDate(d.date);
     });
 
