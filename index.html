@@ -735,15 +735,16 @@ function drawChapter1Circle(){
 
 var startTriangle = svg.append('path')
         .attr("class","start-triangle")
-        .attr('d', d3.svg.symbol().type("triangle-up").size(200))
+        .attr('d', d3.svg.symbol().type("triangle-up").size(190))
         .style('fill', 'green')
-        .attr("transform", function(d) { return "translate(" + -16 + "," + 562 + ")"; });
+        .attr("transform", function(d) { return "translate(" + -16 + "," + 560 + ")"; });
  var stopSquare = svg.append('rect')
         .attr("class","stop-square")
-        .attr("x","-16")
-        .attr("y","550")
+        .attr("x","-27")
+        .attr("y","552")
         .attr("width","9")
-        .attr("height","9")
+        .attr("height","15")
+        .attr("opacity","0")
         .style('fill', 'red')
          
 var startOuterCircle= svg.append("circle")
@@ -754,8 +755,10 @@ var startOuterCircle= svg.append("circle")
     .attr("fill", "white")
     .attr("opacity",".2")
     .attr("stroke", "black")
+    .style("stroke-width", "2px")
     .on ('click', function() {
       svg.select(".start-triangle").style("fill","white");
+      svg.select("stop-square").attr("opacity","1");
       showTitle();
       drawLegend();
       showAxis();
