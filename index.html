@@ -242,6 +242,14 @@ var myData = "date	Florida	New York\n\
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var circle2 = svg.append("circle")
+    .attr("class", "FlashingTimelineCircle")
+    .attr("cx", margin.left + 8)
+    .attr("cy", margin.top+ 8)
+    .attr("r", 5)
+    .attr("fill", "blue")
+    .attr("stroke", "black")
+
     var data = d3.tsv.parse(myData);
     var adata = d3.tsv.parse(actionDataNY);
     var bdata = d3.tsv.parse(actionDataFL);
