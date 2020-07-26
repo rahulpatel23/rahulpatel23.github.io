@@ -734,14 +734,14 @@ function drawChapter1Circle(){
 }
 
 var startTriangle = svg.append('path')
-        .attr('d', "M -15 565 L -5 565 L -10 558 Z")
+        .attr('d', "M -16 565 L -5 565 L -10 558 Z")
         .style('fill', 'green');
 var startOuterCircle= svg.append("circle")
     .attr("class", "StartingCircle")
-    .attr("cx", -12)
+    .attr("cx", -16)
     .attr("cy", "562")
-    .attr("r", 8)
-    //.attr("fill", "blue")
+    .attr("r", 11)
+    .attr("fill", "white")
     .attr("stroke", "black")
     .on ('click', function() {
       svg.select(".StartingCircle").attr("fill","black");
