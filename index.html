@@ -228,19 +228,28 @@ var myData = "date	Florida	New York\n\
       .y(function(d) {
         return y(d.cases);
       });
-
-    var hdrsvg = d3.select("body").append("svg")
+      var data = d3.tsv.parse(myData);
+    var adata = d3.tsv.parse(actionDataNY);
+    var bdata = d3.tsv.parse(actionDataFL);
+    console.log(data)
+    console.log(adata);
+    
+    /*var hdrsvg = d3.select("body").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", "60")
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + 40 + ")");
-	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
+	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");*/
 
     var svg = d3.select("body").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      function showTitle(){
+        svg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");
+      }
 
 var circle2 = svg.append("circle")
     .attr("class", "FlashingTimelineCircle")
@@ -249,12 +258,13 @@ var circle2 = svg.append("circle")
     .attr("r", 5)
     .attr("fill", "blue")
     .attr("stroke", "black")
+    .on ('click', function() {
+      showTitle();
+      //showAxis();
 
-    var data = d3.tsv.parse(myData);
-    var adata = d3.tsv.parse(actionDataNY);
-    var bdata = d3.tsv.parse(actionDataFL);
-    console.log(data)
-    console.log(adata);
+    }
+
+
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
