@@ -313,6 +313,37 @@ var myData = "date	Florida	New York\n\
       .style("text-anchor", "end")
       .text("New Cases");
       }
+      function drawLegend(){
+        var legend = svg.selectAll('g')
+      .data(cities)
+      .enter()
+      .append('g')
+      .attr('class', 'legend');
+
+    legend.append('rect')
+      .attr('x', width - 20)
+      .attr('y', function(d, i) {
+        return i * 20;
+      })
+      .attr('width', 10)
+      .attr('height', 10)
+      .style('fill', function(d) {
+        return color(d.name);
+      });
+
+    legend.append('text')
+      .attr('x', width - 8)
+      .attr('y', function(d, i) {
+        return (i * 20) + 9;
+      })
+      .text(function(d) {
+        return d.name;
+      }); 
+      }
+      /*Rahul function drawPart1(){
+
+      }
+      */
 
 var circle2 = svg.append("circle")
     .attr("class", "FlashingTimelineCircle")
@@ -324,6 +355,7 @@ var circle2 = svg.append("circle")
     .on ('click', function() {
       showTitle();
       showAxis();
+      drawLegend();
 
     });
 
@@ -375,7 +407,7 @@ var circle2 = svg.append("circle")
     ]);
 
   */
-
+/* Rahul moving legends
     var legend = svg.selectAll('g')
       .data(cities)
       .enter()
@@ -401,6 +433,7 @@ var circle2 = svg.append("circle")
       .text(function(d) {
         return d.name;
       });
+      */
     //console.log(function(adata){return adata.date});
     //console.log(function(adata){return x(adata.date)});
     svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
