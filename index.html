@@ -500,7 +500,7 @@ var myData = "date	Florida	New York\n\
        .attr("width",width + margin.left + margin.right)
        .attr("height",margin.top)
        .append("g")
-       .attr("transform","translate(" + margin.left + "," + 60 + ")");
+       .attr("transform","translate(" + margin.left + "," 60 ")");
       svgdisp.append("rect").attr("x",0).attr("y",0).attr("width","100").attr("height","200");
 
       function showTitle(){
