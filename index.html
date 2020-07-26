@@ -734,9 +734,18 @@ function drawChapter1Circle(){
 }
 
 var startTriangle = svg.append('path')
+        .attr("class","start-triangle")
         .attr('d', d3.svg.symbol().type("triangle-up").size(200))
         .style('fill', 'green')
-        .attr("transform", function(d) { return "translate(" + 100 + "," + 100 + ")"; });
+        .attr("transform", function(d) { return "translate(" + -16 + "," + 562 + ")"; });
+ var stopSquare = svg.append('rect')
+        .attr("class","stop-square")
+        .attr("x","-16")
+        .attr("y","550")
+        .attr("width","9")
+        .attr("height","9")
+        .style('fill', 'red')
+         
 var startOuterCircle= svg.append("circle")
     .attr("class", "StartingCircle")
     .attr("cx", -16)
@@ -745,7 +754,7 @@ var startOuterCircle= svg.append("circle")
     .attr("fill", "white")
     .attr("stroke", "black")
     .on ('click', function() {
-      svg.select(".StartingCircle").attr("fill","black");
+      svg.select(".start-triangle").style("fill","white");
       showTitle();
       drawLegend();
       showAxis();
