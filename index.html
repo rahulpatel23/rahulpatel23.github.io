@@ -735,10 +735,10 @@ function drawChapter1NewsCircles(){
       this.attr("r",5);
       next_elid = elid + 1 ;
       if (next_elid < c1.news.length) {
-      svg.selectAll(".Chapter1NewsCircle").select("#" + next_elid).attr("opacity","1");
+      d3.selectAll(".Chapter1NewsCircle").select("#" + next_elid).attr("opacity","1");
       }
       });
-      svg.selectAll(".Chapter1NewsCircle").select("#1").attr("opacity","1");
+      d3.selectAll(".Chapter1NewsCircle").select("#1").attr("opacity","1");
 
 }
 
