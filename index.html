@@ -731,7 +731,7 @@ function drawChapter1NewsCircles(){
       elid=d3.select(this).attr("id");
       y_val = d3.sum([-190,getmultiple(elid)]);
       console.log(c1news);
-      svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
+      //svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
       d3.select(this).attr("r",5);
       next_elid = elid + 1 ;
