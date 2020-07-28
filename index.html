@@ -378,6 +378,10 @@ var myData = "date	Florida	New York\n\
 
     var parseDate = d3.time.format("%Y%m%d").parse;
 
+    var getmultiple = d3.scaleLinear()
+    .domain([1,100])
+    .range([10,1000]);
+
     var x = d3.time.scale()
       .range([0, width]);
 
@@ -713,6 +717,7 @@ var myData = "date	Florida	New York\n\
 
 function drawChapter1NewsCircles(){
     var elid;
+    var y_val;
     svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
       .attr("id",function(d,i){return i})
@@ -723,7 +728,8 @@ function drawChapter1NewsCircles(){
       .style("opacity", "1")
       .on ('click', function() {
       elid=d3.select(this).attr("id");
-      svg.append("text").attr("x",0).attr("y",-190).text(c1news[elid].news)
+      y_val = d3.sum([-190,getmultiple(elid)]);
+      svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
       });
       
