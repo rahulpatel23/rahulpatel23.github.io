@@ -728,7 +728,7 @@ function drawChapter1NewsCircles(){
       .style("stroke-width", "1px")
       .style("opacity", "1")
       .on ('click', function() {
-      elid=d3.select(this).attr("id");
+      elid=+ d3.select(this).attr("id").substring(3);
       y_val = d3.sum([-190,getmultiple(elid)]);
       console.log(c1news);
       //svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
@@ -741,7 +741,7 @@ function drawChapter1NewsCircles(){
       }
       
       });
-      d3.selectAll(".Chapter1NewsCircle").select("#c1n01").attr("opacity","1");
+      d3.selectAll(".Chapter1NewsCircle").select("#c1n1").attr("opacity","1");
 
 }
 
