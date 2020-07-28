@@ -735,7 +735,7 @@ function drawChapter1NewsCircles(){
       this.attr("r",5);
       next_elid = elid + 1 ;
       if (next_elid < c1.news.length) {
-      d3.selectAll(".Chapter1NewsCircle").select("#" + next_elid).attr("opacity","1");
+      svg.selectAll(".Chapter1NewsCircle").select("#" + next_elid).attr("opacity","1");
       }
       });
       
@@ -829,7 +829,7 @@ function drawChapter1Circle(){
       drawPart1();
       showChapter1Box();
       drawChapter1NewsCircles();
-      d3.select(".Chapter1NewsCircle").attr("opacity","1");
+      svg.select(".Chapter1NewsCircle").attr("opacity","1");
       drawChapter2Circle();
       //drawLegend();
       //showAxis();
