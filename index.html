@@ -736,11 +736,11 @@ function drawChapter1NewsCircles(){
       next_elid = elid + 1 ;
       console.log(next_elid);
       if (next_elid < c1news.length) {
-      d3.selectAll(".Chapter1NewsCircle").select("#c1n2").attr("opacity","1");
+      d3.selectAll(".Chapter1NewsCircle").select("#c1n2").attr("opacity","0");
       }
-      d3.selectAll(".Chapter1NewsCircle").select("#c1n1").attr("opacity","1");
-      });
       
+      });
+      d3.selectAll(".Chapter1NewsCircle").select("#c1n1").attr("opacity","1");
 
 }
 
