@@ -738,7 +738,7 @@ function drawChapter1NewsCircles(){
       d3.selectAll(".Chapter1NewsCircle").select("#" + next_elid).attr("opacity","1");
       }
       });
-      d3.select(".Chapter1NewsCircle").attr("opacity","1");
+      
 
 }
 
@@ -829,6 +829,7 @@ function drawChapter1Circle(){
       drawPart1();
       showChapter1Box();
       drawChapter1NewsCircles();
+      d3.select(".Chapter1NewsCircle").attr("opacity","1");
       drawChapter2Circle();
       //drawLegend();
       //showAxis();
