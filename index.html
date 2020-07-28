@@ -718,21 +718,27 @@ var myData = "date	Florida	New York\n\
 function drawChapter1NewsCircles(){
     var elid;
     var y_val;
-    svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 5)
+    var next_elid;
+    svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 8)
       .attr("cx",function(d){return x(d.date)})
       .attr("id",function(d,i){return i})
       .attr("cy","562")
       .attr("class","Chapter1NewsCircle")
       .style("stroke", "black").style("fill", "orange")
       .style("stroke-width", "1px")
-      .style("opacity", "1")
+      .style("opacity", "0")
       .on ('click', function() {
       elid=d3.select(this).attr("id");
       y_val = d3.sum([-190,getmultiple(elid)]);
       svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      this.attr("r",5);
+      next_elid = elid + 1 ;
+      if (next_elid < c1.news.length) {
+      svg.selectAll(".Chapter1NewsCircle").select("#" + next_elid).attr("opacity","1");
+      }
       });
-      
+      svg.selectAll(".chapter1NewsCircle").select("#1").attr("opacity","1");
 
 }
 
