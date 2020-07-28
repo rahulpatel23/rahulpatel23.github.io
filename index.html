@@ -726,7 +726,7 @@ function drawChapter1NewsCircles(){
       .attr("class","Chapter1NewsCircle")
       .style("stroke", "black").style("fill", "orange")
       .style("stroke-width", "1px")
-      .style("opacity", "1")
+      .style("opacity", "0")
       .on ('click', function() {
       elid=+ d3.select(this).attr("id").substring(3);
       y_val = d3.sum([-190,getmultiple(elid)]);
@@ -741,7 +741,7 @@ function drawChapter1NewsCircles(){
       }
       
       });
-      d3.selectAll(".Chapter1NewsCircle").select("#c1n1").attr("opacity","0");
+      d3.select(".Chapter1NewsCircle").attr("opacity","1");
 
 }
 
