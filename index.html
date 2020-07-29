@@ -741,7 +741,8 @@ function drawChapter1NewsCircles(){
         console.log(d3.select(this).attr("id").substring(3));
         console.log(d3.select(this).attr("id"));
         console.log("I am Inside");
-      d3.selectAll("circle").selectAll(".Chapter1NewsCircle").select("#c1n2").attr("opacity","0");
+      console.log(d3.selectAll("circle").selectAll(".Chapter1NewsCircle").select("#c1n2").attr("id"));
+      console.log(d3.selectAll("circle").selectAll(".Chapter1NewsCircle").attr("id"));
       }
       
       });
