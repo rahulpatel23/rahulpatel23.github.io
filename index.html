@@ -761,13 +761,47 @@ function drawChapter1NewsCircles(){
 }
 
 function drawChapter2NewsCircles(){
-    svg.append("g").selectAll(".Chapter1NewsCircle").data(c2news).enter().append("circle").attr("r", 5)
+  var elid;
+  var next_elid;
+    svg.append("g").selectAll(".Chapter2NewsCircle").data(c2news).enter().append("circle").attr("r", 8)
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","562")
       .attr("class","Chapter2NewsCircle")
       .style("stroke", "black").style("fill", "orange")
+      .attr("class",function (d,i){return "Chapter2NewsCircle" + i})
       .style("stroke-width", "1px")
-      .style("opacity", "1");
+      .style("opacity", "0")
+      .on ('click', function() {
+      elid=+ d3.select(this).attr("class").substring(18);
+      y_val = d3.sum([-186,getmultiple(elid)]);
+      console.log(c2news);
+      svg.append("text").attr("x",407).attr("y",y_val).text(c2news[elid].news)
+      .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      d3.select(this).attr("r",5);
+      next_elid = elid + 1 ;
+      console.log(next_elid);
+      if (next_elid <= c2news.length) {
+        console.log("I am Inside start");
+        console.log(d3.select(this).attr("class").substring(3));
+        console.log(d3.select(this).attr("class"));
+        console.log(d3.select(this).style("opacity"));
+        console.log("I am Inside");
+        console.log(d3.select(".Chapter2NewsCircle1").style("opacity"));
+      //d3.select(".Chapter1NewsCircle1").style("opacity","0");
+      d3.select(".Chapter2NewsCircle" + next_elid).style("opacity","1");
+      d3.select(this).on('click',null);
+      console.log(d3.select(".Chapter2NewsCircle" + elid).attr("class"));
+      console.log(d3.select(".Chapter2NewsCircle" + elid).style("opacity"));
+      console.log("length:" + c2news.length);
+      if (next_elid  == c2news.length){  //at this point no element with next_elid sio time to draw the next
+        console.log("I am the last one");
+        drawChapter3Circle();
+      }
+      }
+      
+      });
+      d3.select(".Chapter2NewsCircle0").style("opacity","1");
+
 
 }
 
@@ -823,7 +857,7 @@ function drawChapter2Circle(){
       showChapter2Box()
       drawPart2();
       drawChapter2NewsCircles();
-      drawChapter3Circle();
+      //drawChapter3Circle();
       //drawLegend();
       //showAxis();
     });
