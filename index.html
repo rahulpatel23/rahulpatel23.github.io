@@ -736,7 +736,7 @@ function drawChapter1NewsCircles(){
       d3.select(this).attr("r",5);
       next_elid = elid + 1 ;
       console.log(next_elid);
-      if (next_elid < c1news.length) {
+      if (next_elid <= c1news.length) {
         console.log("I am Inside start");
         console.log(d3.select(this).attr("class").substring(3));
         console.log(d3.select(this).attr("class"));
@@ -749,7 +749,7 @@ function drawChapter1NewsCircles(){
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).attr("class"));
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).style("opacity"));
       console.log("length:" + c1news.length);
-      if (next_elid + 1 == c1news.length){
+      if (next_elid  == c1news.length){
         console.log("I am the last one");
         drawChapter2Circle();
       }
