@@ -745,9 +745,13 @@ function drawChapter1NewsCircles(){
         console.log(d3.select(".Chapter1NewsCircle1").style("opacity"));
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter1NewsCircle" + next_elid).style("opacity","1");
-      d3.select(this).active=false;
+      d3.select(this).on('click',null);
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).attr("class"));
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).style("opacity"));
+      if (next_elid + 1 == c1news.lenght){
+        console.log("I am the last one");
+        drawChapter2Circle()
+      }
       }
       
       });
@@ -842,8 +846,8 @@ function drawChapter1Circle(){
       drawPart1();
       showChapter1Box();
       drawChapter1NewsCircles();
-      d3.select(".Chapter1NewsCircle").attr("opacity","1");
-      drawChapter2Circle();
+     // d3.select(".Chapter1NewsCircle").attr("opacity","1");
+      //drawChapter2Circle();
       //drawLegend();
       //showAxis();
     });
