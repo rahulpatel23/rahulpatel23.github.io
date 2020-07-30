@@ -740,11 +740,11 @@ function drawChapter1NewsCircles(){
         console.log("I am Inside start");
         console.log(d3.select(this).attr("class").substring(3));
         console.log(d3.select(this).attr("class"));
-        console.log(svg.select(this).attr("class"));
+        console.log(svg.select(this).style("opacity"));
         console.log("I am Inside");
         console.lo(svg.select(".Chapter1NewsCircle1").attr("opacity"));
-      svg.select(".Chapter1NewsCircle1").attr("opacity","0");
-      console.log(svg.select(".Chapter1NewsCircle1").attr("opacity"));
+      d3.select(".Chapter1NewsCircle1").style("opacity","0");
+      console.log(d3.select(".Chapter1NewsCircle1").attr("opacity"));
       }
       
       });
