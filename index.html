@@ -745,6 +745,7 @@ function drawChapter1NewsCircles(){
         console.log(d3.select(".Chapter1NewsCircle1").style("opacity"));
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter1NewsCircle" + next_elid).style("opacity","1");
+      d3.select(this).active=false;
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).attr("class"));
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).style("opacity"));
       }
