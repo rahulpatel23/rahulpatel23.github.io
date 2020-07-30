@@ -44,7 +44,7 @@ var chapterData = "date	title\n\
 
 var chapter1News = "date	state	news\n\
 20200306	Florida	We are great\n\
-20200327	New York	We are in trouble; what do we do lott of people dying. needs to do something\n\
+20200327	New York	We are in trouble; what do we do lott of people dying.: needs to do something\n\
 20200415	New York 	Seven hundred daily cases\n";
 
 var chapter2News = "date	state	news\n\
@@ -714,11 +714,13 @@ var myData = "date	Florida	New York\n\
       });
 
       }
-
+   var last_y_val_c1;
 function drawChapter1NewsCircles(){
     var elid;
     var y_val;
     var next_elid;
+    var last_y_val;
+    var lnsgmt;
     svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 8)
       .attr("cx",function(d){return x(d.date)})
      // .attr("id",function(d,i){return "c1n" + i})
@@ -731,8 +733,17 @@ function drawChapter1NewsCircles(){
       elid=+ d3.select(this).attr("class").substring(18);
       y_val = d3.sum([-168,getmultiple(elid)]);
       console.log(c1news);
-      svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
+      strarr = c1news[elid].news.split(":");
+      lnsgmt=0;
+      while (lnsgmt < strarr.length) {
+        if (lnsgmt == 0){
+      //svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
+      svg.append("text").attr("x",2).attr("y",y_val).text(strarr[0])
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      }
+      lnsgmt = lnsgmt + 1;
+
+      }
       d3.select(this).attr("r",5);
       next_elid = elid + 1 ;
       console.log(next_elid);
