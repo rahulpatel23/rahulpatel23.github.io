@@ -748,9 +748,10 @@ function drawChapter1NewsCircles(){
       d3.select(this).on('click',null);
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).attr("class"));
       console.log(d3.select(".Chapter1NewsCircle" + next_elid).style("opacity"));
+      console.log("length:" + c1news.length);
       if (next_elid + 1 == c1news.length){
         console.log("I am the last one");
-        drawChapter2Circle()
+        drawChapter2Circle();
       }
       }
       
