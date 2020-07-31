@@ -696,6 +696,24 @@ var myData = "date	Florida	New York\n\
       });
 
       }
+      function getFLnews(posx){
+        var fnews;
+        fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
+        if (typeof fnews === "undefined"){
+          fnews="";
+        }
+        return fnews;
+        }
+
+        function getNYnews(posx){
+        var nnews;
+        fnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
+        if (typeof fnews === "undefined"){
+          nnews="";
+        }
+        return nnews;
+        }
+      
       function explore(){
     /*color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
@@ -838,7 +856,8 @@ var myData = "date	Florida	New York\n\
             d3.select(this).select('text')
               //.text(y.invert(pos.y).toFixed(2));
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + d3.time.format("%Y%m%d").parse(x.invert(pos.x)) + ")")
-              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridaNews[x.invert(pos.x).toDateString().substring(0,10)] + newyorkNews[x.invert(pos.x).toDateString().substring(0,10)] + ")" );
+              //.text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridaNews[x.invert(pos.x).toDateString().substring(0,10)] + newyorkNews[x.invert(pos.x).toDateString().substring(0,10)] + ")" );
+              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
       });
