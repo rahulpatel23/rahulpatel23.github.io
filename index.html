@@ -713,6 +713,8 @@ var myData = "date	Florida	New York\n\
         fnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         if (typeof fnews === "undefined"){
           nnews="";
+        } else {
+         svg.select(".NYnewsdisplay").attr("x",posx);
         }
         return nnews;
         }
