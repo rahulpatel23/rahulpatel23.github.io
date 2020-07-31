@@ -465,10 +465,12 @@ var myData = "date	Florida	New York\n\
     });
     var i=0;
     while (i < c1news.length ){
+      console.log(c1news);
       if (c1news[i].state == 'Florida'){
         floridaNews[c1news.date]=c1news.news
       }
       if (c1news[i].state == 'New York'){
+        console.log(c1news);
         newyorkNews[c1news.date]=c1news.news
       }
       i=i+1;
