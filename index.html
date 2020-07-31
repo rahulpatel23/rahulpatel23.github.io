@@ -707,9 +707,10 @@ var myData = "date	Florida	New York\n\
         var fnews;
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         if (typeof fnews === "undefined"){
+          svg.select(".FLnewsdisplay").style("opacity",0);
           fnews="";
         } else {
-          svg.select(".FLnewsdisplay").attr("x",posx);
+          svg.select(".FLnewsdisplay").attr("x",posx).style("opacity","1");
         }
         return fnews;
         }
@@ -718,9 +719,11 @@ var myData = "date	Florida	New York\n\
         var nnews;
         fnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         if (typeof fnews === "undefined"){
+          svg.select(".NYnewsdisplay").style("opacity",0);
           nnews="";
         } else {
-         svg.select(".NYnewsdisplay").attr("x",posx);
+         svg.select(".NYnewsdisplay").attr("x",posx).style("opacity","1");
+
         }
         return nnews;
         }
