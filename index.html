@@ -378,6 +378,8 @@ var myData = "date	Florida	New York\n\
       height = 900 - margin.top - margin.bottom;
 
     var parseDate = d3.time.format("%Y%m%d").parse;
+    var floridaNews = new Object(); //associative array date key news value
+    var newyorkNews = new Object();
 
     var getmultiple = d3.scale.linear()
     .domain([1,100])
@@ -461,6 +463,16 @@ var myData = "date	Florida	New York\n\
     c3news.forEach(function(d) {
       d.date = parseDate(d.date);
     });
+    var i=0;
+    while (i < c1news.length ){
+      if (c1news[i].state == 'Florida'){
+        floridaNews[c1news.date]=c1news.news
+      }
+      if (c1news[i].state == 'New York'){
+        newyorkNews[c1news.date]=c1news.news
+      }
+      i=i+1;
+    }
 
     var cities3 = color.domain().map(function(name) {
       return {
@@ -823,7 +835,7 @@ var myData = "date	Florida	New York\n\
             d3.select(this).select('text')
               //.text(y.invert(pos.y).toFixed(2));
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + d3.time.format("%Y%m%d").parse(x.invert(pos.x)) + ")")
-              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + ")" );
+              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridanews[x.invert(pos.x)] + newyorknews[x.invert(pos.x)] + ")" );
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
       });
