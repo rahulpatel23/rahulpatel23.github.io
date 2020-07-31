@@ -583,6 +583,9 @@ var myData = "date	Florida	New York\n\
     svg.append("text").attr("x",810).attr("y",-180).text("Chapter 3: Fortune Reversal")
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
+    function drawDynNYNewsBox(){
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",-100).attr("width","500").attr("height","25").attr("fill","orange");
+    }
       var legend;
       function drawLegend(){
       legend = svg.selectAll('g')
@@ -772,6 +775,7 @@ var myData = "date	Florida	New York\n\
       });
       */
 //Rahul  Entire Mouse movement plus verticle line
+   drawDynNYNewsBox();
     var mouseG = svg.append("g")
       .attr("class", "mouse-over-effects");
 
