@@ -746,14 +746,14 @@ function drawChapter1NewsCircles(){
         if (lnsgmt >= 1){
           addy_c1= 12 + addy_c1;
           y_adj=y_val + addy_c1;
-          svg.append("text").attr("x",40).attr("y",y_adj).text( strarr[lnsgmt])
+          svg.append("text").attr("x",45).attr("y",y_adj).text( strarr[lnsgmt])
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
         } else {
           y_adj = y_val + addy_c1;
       //svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
       svg.append("text").attr("x",2).attr("y",y_adj).text(newsdt.toDateString().substring(4,10)+ ":")
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
-      svg.append("text").attr("x",40).attr("y",y_adj).text(strarr[0])
+      svg.append("text").attr("x",45).attr("y",y_adj).text(strarr[0])
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
       }
       lnsgmt = lnsgmt + 1;
