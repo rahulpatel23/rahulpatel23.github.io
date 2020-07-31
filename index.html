@@ -716,6 +716,7 @@ var myData = "date	Florida	New York\n\
 
       }
    var addy_c1=0;
+   var padding="          ";
 function drawChapter1NewsCircles(){
     var elid;
     var y_val;
@@ -723,8 +724,8 @@ function drawChapter1NewsCircles(){
     var next_elid;
     //var last_y_val;
     var lnsgmt;
-    var padding;
-    padding="         ";
+    //var padding;
+    //padding="         ";
     svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 8)
       .attr("cx",function(d){return x(d.date)})
      // .attr("id",function(d,i){return "c1n" + i})
