@@ -740,12 +740,12 @@ function drawChapter1NewsCircles(){
       lnsgmt=0;
       while (lnsgmt < strarr.length) {
         if (lnsgmt >= 1){
-          addy= 12 + addy;
-          y_adj=y_val + addy;
+          addy_c1= 12 + addy_c1;
+          y_adj=y_val + addy_c1;
           svg.append("text").attr("x",2).attr("y",y_adj).text(padding + strarr[lnsgmt])
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
         } else {
-          y_adj = y_val + addy;
+          y_adj = y_val + addy_c1;
       //svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
       svg.append("text").attr("x",2).attr("y",y_adj).text(strarr[0])
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
