@@ -835,7 +835,7 @@ var myData = "date	Florida	New York\n\
             d3.select(this).select('text')
               //.text(y.invert(pos.y).toFixed(2));
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + d3.time.format("%Y%m%d").parse(x.invert(pos.x)) + ")")
-              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridanews[x.invert(pos.x)] + newyorknews[x.invert(pos.x)] + ")" );
+              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridaNews[x.invert(pos.x)] + newyorkNews[x.invert(pos.x)] + ")" );
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
       });
