@@ -798,10 +798,18 @@ var myData = "date	Florida	New York\n\
       .style("stroke-width", "1px")
       .style("opacity", "0");
 
-    mousePerLine.append("text").attr("class","CasesDates")
+    mousePerLine.append("text")
       .attr("transform", "translate(10,3)");
-    mousePerLine.append("text").attr("class","News")
-      .attr("transform", "translate(10,-3)");
+
+    mousePerLine.append("rect")
+      .attr("transform","translate(10,6)")
+      .attr("x","5")
+      .attr("y","5")
+      .attr("width","150")
+      .attr("hieght","15")
+      .style("stroke", function(d) {
+        return color(d.name);
+      })
 
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
       .attr('width', width) // can't catch mouse events on a g element
@@ -815,6 +823,8 @@ var myData = "date	Florida	New York\n\
           .style("opacity", "0");
         d3.selectAll(".mouse-per-line text")
           .style("opacity", "0");
+        d3.selectAll(".mouse-per-line rect")
+          .style("opacity", "0");
       })
       .on('mouseover', function() { // on mouse in show line, circles and text
         d3.select(".mouse-line")
@@ -823,6 +833,8 @@ var myData = "date	Florida	New York\n\
           .style("opacity", "1");
         d3.selectAll(".mouse-per-line text")
           .style("opacity", "1");
+        d3.selectAll(".mouse-per-line rect")
+          .style("opacity", "1");  
       })
       .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
@@ -855,12 +867,12 @@ var myData = "date	Florida	New York\n\
               else break; //position found
             }
             
-            d3.select(this).select('text').select(".CasesDates")
+            d3.select(this).select('text')
               //.text(y.invert(pos.y).toFixed(2));
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + d3.time.format("%Y%m%d").parse(x.invert(pos.x)) + ")")
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridaNews[x.invert(pos.x).toDateString().substring(0,10)] + newyorkNews[x.invert(pos.x).toDateString().substring(0,10)] + ")" );
               .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
-              d3.select(this).select('text').select(".News")
+            d3.select(this).select('rect')
               .text("(" + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
