@@ -798,9 +798,9 @@ var myData = "date	Florida	New York\n\
       .style("stroke-width", "1px")
       .style("opacity", "0");
 
-    mousePerLine.append("text").attr("id","CasesDates")
+    mousePerLine.append("text").attr("class","CasesDates")
       .attr("transform", "translate(10,3)");
-    mousePerLine.append("text").attr("id","News")
+    mousePerLine.append("text").attr("class","News")
       .attr("transform", "translate(10,-3)");
 
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
@@ -855,12 +855,12 @@ var myData = "date	Florida	New York\n\
               else break; //position found
             }
             
-            d3.select(this).select('text').select("#CasesDates")
+            d3.select(this).select('text').select(".CasesDates")
               //.text(y.invert(pos.y).toFixed(2));
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + d3.time.format("%Y%m%d").parse(x.invert(pos.x)) + ")")
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridaNews[x.invert(pos.x).toDateString().substring(0,10)] + newyorkNews[x.invert(pos.x).toDateString().substring(0,10)] + ")" );
               .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
-              d3.select(this).select('text').select("#CasesDates")
+              d3.select(this).select('text').select(".News")
               .text("(" + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
