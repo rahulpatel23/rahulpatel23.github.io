@@ -467,11 +467,11 @@ var myData = "date	Florida	New York\n\
     while (i < c1news.length ){
       console.log(c1news);
       if (c1news[i].state == 'Florida'){
-        floridaNews[c1news.date]=c1news.news
+        floridaNews[c1news[i].date]=c1news[i].news
       }
       if (c1news[i].state == 'New York'){
         console.log(c1news);
-        newyorkNews[c1news.date]=c1news.news
+        newyorkNews[c1news[i].date]=c1news[i].news
       }
       i=i+1;
     }
