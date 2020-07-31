@@ -736,7 +736,7 @@ function drawChapter1NewsCircles(){
       .style("opacity", "0")
       .on ('click', function() {
       elid=+ d3.select(this).attr("class").substring(18);
-      y_val = d3.sum([-168,getmultiple(elid)]);
+      y_val = d3.sum([-167,getmultiple(elid)]);
       console.log(c1news);
       strarr = c1news[elid].news.split(":");
       lnsgmt=0;
