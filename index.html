@@ -801,16 +801,6 @@ var myData = "date	Florida	New York\n\
     mousePerLine.append("text")
       .attr("transform", "translate(10,3)");
 
-    mousePerLine.append("rect")
-      .attr("transform","translate(10,6)")
-      .attr("x","5")
-      .attr("y","5")
-      .attr("width","150")
-      .attr("hieght","15")
-      .style("stroke", function(d) {
-        return color(d.name);
-      })
-
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
       .attr('width', width) // can't catch mouse events on a g element
       .attr('height', height)
@@ -823,8 +813,8 @@ var myData = "date	Florida	New York\n\
           .style("opacity", "0");
         d3.selectAll(".mouse-per-line text")
           .style("opacity", "0");
-        d3.selectAll(".mouse-per-line rect")
-          .style("opacity", "0");
+        //d3.selectAll(".mouse-per-line rect")
+         // .style("opacity", "0");
       })
       .on('mouseover', function() { // on mouse in show line, circles and text
         d3.select(".mouse-line")
@@ -833,8 +823,8 @@ var myData = "date	Florida	New York\n\
           .style("opacity", "1");
         d3.selectAll(".mouse-per-line text")
           .style("opacity", "1");
-        d3.selectAll(".mouse-per-line rect")
-          .style("opacity", "1");  
+        //d3.selectAll(".mouse-per-line rect")
+         // .style("opacity", "1");  
       })
       .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
