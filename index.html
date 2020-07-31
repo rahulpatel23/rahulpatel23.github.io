@@ -586,6 +586,10 @@ var myData = "date	Florida	New York\n\
     function drawDynNYNewsBox(){
       svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",-100).attr("width","500").attr("height","25").attr("fill","orange");
     }
+    function drawDynFLNewsBox(){
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",-60).attr("width","500").attr("height","22").attr("fill","steelblue");
+    }
+
       var legend;
       function drawLegend(){
       legend = svg.selectAll('g')
@@ -704,6 +708,8 @@ var myData = "date	Florida	New York\n\
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         if (typeof fnews === "undefined"){
           fnews="";
+        } else {
+          svg.select(".FLnewsdisplay").attr("x",posx);
         }
         return fnews;
         }
