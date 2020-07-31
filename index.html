@@ -714,13 +714,16 @@ var myData = "date	Florida	New York\n\
       });
 
       }
-   var last_y_val_c1;
+   var addy_c1=0;
 function drawChapter1NewsCircles(){
     var elid;
     var y_val;
+    var y_adj;
     var next_elid;
-    var last_y_val;
+    //var last_y_val;
     var lnsgmt;
+    var padding;
+    padding="         ";
     svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 8)
       .attr("cx",function(d){return x(d.date)})
      // .attr("id",function(d,i){return "c1n" + i})
@@ -736,9 +739,15 @@ function drawChapter1NewsCircles(){
       strarr = c1news[elid].news.split(":");
       lnsgmt=0;
       while (lnsgmt < strarr.length) {
-        if (lnsgmt == 0){
+        if (lnsgmt >= 1){
+          addy= 12 + addy;
+          y_adj=y_val + addy;
+          svg.append("text").attr("x",2).attr("y",y_adj).text(padding + strarr[lnsgmt])
+      .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+        } else {
+          y_adj = y_val + addy;
       //svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
-      svg.append("text").attr("x",2).attr("y",y_val).text(strarr[0])
+      svg.append("text").attr("x",2).attr("y",y_adj).text(strarr[0])
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
       }
       lnsgmt = lnsgmt + 1;
