@@ -705,23 +705,31 @@ var myData = "date	Florida	New York\n\
       }
       function getFLnews(posx){
         var fnews;
+        var txtX=posx;
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         if (typeof fnews === "undefined"){
           svg.select(".FLnewsdisplay").style("opacity",0);
           fnews="";
         } else {
-          svg.select(".FLnewsdisplay").attr("x",posx).style("opacity","1");
+          if (width < (2 * posx)) {
+          txtX = posx - 500;
+          } 
+          svg.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1").text(flnews);
         }
         return fnews;
         }
 
         function getNYnews(posx){
         var nnews;
+        var txtX=posx;
         fnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         if (typeof fnews === "undefined"){
           svg.select(".NYnewsdisplay").style("opacity",0);
           nnews="";
         } else {
+          if (width < (2 * posx)) {
+          txtX = posx - 500;
+          }  
          svg.select(".NYnewsdisplay").attr("x",posx).style("opacity","1");
 
         }
