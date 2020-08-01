@@ -530,6 +530,18 @@ var myData = "date	Florida	New York\n\
       };
     });
 
+    var totstates = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: data.map(function(d) {
+          return {
+            date: d.date,
+            cases: +d[name]
+          };
+        })
+      };
+    });
+
     x.domain(d3.extent(data, function(d) {
       return d.date;
     }));
