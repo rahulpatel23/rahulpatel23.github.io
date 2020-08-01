@@ -708,7 +708,7 @@ var myData = "date	Florida	New York\n\
       function getFLnews(posx){
         var fnews;
         var txtX=posx;
-        var txtX1=tstX + 2;
+        var txtX1=txtX + 2;
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(fnews);
         if (typeof fnews === "undefined"){
@@ -728,7 +728,7 @@ var myData = "date	Florida	New York\n\
         function getNYnews(posx){
         var nnews;
         var txtX=posx;
-        var txtX1=tstX + 2;
+        var txtX1=txtX + 2;
         nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(nnews);
         if (typeof nnews === "undefined"){
