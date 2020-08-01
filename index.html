@@ -707,6 +707,7 @@ var myData = "date	Florida	New York\n\
         var fnews;
         var txtX=posx;
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
+        console.log(fnews);
         if (typeof fnews === "undefined"){
           svg.select(".FLnewsdisplay").style("opacity",0);
           fnews="";
@@ -722,7 +723,8 @@ var myData = "date	Florida	New York\n\
         function getNYnews(posx){
         var nnews;
         var txtX=posx;
-        fnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
+        nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
+        console.log(nnews);
         if (typeof fnews === "undefined"){
           svg.select(".NYnewsdisplay").style("opacity",0);
           nnews="";
@@ -731,7 +733,6 @@ var myData = "date	Florida	New York\n\
           txtX = posx - 500;
           }  
          svg.select(".NYnewsdisplay").attr("x",posx).style("opacity","1").text(nnews).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px");
-
         }
         return nnews;
         }
