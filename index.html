@@ -728,8 +728,8 @@ var myData = "date	Florida	New York\n\
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(fnews);
         if (typeof fnews === "undefined"){
-          d3.select(".FLnewsdisplay").style("opacity",0);
-          d3.select(".FLnewstext").style("opacity",0);
+          d3.select(".FLnewsdisplay").style("opacity","0");
+          d3.select(".FLnewstext").style("opacity","0");
           fnews="";
         } else {
           if (width < (2 * posx)) {
