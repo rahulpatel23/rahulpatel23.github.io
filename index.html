@@ -584,12 +584,12 @@ var myData = "date	Florida	New York\n\
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
     function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",-30).attr("width","500").attr("height","22").attr("fill","orange");
-      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",-25).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","500").attr("height","22").attr("fill","orange");
+      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",31).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",-55).attr("width","500").attr("height","22").attr("fill","steelblue");
-      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",-50).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","500").attr("height","22").attr("fill","steelblue");
+      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",7).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
     }
 
       var legend;
@@ -708,7 +708,7 @@ var myData = "date	Florida	New York\n\
       function getFLnews(posx){
         var fnews;
         var txtX=posx;
-        var tstX1=tstX + 2;
+        var txtX1=tstX + 2;
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(fnews);
         if (typeof fnews === "undefined"){
