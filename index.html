@@ -778,7 +778,7 @@ var myData = "date	Florida	New York\n\
     console.log("totstates");
     console.log(totstates);
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
-      .data(totstates)
+      .data(cities3)
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
@@ -871,13 +871,12 @@ var myData = "date	Florida	New York\n\
 
 
 
-      var city3;
       function drawPart3(){
         svg.selectAll(".stateline").style("opacity",0);
-      city3 = svg.selectAll(".city")
+      var city3 = svg.selectAll(".city3")
       .data(cities3)
       .enter().append("g")
-      .attr("class", "city");
+      .attr("class", "city3");
 
     city3.append("path")
       .attr("class", "line")
@@ -908,10 +907,10 @@ var myData = "date	Florida	New York\n\
 
       function drawPart2(){
         svg.selectAll(".stateline").style("opacity",0);
-        var city2 = svg.selectAll(".city")
+        var city2 = svg.selectAll(".city2")
       .data(cities2)
       .enter().append("g")
-      .attr("class", "city");
+      .attr("class", "city2");
 
     city2.append("path")
       .attr("class", "line")
