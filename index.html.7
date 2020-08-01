@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+  <style>
+    body {
+      font: 10px sans-serif;
+    }
+    
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+    
+    .x.axis path {
+      display: none;
+    }
+    
+    .line {
+      fill: none;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+ 
+    
+//d3.csv("https://rahulpatel23.github.io/nyfldata.csv",function(data){
+
+//myData = data; 
+//});
+   //var myData = "date	New York	San Francisco	Austin\n\
+//Latest 
+var chapterData = "date	title\n\
+20200301	'Unprecedented'\n\
+20200416	'Pivotal Decisions'\n\
+20200615	'Reversal Of Fortune'\n";
+
+var chapter1News = "date	state	news\n\
+20200306	Florida	We are great\n\
+20200327	New York	We are in trouble; what do we do lott of people dying.: needs to do something\n\
+20200409	Florida	We are in great shape; what do we do lott of partying.: needs to do something: what to do\n\
+20200415	New York 	Seven hundred daily cases\n";
+
+var chapter2News = "date	state	news\n\
+20200506	Florida	Governor announce we areOpening Up\n\
+20200527	New York	We are not opening trouble\n\
+20200605	Florida	Opened Beaches are not opening trouble\n";
+
+var chapter3News = "date	state	news\n\
+20200620	Florida	Florida Daily cases are rising\n\
+20200627	New York	Daily cases continue to go down\n\
+20200705	Florida	Broke the dubios record of Daily cases\n";
+
+var totalNews = "date	state	news\n\
+20200306	Florida	We are great\n\
+20200327	New York	We are in trouble; what do we do lott of people dying.: needs to do something\n\
+20200409	Florida	We are in great shape; what do we do lott of partying.: needs to do something: what to do\n\
+20200415	New York 	Seven hundred daily cases\n\
+20200506	Florida	Governor announce we areOpening Up\n\
+20200527	New York	We are not opening trouble\n\
+20200605	Florida	Opened Beaches are not opening trouble\n\
+20200620	Florida	Florida Daily cases are rising\n\
+20200627	New York	Daily cases continue to go down\n\
+20200705	Florida	Broke the dubios record of Daily cases\n";
+
+var actionDataNY = "date	Action\n\
+20200528	'Complete Lockdown'\n\
+20200602	'Partial Lockdown'\n\
+20200605	'NO Opening'\n";
+
+var actionDataFL = "date	Action\n\
+20200511	'Open Lockdown'\n\
+20200522	'Open  Lockdown'\n\
+20200605	'Opening'\n";
+
+var part3Data = "date	Florida	New York\n\
+20200610	1371	664\n\
+20200611	1698	724\n\
+20200612	1902	821\n\
+20200613	2581	912\n\
+20200614	2016	694\n\
+20200615	1758	623\n\
+20200616	2783	630\n\
+20200617	2610	561\n\
+20200618	3207	626\n\
+20200619	3822	794\n\
+20200620	4049	707\n\
+20200621	3494	665\n\
+20200622	2926	555\n\
+20200623	3286	598\n\
+20200624	5511	575\n\
+20200625	5004	738\n\
+20200626	8942	804\n\
+20200627	9585	697\n\
+20200628	8530	624\n\
+20200629	5266	391\n\
+20200630	6093	458\n\
+20200701	6563	628\n\
+20200702	10109	872\n\
+20200703	9488	919\n\
+20200704	11458	725\n\
+20200705	10059	536\n\
+20200706	6336	516\n\
+20200707	7347	590\n\
+20200708	9989	691\n\
+20200709	8935	588\n\
+20200710	11433	790\n\
+20200711	10360	727\n\
+20200712	15300	679\n\
+20200713	12624	559\n\
+20200714	9194	913\n\
+20200715	10181	834\n\
+20200716	13965	767\n\
+20200717	11466	778\n\
+20200718	10328	752\n\
+20200719	12478	509\n\
+20200720	10347	519\n\
+20200721	9440	855\n\
+20200722	9785	706\n";
+
+
+var part2Data = "date	Florida	New York\n\
+20200415	906	11755\n\
+20200416	806	8631\n\
+20200417	1413	7532\n\
+20200418	739	7249\n\
+20200419	822	6199\n\
+20200420	744	4867\n\
+20200421	811	4324\n\
+20200422	440	5659\n\
+20200423	1339	6341\n\
+20200424	885	8286\n\
+20200425	306	10683\n\
+20200426	689	6013\n\
+20200427	610	4077\n\
+20200428	708	3285\n\
+20200429	347	4718\n\
+20200430	498	4702\n\
+20200501	1037	3879\n\
+20200502	735	4559\n\
+20200503	615	3699\n\
+20200504	819	2524\n\
+20200505	542	2302\n\
+20200506	563	2746\n\
+20200507	826	3526\n\
+20200508	371	2873\n\
+20200509	802	2715\n\
+20200510	595	2138\n\
+20200511	386	1610\n\
+20200512	941	1438\n\
+20200513	479	2123\n\
+20200514	808	2364\n\
+20200515	928	2759\n\
+20200516	673	2185\n\
+20200517	777	1901\n\
+20200518	854	1241\n\
+20200519	502	1479\n\
+20200520	527	1478\n\
+20200521	1204	2078\n\
+20200522	776	1678\n\
+20200523	676	1754\n\
+20200524	740	1601\n\
+20200525	879	1279\n\
+20200526	509	1044\n\
+20200527	379	1132\n\
+20200528	651	1758\n\
+20200529	1212	1549\n\
+20200530	927	1363\n\
+20200531	739	1104\n\
+20200601	667	945\n\
+20200602	617	1361\n\
+20200603	1317	1043\n\
+20200604	1419	1053\n\
+20200605	1305	1042\n\
+20200606	1270	1083\n\
+20200607	1180	777\n\
+20200608	966	712\n\
+20200609	1096	690\n\
+20200610	1371	664\n";
+
+var part1Data = "date	Florida	New York\n\
+20200301	2	1\n\
+20200302	0	0\n\
+20200303	1	1\n\
+20200304	0	9\n\
+20200305	1	11\n\
+20200306	3	22\n\
+20200307	5	45\n\
+20200308	1	17\n\
+20200309	1	36\n\
+20200310	9	31\n\
+20200311	3	44\n\
+20200312	20	109\n\
+20200313	24	95\n\
+20200314	0	189\n\
+20200315	39	122\n\
+20200316	32	218\n\
+20200317	69	425\n\
+20200318	116	1012\n\
+20200319	108	1774\n\
+20200320	130	2952\n\
+20200321	200	3258\n\
+20200322	236	4817\n\
+20200323	222	5711\n\
+20200324	245	4805\n\
+20200325	504	7413\n\
+20200326	507	5941\n\
+20200327	720	5688\n\
+20200328	840	8771\n\
+20200329	905	6266\n\
+20200330	752	7721\n\
+20200331	1047	8707\n\
+20200401	1027	8153\n\
+20200402	1231	8996\n\
+20200403	1260	10329\n\
+20200404	1277	12274\n\
+20200405	805	8122\n\
+20200406	1279	9304\n\
+20200407	1118	8314\n\
+20200408	951	9568\n\
+20200409	1129	10765\n\
+20200410	1141	10794\n\
+20200411	1018	10160\n\
+20200412	877	8435\n\
+20200413	1156	6548\n\
+20200414	609	7402\n\
+20200415	906	11755\n";
+
+var myData = "date	Florida	New York\n\
+20200301	2	1\n\
+20200302	0	0\n\
+20200303	1	1\n\
+20200304	0	9\n\
+20200305	1	11\n\
+20200306	3	22\n\
+20200307	5	45\n\
+20200308	1	17\n\
+20200309	1	36\n\
+20200310	9	31\n\
+20200311	3	44\n\
+20200312	20	109\n\
+20200313	24	95\n\
+20200314	0	189\n\
+20200315	39	122\n\
+20200316	32	218\n\
+20200317	69	425\n\
+20200318	116	1012\n\
+20200319	108	1774\n\
+20200320	130	2952\n\
+20200321	200	3258\n\
+20200322	236	4817\n\
+20200323	222	5711\n\
+20200324	245	4805\n\
+20200325	504	7413\n\
+20200326	507	5941\n\
+20200327	720	5688\n\
+20200328	840	8771\n\
+20200329	905	6266\n\
+20200330	752	7721\n\
+20200331	1047	8707\n\
+20200401	1027	8153\n\
+20200402	1231	8996\n\
+20200403	1260	10329\n\
+20200404	1277	12274\n\
+20200405	805	8122\n\
+20200406	1279	9304\n\
+20200407	1118	8314\n\
+20200408	951	9568\n\
+20200409	1129	10765\n\
+20200410	1141	10794\n\
+20200411	1018	10160\n\
+20200412	877	8435\n\
+20200413	1156	6548\n\
+20200414	609	7402\n\
+20200415	906	11755\n\
+20200416	806	8631\n\
+20200417	1413	7532\n\
+20200418	739	7249\n\
+20200419	822	6199\n\
+20200420	744	4867\n\
+20200421	811	4324\n\
+20200422	440	5659\n\
+20200423	1339	6341\n\
+20200424	885	8286\n\
+20200425	306	10683\n\
+20200426	689	6013\n\
+20200427	610	4077\n\
+20200428	708	3285\n\
+20200429	347	4718\n\
+20200430	498	4702\n\
+20200501	1037	3879\n\
+20200502	735	4559\n\
+20200503	615	3699\n\
+20200504	819	2524\n\
+20200505	542	2302\n\
+20200506	563	2746\n\
+20200507	826	3526\n\
+20200508	371	2873\n\
+20200509	802	2715\n\
+20200510	595	2138\n\
+20200511	386	1610\n\
+20200512	941	1438\n\
+20200513	479	2123\n\
+20200514	808	2364\n\
+20200515	928	2759\n\
+20200516	673	2185\n\
+20200517	777	1901\n\
+20200518	854	1241\n\
+20200519	502	1479\n\
+20200520	527	1478\n\
+20200521	1204	2078\n\
+20200522	776	1678\n\
+20200523	676	1754\n\
+20200524	740	1601\n\
+20200525	879	1279\n\
+20200526	509	1044\n\
+20200527	379	1132\n\
+20200528	651	1758\n\
+20200529	1212	1549\n\
+20200530	927	1363\n\
+20200531	739	1104\n\
+20200601	667	945\n\
+20200602	617	1361\n\
+20200603	1317	1043\n\
+20200604	1419	1053\n\
+20200605	1305	1042\n\
+20200606	1270	1083\n\
+20200607	1180	777\n\
+20200608	966	712\n\
+20200609	1096	690\n\
+20200610	1371	664\n\
+20200611	1698	724\n\
+20200612	1902	821\n\
+20200613	2581	912\n\
+20200614	2016	694\n\
+20200615	1758	623\n\
+20200616	2783	630\n\
+20200617	2610	561\n\
+20200618	3207	626\n\
+20200619	3822	794\n\
+20200620	4049	707\n\
+20200621	3494	665\n\
+20200622	2926	555\n\
+20200623	3286	598\n\
+20200624	5511	575\n\
+20200625	5004	738\n\
+20200626	8942	804\n\
+20200627	9585	697\n\
+20200628	8530	624\n\
+20200629	5266	391\n\
+20200630	6093	458\n\
+20200701	6563	628\n\
+20200702	10109	872\n\
+20200703	9488	919\n\
+20200704	11458	725\n\
+20200705	10059	536\n\
+20200706	6336	516\n\
+20200707	7347	590\n\
+20200708	9989	691\n\
+20200709	8935	588\n\
+20200710	11433	790\n\
+20200711	10360	727\n\
+20200712	15300	679\n\
+20200713	12624	559\n\
+20200714	9194	913\n\
+20200715	10181	834\n\
+20200716	13965	767\n\
+20200717	11466	778\n\
+20200718	10328	752\n\
+20200719	12478	509\n\
+20200720	10347	519\n\
+20200721	9440	855\n\
+20200722	9785	706\n";
+
+    var margin = {
+        top: 260,
+        atop: 60,
+        right: 80,
+        bottom: 80,
+        left: 50
+      },
+      width = 1200 - margin.left - margin.right,
+      height = 900 - margin.top - margin.bottom;
+
+    var parseDate = d3.time.format("%Y%m%d").parse;
+    var floridaNews = new Object(); //associative array date key news value
+    var newyorkNews = new Object();
+
+    var getmultiple = d3.scale.linear()
+    .domain([1,100])
+    .range([12,1200]);
+
+    var x = d3.time.scale()
+      .range([0, width]);
+
+    var y = d3.scale.linear()
+      .range([height, 0]);
+
+    var color = d3.scale.category10();
+
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+
+    var line = d3.svg.line()
+      .interpolate("basis")
+      .x(function(d) {
+        return x(d.date);
+      })
+      .y(function(d) {
+        return y(d.cases);
+      });
+    var data = d3.tsv.parse(myData);
+    var cdata = d3.tsv.parse(chapterData);
+    var p1data = d3.tsv.parse(part1Data);
+    var p3data = d3.tsv.parse(part3Data);
+    var p2data = d3.tsv.parse(part2Data);
+    var adata = d3.tsv.parse(actionDataNY);
+    var bdata = d3.tsv.parse(actionDataFL);
+    var c1news = d3.tsv.parse(chapter1News);
+    var c2news = d3.tsv.parse(chapter2News);
+    var c3news = d3.tsv.parse(chapter3News);
+    var tnews = d3.tsv.parse(totalNews);
+    console.log(data)
+    console.log(cdata);
+
+    color.domain(d3.keys(data[0]).filter(function(key) {
+      return key !== "date";
+    }));
+
+    data.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    adata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    bdata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    cdata.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    p1data.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    p2data.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    p3data.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+
+    c1news.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+    c2news.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+    c3news.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+    tnews.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
+    var i=0;
+    while (i < tnews.length ){
+      console.log(tnews);
+      if (tnews[i].state == 'Florida'){
+        floridaNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news
+      }
+      if (tnews[i].state == 'New York'){
+        console.log(tnews);
+        newyorkNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news
+      }
+      i=i+1;
+    }
+   console.log(floridaNews);
+   console.log(newyorkNews);
+    var cities3 = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: p3data.map(function(d) {
+          return {
+            date: d.date,
+            cases: +d[name]
+          };
+        })
+      };
+    });
+
+
+    var cities2 = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: p2data.map(function(d) {
+          return {
+            date: d.date,
+            cases: +d[name]
+          };
+        })
+      };
+    });
+
+    var cities = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: data.map(function(d) {
+          return {
+            date: d.date,
+            cases: +d[name]
+          };
+        })
+      };
+    });
+
+    var totstates = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: data.map(function(d) {
+          return {
+            date: d.date,
+            cases: +d[name]
+          };
+        })
+      };
+    });
+
+    x.domain(d3.extent(data, function(d) {
+      return d.date;
+    }));
+
+    y.domain([
+      d3.min(cities, function(c) {
+        return d3.min(c.values, function(v) {
+          return v.cases;
+        });
+      }),
+      d3.max(cities3, function(c) {
+        return d3.max(c.values, function(v) {
+          return v.cases;
+        });
+      })
+    ]);
+
+    
+    /*var hdrsvg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", "60")
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + 40 + ")");
+	hdrsvg.append("text").attr("x",20).attr("y",20).text("A TALE OF TWO STATES:");*/
+
+    var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height +  margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      /*var svgdisp = d3.select("body").append("svg")
+       .attr("width",width + margin.left + margin.right)
+       .attr("height",margin.top)
+       .append("g")
+       .attr("transform", "translate(" + margin.left + "," + margin.atop + ")");
+*/
+
+      
+      var chap1lasty;
+      function showTitle(){
+        //svg.append("rect").attr("class","tvdisplay").attr("id","1").attr("x",0).attr("y",-200).attr("width","390").attr("height","200").attr("fill","#d9e8af");
+       // svg.append("rect").attr("class","tvdisplay").attr("id","2").attr("x",405).attr("y",-200).attr("width","390").attr("height","200").attr("fill","#d9e8af");
+       // svg.append("rect").attr("class","tvdisplay").attr("id","3").attr("x",810).attr("y",-200).attr("width","390").attr("height","200").attr("fill","#d9e8af");
+        svg.append("rect").attr("class","heading").attr("x",0).attr("y",-240).attr("width","1200").attr("height","30").attr("fill","#d9e8af");
+        svg.append("text").attr("x",220).attr("y",-215).text("A TALE OF TWO STATES: Their responses to COVID-19")
+        .attr("font-weight",800).attr("font-family","sans-serif").style("font-size","24px");
+        //svg.append("text").attr("x",0).attr("y",-180).text("Chapter 1: Unprecedented")
+        //.attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+        //svg.append("text").attr("x",405).attr("y",-180).text("Chapter 2: Pivotal Decisions")
+        //.attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+        //svg.append("text").attr("x",810).attr("y",-180).text("Chapter 3: Fortune Reversal")
+        //.attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+      }
+      function showChapter1Box(){
+        svg.append("rect").attr("class","tvdisplay").attr("id","1").attr("x",0).attr("y",-200).attr("width","390").attr("height","200").attr("fill","#d9e8af");       
+        svg.append("text").attr("x",0).attr("y",-180).text("Chapter 1: Unprecedented")
+        .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+    }
+    function showChapter2Box(){
+      svg.append("rect").attr("class","tvdisplay").attr("id","2").attr("x",405).attr("y",-200).attr("width","390").attr("height","200").attr("fill","#d9e8af");
+      svg.append("text").attr("x",405).attr("y",-180).text("Chapter 2: Pivotal Decisions")
+        .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+    }
+    function showChapter3Box(){
+    svg.append("rect").attr("class","tvdisplay").attr("id","3").attr("x",810).attr("y",-200).attr("width","390").attr("height","200").attr("fill","#d9e8af"); 
+    svg.append("text").attr("x",810).attr("y",-180).text("Chapter 3: Fortune Reversal")
+        .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+    }
+    function drawDynNYNewsBox(){
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","orange");
+      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
+    }
+    function drawDynFLNewsBox(){
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("fill","steelblue");
+      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",14).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
+    }
+
+      var legend;
+      function drawLegend(){
+      legend = svg.selectAll('g')
+      .data(totstates)
+      .enter()
+      .append('g')
+      .attr('class', 'legend');
+
+      legend.append('rect')
+      .attr('x', width - 20)
+      .attr('y', function(d, i) {
+        return i * 20;
+      })
+      .attr('width', 10)
+      .attr('height', 10)
+      .style('fill', function(d) {
+        return color(d.name);
+      });
+
+      legend.append('text')
+      .attr('x', width - 8)
+      .attr('y', function(d, i) {
+        return (i * 20) + 9;
+      })
+      .text(function(d) {
+        return d.name;
+      }); 
+      }
+      function showAxis(){
+        svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("New Cases");
+      }
+
+      function getFLnews(posx){
+        var fnews;
+        var txtX=posx;
+        var txtX1=txtX + 2;
+        fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
+        console.log(fnews);
+        if (typeof fnews === "undefined"){
+          d3.select(".FLnewsdisplay").style("opacity","0");
+          d3.select(".FLnewstext").style("opacity","0");
+          fnews="";
+        } else {
+          if (width < (2 * posx)) {
+          txtX = posx - 500;
+          } 
+          d3.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1");
+          d3.select(".FLnewstext").attr("x",txtX1).text(fnews).style("opacity","1");
+        }
+        return fnews;
+        }
+
+        function getNYnews(posx){
+        var nnews;
+        var txtX=posx;
+        var txtX1=txtX + 2;
+        nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
+        console.log(nnews);
+        if (typeof nnews === "undefined"){
+          d3.select(".NYnewsdisplay").style("opacity","0");
+          d3.select(".NYnewstext").attr("opacity","0");
+          nnews="";
+        } else {
+          if (width < (2 * posx)) {
+          txtX = posx - 500;
+          }  
+         d3.select(".NYnewsdisplay").attr("x",txtX).style("opacity","1");
+         d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
+        }
+        return nnews;
+        }
+      
+      function explore(){
+    /*color.domain(d3.keys(data[0]).filter(function(key) {
+      return key !== "date";
+    }));*/
+
+    //console.log(function(adata){return adata.date});
+    //console.log(function(adata){return x(adata.date)});
+    /*Rahul circles
+    svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
+      .attr("cx",function(d){return x(d.date)})
+      .attr("cy","514")
+      .attr("class","TimeLineCircleNY")
+      .style("stroke", "black").style("fill", "orange")
+      .style("stroke-width", "1px")
+      .style("opacity", "1");
+
+
+    svg.append("g").attr("class","ActionTimeLine").selectAll("TimeLineCircleFL").data(bdata).enter().append("circle").attr("r", 5)
+      .attr("cx",function(d){return x(d.date)})
+      .attr("cy","514")
+      .attr("class","TimeLineCircleFL")
+      .style("stroke", "black").style("fill", "steelblue")
+      .style("stroke-width", "1px")
+      .style("opacity", "1");
+      */
+
+/*Rahul drawing state lines
+    var city = svg.selectAll(".city")
+      .data(cities)
+      .enter().append("g")
+      .attr("class", "city");
+
+    city.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
+
+    city.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
+      })
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
+      */
+//Rahul  Entire Mouse movement plus verticle line
+   drawDynNYNewsBox();
+   drawDynFLNewsBox();
+    var mouseG = svg.append("g")
+      .attr("class", "mouse-over-effects");
+
+    mouseG.append("path") // this is the black vertical line to follow mouse
+      .attr("class", "mouse-line")
+      .style("stroke", "black")
+      .style("stroke-width", "1px")
+      .style("opacity", "0");
+      
+    var lines = document.getElementsByClassName('line');
+    console.log("totstates");
+    console.log(totstates);
+    var mousePerLine = mouseG.selectAll('.mouse-per-line')
+      .data(totstates)
+      .enter()
+      .append("g")
+      .attr("class", "mouse-per-line");
+
+    mousePerLine.append("circle")
+      .attr("r", 7)
+      .style("stroke", function(d) {
+        return color(d.name);
+      })
+      .style("fill", "none")
+      .style("stroke-width", "1px")
+      .style("opacity", "0");
+
+    mousePerLine.append("text")
+      .attr("transform", "translate(10,3)");
+
+    mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+      .attr('width', width) // can't catch mouse events on a g element
+      .attr('height', height)
+      .attr('fill', 'none')
+      .attr('pointer-events', 'all')
+      .on('mouseout', function() { // on mouse out hide line, circles and text
+        d3.select(".mouse-line")
+          .style("opacity", "0");
+        d3.selectAll(".mouse-per-line circle")
+          .style("opacity", "0");
+        d3.selectAll(".mouse-per-line text")
+          .style("opacity", "0");
+        //d3.selectAll(".mouse-per-line rect")
+         // .style("opacity", "0");
+      })
+      .on('mouseover', function() { // on mouse in show line, circles and text
+        d3.select(".mouse-line")
+          .style("opacity", "1");
+        d3.selectAll(".mouse-per-line circle")
+          .style("opacity", "1");
+        d3.selectAll(".mouse-per-line text")
+          .style("opacity", "1");
+        //d3.selectAll(".mouse-per-line rect")
+         // .style("opacity", "1");  
+      })
+      .on('mousemove', function() { // mouse moving over canvas
+        var mouse = d3.mouse(this);
+        d3.select(".mouse-line")
+          .attr("d", function() {
+            var d = "M" + mouse[0] + "," + height;
+            d += " " + mouse[0] + "," + 0;
+            return d;
+          });
+
+        d3.selectAll(".mouse-per-line")
+          .attr("transform", function(d, i) {
+            console.log(width/mouse[0])
+            var xDate = x.invert(mouse[0]),
+                bisect = d3.bisector(function(d) { return d.date; }).right;
+                idx = bisect(d.values, xDate);
+            
+            var beginning = 0,
+                end = lines[i].getTotalLength(),
+                target = null;
+
+            while (true){
+              target = Math.floor((beginning + end) / 2);
+              pos = lines[i].getPointAtLength(target);
+              if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+                  break;
+              }
+              if (pos.x > mouse[0])      end = target;
+              else if (pos.x < mouse[0]) beginning = target;
+              else break; //position found
+            }
+            
+            d3.select(this).select('text')
+              //.text(y.invert(pos.y).toFixed(2));
+              //.text("(" + y.invert(pos.y).toFixed(0) + "," + d3.time.format("%Y%m%d").parse(x.invert(pos.x)) + ")")
+              //.text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridaNews[x.invert(pos.x).toDateString().substring(0,10)] + newyorkNews[x.invert(pos.x).toDateString().substring(0,10)] + ")" );
+              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
+             //.text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + ")")
+              //.call(getFLnews(pos.x))
+             // .call(getNYnews(pos.x));
+           // d3.select(this).select('rect')
+            //  .text("(" + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
+            return "translate(" + mouse[0] + "," + pos.y +")";
+          });
+      });
+     // */
+}
+
+
+
+
+
+
+      function drawPart3(){
+        svg.selectAll(".stateline").style("opacity",0);
+        var city3 = svg.selectAll(".city3")
+      .data(cities3)
+      .enter().append("g")
+      .attr("class", "city3");
+
+    city3.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
+
+    city3.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
+      })
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
+
+      }
+
+      function drawPart2(){
+        svg.selectAll(".stateline").style("opacity",0);
+        var city2 = svg.selectAll(".city2")
+      .data(cities2)
+      .enter().append("g")
+      .attr("class", "city2");
+
+    city2.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
+
+    city2.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
+      })
+      .attr("class","stateline")
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
+
+      }
+      
+      
+      function drawPart1(){
+        var city = svg.selectAll(".city")
+      .data(cities)
+      .enter().append("g")
+      .attr("class", "city");
+
+    city.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
+
+    city.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
+      })
+      .attr("class","stateline")
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
+
+      }
+   var addy_c1=0;
+function drawChapter1NewsCircles(){
+    var elid;
+    var y_val;
+    var y_adj;
+    var next_elid;
+    //var last_y_val;
+    var lnsgmt;
+    var newsdt;
+    //var padding;
+    //padding="         ";
+    svg.append("g").selectAll(".Chapter1NewsCircle").data(c1news).enter().append("circle").attr("r", 8)
+      .attr("cx",function(d){return x(d.date)})
+     // .attr("id",function(d,i){return "c1n" + i})
+      .attr("cy","562")
+      .attr("class",function (d,i){return "Chapter1NewsCircle" + i})
+      .style("stroke", "black").style("fill", "orange")
+      .style("stroke-width", "1px")
+      .style("opacity", "0")
+      .on ('click', function() {
+      elid=+ d3.select(this).attr("class").substring(18);
+      y_val = d3.sum([-167,getmultiple(elid)]);
+      console.log(c1news);
+      strarr = c1news[elid].news.split(":");
+      lnsgmt=0;
+       newsdt=x.invert(d3.select(this).attr("cx"));
+       console.log(newsdt);
+      while (lnsgmt < strarr.length) {
+        if (lnsgmt >= 1){
+          addy_c1= 12 + addy_c1;
+          y_adj=y_val + addy_c1;
+          svg.append("text").attr("x",55).attr("y",y_adj).text( strarr[lnsgmt])
+      .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+        } else {
+          y_adj = y_val + addy_c1;
+      //svg.append("text").attr("x",2).attr("y",y_val).text(c1news[elid].news)
+      svg.append("text").attr("x",2).attr("y",y_adj).text(newsdt.toDateString().substring(4,10)+ ":")
+      .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      svg.append("text").attr("x",55).attr("y",y_adj).text(strarr[0])
+      .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      }
+      lnsgmt = lnsgmt + 1;
+
+      }
+      d3.select(this).attr("r",5);
+      next_elid = elid + 1 ;
+      console.log(next_elid);
+      if (next_elid <= c1news.length) {
+        console.log("I am Inside start");
+        console.log(d3.select(this).attr("class").substring(3));
+        console.log(d3.select(this).attr("class"));
+        console.log(d3.select(this).style("opacity"));
+        console.log("I am Inside");
+        console.log(d3.select(".Chapter1NewsCircle1").style("opacity"));
+      //d3.select(".Chapter1NewsCircle1").style("opacity","0");
+      d3.select(".Chapter1NewsCircle" + next_elid).style("opacity","1");
+      d3.select(this).on('click',null);
+      console.log(d3.select(".Chapter1NewsCircle" + elid).attr("class"));
+      console.log(d3.select(".Chapter1NewsCircle" + elid).style("opacity"));
+      console.log("length:" + c1news.length);
+      if (next_elid  == c1news.length){  //at this point no element with next_elid sio time to draw the next
+        console.log("I am the last one");
+        drawChapter2Circle();
+      }
+      }
+      
+      });
+      d3.select(".Chapter1NewsCircle0").style("opacity","1");
+
+}
+
+function drawChapter2NewsCircles(){
+  var elid;
+  var next_elid;
+    svg.append("g").selectAll(".Chapter2NewsCircle").data(c2news).enter().append("circle").attr("r", 8)
+      .attr("cx",function(d){return x(d.date)})
+      .attr("cy","562")
+      .attr("class","Chapter2NewsCircle")
+      .style("stroke", "black").style("fill", "orange")
+      .attr("class",function (d,i){return "Chapter2NewsCircle" + i})
+      .style("stroke-width", "1px")
+      .style("opacity", "0")
+      .on ('click', function() {
+      elid=+ d3.select(this).attr("class").substring(18);
+      y_val = d3.sum([-168,getmultiple(elid)]);
+      console.log(c2news);
+      svg.append("text").attr("x",407).attr("y",y_val).text(c2news[elid].news)
+      .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      d3.select(this).attr("r",5);
+      next_elid = elid + 1 ;
+      console.log(next_elid);
+      if (next_elid <= c2news.length) {
+        console.log("I am Inside start");
+        console.log(d3.select(this).attr("class").substring(3));
+        console.log(d3.select(this).attr("class"));
+        console.log(d3.select(this).style("opacity"));
+        console.log("I am Inside");
+        console.log(d3.select(".Chapter2NewsCircle1").style("opacity"));
+      //d3.select(".Chapter1NewsCircle1").style("opacity","0");
+      d3.select(".Chapter2NewsCircle" + next_elid).style("opacity","1");
+      d3.select(this).on('click',null);
+      console.log(d3.select(".Chapter2NewsCircle" + elid).attr("class"));
+      console.log(d3.select(".Chapter2NewsCircle" + elid).style("opacity"));
+      console.log("length:" + c2news.length);
+      if (next_elid  == c2news.length){  //at this point no element with next_elid sio time to draw the next
+        console.log("I am the last one");
+        drawChapter3Circle();
+      }
+      }
+      
+      });
+      d3.select(".Chapter2NewsCircle0").style("opacity","1");
+
+
+}
+
+function drawChapter3NewsCircles(){
+  var elid;
+  var next_elid;
+    svg.append("g").selectAll(".Chapter1NewsCircle").data(c3news).enter().append("circle").attr("r", 8)
+      .attr("cx",function(d){return x(d.date)})
+      .attr("cy","562")
+      .attr("class","Chapter3NewsCircle")
+      .style("stroke", "black").style("fill", "orange")
+      .attr("class",function (d,i){return "Chapter3NewsCircle" + i})
+      .style("stroke-width", "1px")
+      .style("opacity", "0")
+      .on ('click', function() {
+      elid=+ d3.select(this).attr("class").substring(18);
+      y_val = d3.sum([-168,getmultiple(elid)]);
+      console.log(c3news);
+      svg.append("text").attr("x",812).attr("y",y_val).text(c3news[elid].news)
+      .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      d3.select(this).attr("r",5);
+      next_elid = elid + 1 ;
+      console.log(next_elid);
+      if (next_elid <= c3news.length) {
+        console.log("I am Inside start");
+        console.log(d3.select(this).attr("class").substring(3));
+        console.log(d3.select(this).attr("class"));
+        console.log(d3.select(this).style("opacity"));
+        console.log("I am Inside");
+        console.log(d3.select(".Chapter3NewsCircle1").style("opacity"));
+      //d3.select(".Chapter1NewsCircle1").style("opacity","0");
+      d3.select(".Chapter3NewsCircle" + next_elid).style("opacity","1");
+      d3.select(this).on('click',null);
+      console.log(d3.select(".Chapter3NewsCircle" + elid).attr("class"));
+      console.log(d3.select(".Chapter3NewsCircle" + elid).style("opacity"));
+      console.log("length:" + c3news.length);
+      if (next_elid  == c3news.length){  //at this point no element with next_elid sio time to draw the next
+        console.log("I am the last one");
+        explore();
+        //drawChapter3Circle();
+      }
+      }
+      
+      });
+      d3.select(".Chapter3NewsCircle0").style("opacity","1");
+
+}
+
+function drawChapter3Circle(){
+	console.log(cdata[2].date);
+
+    svg.append("circle").attr("r", 10)
+     // .attr("cx",function(d){return x(d.date)})
+      .attr("cx",x(cdata[2].date))
+      .attr("cy","562")
+      .attr("class", "Chapter3Circle")
+      .attr("stroke", "black")
+      .attr("fill", "blue")
+      .style("stroke-width", "1px")
+      .style("opacity", "1")
+    .on ('click', function() {
+      svg.select(".Chapter2Circle").attr("fill","grey");
+      //svg.append("text").attr("x",290).attr("y",0).text(cdata[2].title);
+      drawPart3();
+      showChapter3Box();
+      drawChapter3NewsCircles();
+      //drawChapter2Circle();
+      //drawLegend();
+      //showAxis();
+    });
+}
+function drawChapter2Circle(){
+	console.log(cdata[1].date);
+
+    svg.append("circle").attr("r", 10)
+     // .attr("cx",function(d){return x(d.date)})
+      .attr("cx",x(cdata[1].date))
+      .attr("cy","562")
+      .attr("class", "Chapter2Circle")
+      .attr("stroke", "black")
+      .attr("fill", "green")
+      .style("stroke-width", "1px")
+      .style("opacity", "1")
+    .on ('click', function() {
+      svg.select(".Chapter1Circle").attr("fill","grey");
+      //svg.append("text").attr("x",150).attr("y",35).text(cdata[1].title);
+      showChapter2Box()
+      drawPart2();
+      drawChapter2NewsCircles();
+      //drawChapter3Circle();
+      //drawLegend();
+      //showAxis();
+    });
+}
+      
+function drawChapter1Circle(){
+	console.log(cdata[1].date);
+
+    svg.append("circle").attr("r", 10)
+     // .attr("cx",function(d){return x(d.date)})
+      .attr("cx",x(cdata[0].date))
+      .attr("cy","562")
+      .attr("class", "Chapter1Circle")
+      .attr("stroke", "black")
+      .attr("fill", "green")
+      .style("stroke-width", "1px")
+      .style("opacity", "1")
+    .on ('click', function() {
+      svg.select(".Chapter1Circle").attr("fill","black");
+      //svg.append("text").attr("x",50).attr("y",0).text(cdata[0].title);
+      drawPart1();
+      showChapter1Box();
+      drawChapter1NewsCircles();
+     // d3.select(".Chapter1NewsCircle").attr("opacity","1");
+      //drawChapter2Circle();
+      //drawLegend();
+      //showAxis();
+    });
+}
+
+
+
+var startTriangle = svg.append('path')
+        .attr("class","start-triangle")
+        .attr('d', d3.svg.symbol().type("triangle-up").size(190))
+        .style('fill', 'green')
+        .attr("transform", function(d) { return "translate(" + -16 + "," + 560 + ")"; });
+ var stopSquare = svg.append('rect')
+        .attr("class","stop-square")
+        .attr("x","-26")
+        .attr("y","554")
+        .attr("width","16")
+        .attr("height","16")
+        .attr("opacity","0")
+        .style('fill', 'red')
+         
+var startOuterCircle= svg.append("circle")
+    .attr("class", "StartingCircle")
+    .attr("cx", -16)
+    .attr("cy", "562")
+    .attr("r", 11)
+    .attr("fill", "white")
+    .attr("opacity",".01")
+    .attr("stroke", "black")
+    .style("stroke-width", "2px")
+    .on ('click', function() {
+      svg.select(".start-triangle").attr("opacity","0");
+      svg.select(".stop-square").attr("opacity","1");
+      //showChapter1Box();
+      drawLegend();
+      showAxis();
+      drawChapter1Circle();
+    });
+   showTitle();
+
+ 
+      
+  </script>
+</body>
+
+</html>
