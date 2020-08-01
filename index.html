@@ -843,7 +843,8 @@ var myData = "date	Florida	New York\n\
       .style("opacity", "0");
       
     var lines = document.getElementsByClassName('line');
-
+    console.log("totstates");
+    console.log(totstates);
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
       .data(totstates)
       .enter()
@@ -869,11 +870,11 @@ var myData = "date	Florida	New York\n\
       .attr('pointer-events', 'all')
       .on('mouseout', function() { // on mouse out hide line, circles and text
         d3.select(".mouse-line")
-          .style("opacity", "1");
+          .style("opacity", "0");
         d3.selectAll(".mouse-per-line circle")
-          .style("opacity", "1");
+          .style("opacity", "0");
         d3.selectAll(".mouse-per-line text")
-          .style("opacity", "1");
+          .style("opacity", "0");
         //d3.selectAll(".mouse-per-line rect")
          // .style("opacity", "0");
       })
