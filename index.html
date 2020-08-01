@@ -521,7 +521,7 @@ var myData = "date	Florida	New York\n\
     var cities = color.domain().map(function(name) {
       return {
         name: name,
-        values: data.map(function(d) {
+        values: p1data.map(function(d) {
           return {
             date: d.date,
             cases: +d[name]
@@ -612,12 +612,12 @@ var myData = "date	Florida	New York\n\
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
     function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","orange");
-      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","orange").style("opacity","0");
+      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY").style("opacity","0");
     }
     function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("fill","steelblue");
-      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",14).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("fill","steelblue").style("opacity","0");
+      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",14).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL").style("opacity","0");
     }
 
       var legend;
@@ -682,6 +682,7 @@ var myData = "date	Florida	New York\n\
           d3.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1");
           d3.select(".FLnewstext").attr("x",txtX1).text(fnews).style("opacity","1");
         }
+        fnews="";
         return fnews;
         }
 
@@ -702,6 +703,7 @@ var myData = "date	Florida	New York\n\
          d3.select(".NYnewsdisplay").attr("x",txtX).style("opacity","1");
          d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
         }
+        nnews="";
         return nnews;
         }
       
