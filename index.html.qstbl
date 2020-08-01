@@ -521,7 +521,7 @@ var myData = "date	Florida	New York\n\
     var cities = color.domain().map(function(name) {
       return {
         name: name,
-        values: data.map(function(d) {
+        values: p1data.map(function(d) {
           return {
             date: d.date,
             cases: +d[name]
@@ -775,10 +775,10 @@ var myData = "date	Florida	New York\n\
       .style("opacity", "0");
       
     var lines = document.getElementsByClassName('line');
-    console.log("totstates");
-    console.log(totstates);
+   // console.log("totstates");
+    //console.log(totstates);
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
-      .data(totstates)
+      .data(cities)
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
@@ -871,11 +871,10 @@ var myData = "date	Florida	New York\n\
 
 
 
-
       function drawPart3(){
         svg.selectAll(".stateline").style("opacity",0);
-        var city3 = svg.selectAll(".city3")
-      .data(cities3)
+      var city3 = svg.selectAll(".city3")
+      .data(cities)
       .enter().append("g")
       .attr("class", "city3");
 
@@ -932,7 +931,7 @@ var myData = "date	Florida	New York\n\
       .attr("transform", function(d) {
         return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
       })
-      .attr("class","stateline")
+     // .attr("class","stateline")
       .attr("x", 3)
       .attr("dy", ".35em")
       .text(function(d) {
@@ -941,7 +940,40 @@ var myData = "date	Florida	New York\n\
 
       }
       
-      
+      function drawPart0(){
+        var city0 = svg.selectAll(".city0")
+      .data(totstates)
+      .enter().append("g")
+      .attr("class", "city0");
+
+    city0.append("path")
+      .attr("class", "line")
+      .style("opacity","0")
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
+
+    city0.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
+      })
+      //.attr("class","stateline")
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
+
+      }
       function drawPart1(){
         var city = svg.selectAll(".city")
       .data(cities)
@@ -950,6 +982,7 @@ var myData = "date	Florida	New York\n\
 
     city.append("path")
       .attr("class", "line")
+      .attr("opacity","1")
       .attr("d", function(d) {
         return line(d.values);
       })
@@ -967,7 +1000,7 @@ var myData = "date	Florida	New York\n\
       .attr("transform", function(d) {
         return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
       })
-      .attr("class","stateline")
+      //.attr("class","stateline")
       .attr("x", 3)
       .attr("dy", ".35em")
       .text(function(d) {
@@ -1175,7 +1208,7 @@ function drawChapter2Circle(){
       svg.select(".Chapter1Circle").attr("fill","grey");
       //svg.append("text").attr("x",150).attr("y",35).text(cdata[1].title);
       showChapter2Box()
-      drawPart2();
+      //drawPart2();
       drawChapter2NewsCircles();
       //drawChapter3Circle();
       //drawLegend();
@@ -1198,6 +1231,7 @@ function drawChapter1Circle(){
     .on ('click', function() {
       svg.select(".Chapter1Circle").attr("fill","black");
       //svg.append("text").attr("x",50).attr("y",0).text(cdata[0].title);
+      drawPart0();
       drawPart1();
       showChapter1Box();
       drawChapter1NewsCircles();
