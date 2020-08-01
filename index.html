@@ -58,6 +58,18 @@ var chapter3News = "date	state	news\n\
 20200627	New York	Daily cases continue to go down\n\
 20200705	Florida	Broke the dubios record of Daily cases\n";
 
+var totalNews = "date	state	news\n\
+20200306	Florida	We are great\n\
+20200327	New York	We are in trouble; what do we do lott of people dying.: needs to do something\n\
+20200409	Florida	We are in great shape; what do we do lott of partying.: needs to do something: what to do\n\
+20200415	New York 	Seven hundred daily cases\n\
+20200506	Florida	Governor announce we areOpening Up\n\
+20200527	New York	We are not opening trouble\n\
+20200605	Florida	Opened Beaches are not opening trouble\n\
+20200620	Florida	Florida Daily cases are rising\n\
+20200627	New York	Daily cases continue to go down\n\
+20200705	Florida	Broke the dubios record of Daily cases\n";
+
 var actionDataNY = "date	Action\n\
 20200528	'Complete Lockdown'\n\
 20200602	'Partial Lockdown'\n\
@@ -419,6 +431,7 @@ var myData = "date	Florida	New York\n\
     var c1news = d3.tsv.parse(chapter1News);
     var c2news = d3.tsv.parse(chapter2News);
     var c3news = d3.tsv.parse(chapter3News);
+    var tnews = d3.tsv.parse(totalNews);
     console.log(data)
     console.log(cdata);
 
@@ -463,15 +476,18 @@ var myData = "date	Florida	New York\n\
     c3news.forEach(function(d) {
       d.date = parseDate(d.date);
     });
+    tnews.forEach(function(d) {
+      d.date = parseDate(d.date);
+    });
     var i=0;
-    while (i < c1news.length ){
-      console.log(c1news);
-      if (c1news[i].state == 'Florida'){
-        floridaNews[c1news[i].date.toDateString().substring(0,10)]=c1news[i].news
+    while (i < tnews.length ){
+      console.log(tnews);
+      if (tnews[i].state == 'Florida'){
+        floridaNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news
       }
-      if (c1news[i].state == 'New York'){
-        console.log(c1news);
-        newyorkNews[c1news[i].date.toDateString().substring(0,10)]=c1news[i].news
+      if (tnews[i].state == 'New York'){
+        console.log(tnews);
+        newyorkNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news
       }
       i=i+1;
     }
@@ -584,12 +600,12 @@ var myData = "date	Florida	New York\n\
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
     function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","500").attr("height","22").attr("fill","orange");
-      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",31).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","orange");
+      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","500").attr("height","22").attr("fill","steelblue");
-      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",7).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("fill","steelblue");
+      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",14).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
     }
 
       var legend;
