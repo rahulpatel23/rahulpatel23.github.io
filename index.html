@@ -612,11 +612,11 @@ var myData = "date	Florida	New York\n\
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
     function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","orange");
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("stroke",color("New York"));
       svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("fill","steelblue");
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("stroke",color("Florida"));
       svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",14).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
     }
 
@@ -1160,7 +1160,7 @@ function drawChapter3NewsCircles(){
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter3NewsCircle" + next_elid).style("opacity","1");
       d3.select(this).on('click',null);
-      d3.select(this).style("opacity","0");
+      d3.select(this).style("opacity",".6");
       console.log(d3.select(".Chapter3NewsCircle" + elid).attr("class"));
       console.log(d3.select(".Chapter3NewsCircle" + elid).style("opacity"));
       console.log("length:" + c3news.length);
