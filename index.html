@@ -496,7 +496,7 @@ var myData = "date	Florida	New York\n\
     var cities3 = color.domain().map(function(name) {
       return {
         name: name,
-        values: data.map(function(d) {
+        values: p3data.map(function(d) {
           return {
             date: d.date,
             cases: +d[name]
@@ -521,7 +521,7 @@ var myData = "date	Florida	New York\n\
     var cities = color.domain().map(function(name) {
       return {
         name: name,
-        values: p1data.map(function(d) {
+        values: data.map(function(d) {
           return {
             date: d.date,
             cases: +d[name]
@@ -775,10 +775,10 @@ var myData = "date	Florida	New York\n\
       .style("opacity", "0");
       
     var lines = document.getElementsByClassName('line');
-    console.log("totstates");
-    console.log(totstates);
+   // console.log("totstates");
+    //console.log(totstates);
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
-      .data(cities3)
+      .data(cities)
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
