@@ -940,7 +940,41 @@ var myData = "date	Florida	New York\n\
       });
 
       }
-      
+
+      function drawPart0(){
+        var state0 = svg.selectAll(".city")
+      .data(totstates)
+      .enter().append("g")
+      .attr("class", "city");
+
+    state0.append("path")
+      .attr("class", "line")
+      .style("opacity",0)
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
+
+    state0.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
+      })
+      .attr("class","stateline")
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
+
+      }    
       
       function drawPart1(){
         var city = svg.selectAll(".city")
@@ -1198,6 +1232,7 @@ function drawChapter1Circle(){
     .on ('click', function() {
       svg.select(".Chapter1Circle").attr("fill","black");
       //svg.append("text").attr("x",50).attr("y",0).text(cdata[0].title);
+      drawPart0();
       drawPart1();
       showChapter1Box();
       drawChapter1NewsCircles();
