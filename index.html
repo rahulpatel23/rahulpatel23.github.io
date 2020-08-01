@@ -871,13 +871,13 @@ var myData = "date	Florida	New York\n\
 
 
 
-
+      var city3;
       function drawPart3(){
         svg.selectAll(".stateline").style("opacity",0);
-        var city3 = svg.selectAll(".city3")
+      city3 = svg.selectAll(".city")
       .data(cities3)
       .enter().append("g")
-      .attr("class", "city3");
+      .attr("class", "city");
 
     city3.append("path")
       .attr("class", "line")
@@ -908,10 +908,10 @@ var myData = "date	Florida	New York\n\
 
       function drawPart2(){
         svg.selectAll(".stateline").style("opacity",0);
-        var city2 = svg.selectAll(".city2")
+        var city2 = svg.selectAll(".city")
       .data(cities2)
       .enter().append("g")
-      .attr("class", "city2");
+      .attr("class", "city");
 
     city2.append("path")
       .attr("class", "line")
@@ -932,7 +932,7 @@ var myData = "date	Florida	New York\n\
       .attr("transform", function(d) {
         return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
       })
-      .attr("class","stateline")
+     // .attr("class","stateline")
       .attr("x", 3)
       .attr("dy", ".35em")
       .text(function(d) {
@@ -957,7 +957,7 @@ var myData = "date	Florida	New York\n\
         return color(d.name);
       });
 
-    city3.append("text")
+    city.append("text")
       .datum(function(d) {
         return {
           name: d.name,
@@ -967,7 +967,7 @@ var myData = "date	Florida	New York\n\
       .attr("transform", function(d) {
         return "translate(" + x(d.value.date) + "," + y(d.value.cases) + ")";
       })
-      .attr("class","stateline")
+      //.attr("class","stateline")
       .attr("x", 3)
       .attr("dy", ".35em")
       .text(function(d) {
