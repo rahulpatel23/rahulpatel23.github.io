@@ -708,6 +708,7 @@ var myData = "date	Florida	New York\n\
       function getFLnews(posx){
         var fnews;
         var txtX=posx;
+        var tstX1=tstX + 2;
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(fnews);
         if (typeof fnews === "undefined"){
@@ -719,7 +720,7 @@ var myData = "date	Florida	New York\n\
           txtX = posx - 500;
           } 
           d3.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1");
-          d3.select(".FLnewstext").attr("x",txtX).text(fnews).style("opacity","1");
+          d3.select(".FLnewstext").attr("x",txtX1).text(fnews).style("opacity","1");
         }
         return fnews;
         }
@@ -727,17 +728,19 @@ var myData = "date	Florida	New York\n\
         function getNYnews(posx){
         var nnews;
         var txtX=posx;
+        var txtX1=tstX + 2;
         nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(nnews);
         if (typeof nnews === "undefined"){
           d3.select(".NYnewsdisplay").style("opacity","0");
+          d3.select(".NYnewstext").attr("opacity","0");
           nnews="";
         } else {
           if (width < (2 * posx)) {
           txtX = posx - 500;
           }  
          d3.select(".NYnewsdisplay").attr("x",txtX).style("opacity","1");
-         d3.select(".NYnewstext").attr("x",txtX).text(nnews).style("opacity","1");
+         d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
         }
         return nnews;
         }
@@ -891,9 +894,12 @@ var myData = "date	Florida	New York\n\
               //.text(y.invert(pos.y).toFixed(2));
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + d3.time.format("%Y%m%d").parse(x.invert(pos.x)) + ")")
               //.text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + floridaNews[x.invert(pos.x).toDateString().substring(0,10)] + newyorkNews[x.invert(pos.x).toDateString().substring(0,10)] + ")" );
-              .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
-            d3.select(this).select('rect')
-              .text("(" + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
+             // .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")")
+             .text("(" + y.invert(pos.y).toFixed(0) + "," + x.invert(pos.x).toDateString() + ")")
+              .call(getFLnews(pos.x))
+              .call(getNYnews(pos.x));
+           // d3.select(this).select('rect')
+            //  .text("(" + getFLnews(pos.x) + "" + getNYnews(pos.x) + ")");
             return "translate(" + mouse[0] + "," + pos.y +")";
           });
       });
