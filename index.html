@@ -1053,7 +1053,7 @@ function drawChapter1NewsCircles(){
       lnsgmt = lnsgmt + 1;
 
       }
-      d3.select(this).attr("r",5);
+      d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
       console.log(next_elid);
       if (next_elid <= c1news.length) {
@@ -1142,7 +1142,7 @@ function drawChapter3NewsCircles(){
       console.log(c3news);
       svg.append("text").attr("x",812).attr("y",y_val).text(c3news[elid].news)
       .attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
-      d3.select(this).attr("r",5);
+      d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
       console.log(next_elid);
       if (next_elid <= c3news.length) {
@@ -1249,7 +1249,7 @@ var startTriangle = svg.append('path')
         .attr("class","start-triangle")
         .attr('d', d3.svg.symbol().type("triangle-up").size(190))
         .style('fill', 'green')
-        .attr("transform",rotate(-90))
+        //.attr("transform",rotate(-90))
         .attr("transform", function(d) { return "translate(" + -16 + "," + 560 + ")"; });
 /*var stopSquare = svg.append('rect')
         .attr("class","stop-square")
