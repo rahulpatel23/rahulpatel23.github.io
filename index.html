@@ -941,12 +941,12 @@ var myData = "date	Florida	New York\n\
       }
       
       function drawPart0(){
-        var city = svg.selectAll(".city")
+        var city0 = svg.selectAll(".city0")
       .data(cities)
       .enter().append("g")
-      .attr("class", "city");
+      .attr("class", "city0");
 
-    city.append("path")
+    city0.append("path")
       .attr("class", "line")
       .style("opacity","0")
       .attr("d", function(d) {
@@ -956,7 +956,7 @@ var myData = "date	Florida	New York\n\
         return color(d.name);
       });
 
-    city.append("text")
+    city0.append("text")
       .datum(function(d) {
         return {
           name: d.name,
