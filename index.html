@@ -585,11 +585,11 @@ var myData = "date	Florida	New York\n\
     }
     function drawDynNYNewsBox(){
       svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",-30).attr("width","500").attr("height","22").attr("fill","orange");
-      svg.append("text").attr("class","NYnewstext" ).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
+      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",-30).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
       svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",-55).attr("width","500").attr("height","22").attr("fill","steelblue");
-      svg.append("text").attr("class","FLnewstext" ).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
+      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",-55).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
     }
 
       var legend;
@@ -711,14 +711,15 @@ var myData = "date	Florida	New York\n\
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(fnews);
         if (typeof fnews === "undefined"){
-          svg.select(".FLnewsdisplay").style("opacity",0);
+          d3.select(".FLnewsdisplay").style("opacity",0);
+          d3.select(".FLnewstext").style("opacity",0);
           fnews="";
         } else {
           if (width < (2 * posx)) {
           txtX = posx - 500;
           } 
-          svg.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1")
-          svg.select(".FLnewstext");
+          d3.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1");
+          d3.select(".FLnewstext").attr("x",txtX).text(fnews).style("opacity","1");
         }
         return fnews;
         }
@@ -729,14 +730,14 @@ var myData = "date	Florida	New York\n\
         nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(nnews);
         if (typeof fnews === "undefined"){
-          svg.select(".NYnewsdisplay").style("opacity",0);
+          d3.select(".NYnewsdisplay").style("opacity","0");
           nnews="";
         } else {
           if (width < (2 * posx)) {
           txtX = posx - 500;
           }  
-         svg.select(".NYnewsdisplay").attr("x",posx).style("opacity","1");
-         svg.select(".NYnewstext").text(nnews);
+         d3.select(".NYnewsdisplay").attr("x",txtX).style("opacity","1");
+         d3.select(".NYnewstext").attr("x",txtX).text(nnews).style("opacity","1");
         }
         return nnews;
         }
