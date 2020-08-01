@@ -521,7 +521,7 @@ var myData = "date	Florida	New York\n\
     var cities = color.domain().map(function(name) {
       return {
         name: name,
-        values: p1data.map(function(d) {
+        values: data.map(function(d) {
           return {
             date: d.date,
             cases: +d[name]
