@@ -1240,7 +1240,7 @@ function drawChapter1Circle(){
       //drawChapter2Circle();
       //drawLegend();
       //showAxis();
-    });
+    }).append("text").attr("cx",x(cdata[0].date)).attr("cy","560");
 }
 
 
@@ -1249,15 +1249,16 @@ var startTriangle = svg.append('path')
         .attr("class","start-triangle")
         .attr('d', d3.svg.symbol().type("triangle-up").size(190))
         .style('fill', 'green')
+        .attr("transform",rotate(-90))
         .attr("transform", function(d) { return "translate(" + -16 + "," + 560 + ")"; });
- var stopSquare = svg.append('rect')
+/*var stopSquare = svg.append('rect')
         .attr("class","stop-square")
         .attr("x","-26")
         .attr("y","554")
         .attr("width","16")
         .attr("height","16")
         .attr("opacity","0")
-        .style('fill', 'red')
+        .style('fill', 'red') */
          
 var startOuterCircle= svg.append("circle")
     .attr("class", "StartingCircle")
@@ -1269,8 +1270,8 @@ var startOuterCircle= svg.append("circle")
     .attr("stroke", "black")
     .style("stroke-width", "2px")
     .on ('click', function() {
-      svg.select(".start-triangle").attr("opacity","0");
-      svg.select(".stop-square").attr("opacity","1");
+      d3.select(".start-triangle").style("fill","grey");
+      //svg.select(".stop-square").attr("opacity","1");
       //showChapter1Box();
       drawLegend();
       showAxis();
