@@ -612,11 +612,13 @@ var myData = "date	Florida	New York\n\
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
     function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("stroke",color("New York"));
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("New York"))
+      .attr("stroke-width",".5px");
       svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("stroke",color("Florida"));
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("Florida"))
+      .attr("stroke-width",".5px");
       svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",14).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
     }
 
@@ -1025,9 +1027,9 @@ function drawChapter1NewsCircles(){
      // .attr("id",function(d,i){return "c1n" + i})
       .attr("cy","562")
       .attr("class",function (d,i){return "Chapter1NewsCircle" + i})
-       .style("stroke", "black").style("fill", "none")
+      // .style("stroke", "black").style("fill", "none")
        .style("stroke", "black").style("fill", function(d){ return color(d.state)})
-      .style("stroke-width", ".5px")
+      .style("stroke-width", "1px")
       .style("opacity", "0")
       .on ('click', function() {
       elid=+ d3.select(this).attr("class").substring(18);
@@ -1089,10 +1091,10 @@ function drawChapter2NewsCircles(){
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","562")
       .attr("class","Chapter2NewsCircle")
-      .style("stroke", "black").style("fill", "none")
+      //.style("stroke", "black").style("fill", "none")
       .style("stroke", "black").style("fill", function(d){ return color(d.state)})
       .attr("class",function (d,i){return "Chapter2NewsCircle" + i})
-      .style("stroke-width", ".5px")
+      .style("stroke-width", "1px")
       .style("opacity", "0")
       .on ('click', function() {
       elid=+ d3.select(this).attr("class").substring(18);
