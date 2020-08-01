@@ -982,6 +982,7 @@ var myData = "date	Florida	New York\n\
 
     city.append("path")
       .attr("class", "line")
+      .attr("opacity","1")
       .attr("d", function(d) {
         return line(d.values);
       })
