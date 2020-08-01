@@ -584,10 +584,12 @@ var myData = "date	Florida	New York\n\
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
     function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",-100).attr("width","500").attr("height","25").attr("fill","orange");
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",-30).attr("width","500").attr("height","22").attr("fill","orange");
+      svg.append("text").attr("class","NYnewstext" ).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",-60).attr("width","500").attr("height","22").attr("fill","steelblue");
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",-55).attr("width","500").attr("height","22").attr("fill","steelblue");
+      svg.append("text").attr("class","FLnewstext" ).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
     }
 
       var legend;
@@ -715,7 +717,8 @@ var myData = "date	Florida	New York\n\
           if (width < (2 * posx)) {
           txtX = posx - 500;
           } 
-          svg.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1").text(fnews).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px");
+          svg.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1")
+          svg.select(".FLnewstext");
         }
         return fnews;
         }
@@ -732,7 +735,8 @@ var myData = "date	Florida	New York\n\
           if (width < (2 * posx)) {
           txtX = posx - 500;
           }  
-         svg.select(".NYnewsdisplay").attr("x",posx).style("opacity","1").text(nnews).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px");
+         svg.select(".NYnewsdisplay").attr("x",posx).style("opacity","1");
+         svg.select(".NYnewstext").text(nnews);
         }
         return nnews;
         }
