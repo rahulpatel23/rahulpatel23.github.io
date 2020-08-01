@@ -942,10 +942,10 @@ var myData = "date	Florida	New York\n\
       }
 
       function drawPart0(){
-        var state0 = svg.selectAll(".city")
+        var state0 = svg.selectAll(".city0")
       .data(totstates)
       .enter().append("g")
-      .attr("class", "city");
+      .attr("class", "city0");
 
     state0.append("path")
       .attr("class", "line")
