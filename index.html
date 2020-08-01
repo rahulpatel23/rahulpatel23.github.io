@@ -585,11 +585,11 @@ var myData = "date	Florida	New York\n\
     }
     function drawDynNYNewsBox(){
       svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",-30).attr("width","500").attr("height","22").attr("fill","orange");
-      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",-30).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
+      svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",-25).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
       svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",-55).attr("width","500").attr("height","22").attr("fill","steelblue");
-      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",-55).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
+      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",-50).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL")
     }
 
       var legend;
@@ -729,7 +729,7 @@ var myData = "date	Florida	New York\n\
         var txtX=posx;
         nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(nnews);
-        if (typeof fnews === "undefined"){
+        if (typeof nnews === "undefined"){
           d3.select(".NYnewsdisplay").style("opacity","0");
           nnews="";
         } else {
