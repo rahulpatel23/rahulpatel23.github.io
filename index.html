@@ -1089,7 +1089,8 @@ function drawChapter2NewsCircles(){
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","562")
       .attr("class","Chapter2NewsCircle")
-      .style("stroke", "black").style("fill", "orange")
+      //.style("stroke", "black").style("fill", "orange")
+      .style("stroke", "black").style("fill", function(d){ return color(d.state)})
       .attr("class",function (d,i){return "Chapter2NewsCircle" + i})
       .style("stroke-width", "1px")
       .style("opacity", "0")
@@ -1112,6 +1113,7 @@ function drawChapter2NewsCircles(){
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter2NewsCircle" + next_elid).style("opacity","1");
       d3.select(this).on('click',null);
+      d3.select(this).style("opacity",".6")
       console.log(d3.select(".Chapter2NewsCircle" + elid).attr("class"));
       console.log(d3.select(".Chapter2NewsCircle" + elid).style("opacity"));
       console.log("length:" + c2news.length);
@@ -1134,7 +1136,8 @@ function drawChapter3NewsCircles(){
       .attr("cx",function(d){return x(d.date)})
       .attr("cy","562")
       .attr("class","Chapter3NewsCircle")
-      .style("stroke", "black").style("fill", "orange")
+      //.style("stroke", "black").style("fill", "orange")
+      .style("stroke", "black").style("fill", function(d){ return color(d.state)})
       .attr("class",function (d,i){return "Chapter3NewsCircle" + i})
       .style("stroke-width", "1px")
       .style("opacity", "0")
@@ -1157,6 +1160,7 @@ function drawChapter3NewsCircles(){
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter3NewsCircle" + next_elid).style("opacity","1");
       d3.select(this).on('click',null);
+      d3.select(this).style("opacity","0");
       console.log(d3.select(".Chapter3NewsCircle" + elid).attr("class"));
       console.log(d3.select(".Chapter3NewsCircle" + elid).style("opacity"));
       console.log("length:" + c3news.length);
