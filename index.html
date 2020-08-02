@@ -717,20 +717,20 @@ Suddenly the situations of the two states have flipped.
 
 
     }
-    function drawDynNYNewsBox(){
+    //function drawDynNYNewsBox(){
       svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("NewYork"))
       .attr("stroke-width","1.5px");
       svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
       svg.append("text").attr("class","NYnewstext1" ).attr("x",350).attr("y",50).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
       svg.append("text").attr("class","NYnewstext2" ).attr("x",350).attr("y",63).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
-    }
-    function drawDynFLNewsBox(){
+    //}
+    //function drawDynFLNewsBox(){
       svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",4).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("Florida"))
       .attr("stroke-width","1.5px");
       svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",17).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
       svg.append("text").attr("class","FLnewstext1" ).attr("x",350).attr("y",30).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
       svg.append("text").attr("class","FLnewstext2" ).attr("x",350).attr("y",43).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
-    }
+   // }
 
       var legend;
       function drawLegend(){
@@ -934,8 +934,8 @@ Suddenly the situations of the two states have flipped.
       });
       */
 //Rahul  Entire Mouse movement plus verticle line
-   drawDynNYNewsBox();
-   drawDynFLNewsBox();
+   //drawDynNYNewsBox();
+   //drawDynFLNewsBox();
     var mouseG = svg.append("g")
       .attr("class", "mouse-over-effects");
 
