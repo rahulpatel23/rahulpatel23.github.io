@@ -1482,16 +1482,17 @@ function drawChapter3Circle(){
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
       .attr("cx",x(cdata[2].date))
-      .attr("cy","562")
+      .attr("cy","590")
       .attr("class", "Chapter3Circle")
-      .attr("stroke", "black")
-      .attr("fill", "blue")
-      .style("stroke-width", "1px")
+      //.attr("stroke", "black")
+      .attr("fill", "#DA4F2D")
+      //.style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
       d3.select(".Chapter2Circle").attr("fill","grey");
       //svg.append("text").attr("x",290).attr("y",0).text(cdata[2].title);
       d3.select(this).on ('click',null);
+      d3.select(this).style("opacity",".6");
       hideNewsDisplay();
       drawPart3();
       showChapter3Box();
@@ -1507,15 +1508,16 @@ function drawChapter2Circle(){
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
       .attr("cx",x(cdata[1].date))
-      .attr("cy","562")
+      .attr("cy","590")
       .attr("class", "Chapter2Circle")
-      .attr("stroke", "black")
-      .attr("fill", "green")
-      .style("stroke-width", "1px")
+     // .attr("stroke", "black")
+      .attr("fill", "#DA4F2D")
+      //.style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
       d3.select(".Chapter1Circle").attr("fill","grey");
       //svg.append("text").attr("x",150).attr("y",35).text(cdata[1].title);
+      d3.select(this).style("opacity",".6");
       d3.select(this).on ('click',null);
       hideNewsDisplay();
       showChapter2Box();
@@ -1535,9 +1537,9 @@ function drawChapter1Circle(){
       .attr("cx",x(cdata[0].date))
       .attr("cy","590")
       .attr("class", "Chapter1Circle")
-      .attr("stroke", "black")
-      .attr("fill", "green")
-      .style("stroke-width", "1px")
+      //.attr("stroke", "black")
+      .attr("fill", "#DA4F2D")
+     // .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
       d3.select(".Chapter1Circle").style("opacity",".6");
