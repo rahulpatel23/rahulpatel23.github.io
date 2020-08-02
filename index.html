@@ -719,16 +719,19 @@ Suddenly the situations of the two states have flipped.
     }
     //function drawDynNYNewsBox(){
       svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("NewYork"))
-      .attr("stroke-width","2px");
-      svg.append("rect").attr("class","NYstateIndicator").attr("x",325).attr("y",24).attr("width","25").attr("height","22").attr("fill",color("NewYork"));
+      .attr("stroke-width","1px");
+      svg.append("rect").attr("class","NYstateIndicator").attr("x",325).attr("y",24).attr("width","25").attr("height","22").attr("fill",color("NewYork")).attr("stroke",color("NewYork"))
+      .attr("stroke-width","1px");
       svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
       svg.append("text").attr("class","NYnewstext1" ).attr("x",350).attr("y",50).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
       svg.append("text").attr("class","NYnewstext2" ).attr("x",350).attr("y",63).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     //}
     //function drawDynFLNewsBox(){
       svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",4).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("Florida"))
-      .attr("stroke-width","1.5px");
-      svg.append("rect").attr("class","FLstateIndicator").attr("x",325).attr("y",4).attr("width","25").attr("height","22").attr("fill",color("Florida"));
+      .attr("stroke-width","1px");
+      svg.append("rect").attr("class","FLstateIndicator").attr("x",325).attr("y",4).attr("width","25").attr("height","22").attr("fill",color("Florida")).attr("stroke",color("Florida"))
+      .attr("stroke-width","1px");
+     //svg.append("rect").attr("class","FLstateIndicator").attr("x",325).attr("y",4).attr("width","25").attr("height","22").attr("fill",color("Florida"));
       svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",17).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
       svg.append("text").attr("class","FLnewstext1" ).attr("x",350).attr("y",30).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
       svg.append("text").attr("class","FLnewstext2" ).attr("x",350).attr("y",43).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
@@ -818,7 +821,7 @@ Suddenly the situations of the two states have flipped.
           var txtXs = txtX - 25;
           console.log("making FLnewsdisplay and FLnewstext opacity 1 ")
           d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).attr("height",h).attr("fill",floridaNewsTypeColor[dt]).style("opacity","1");
-          d3.select(".FLstateIndicator").attr("x",txtXs).attr("height",h).attr("fill",color("Florida"));
+          d3.select(".FLstateIndicator").attr("x",txtXs).attr("height",h).attr("fill",color("Florida")).attr("opacity","1");
           d3.select(".FLnewstext").attr("x",txtX1).text(farray[0]).style("opacity","1");
           console.log(farray[0]);
           //console.log(d3.select(".FLnewstext").style("opacity"));
@@ -870,7 +873,7 @@ Suddenly the situations of the two states have flipped.
           }  
           var txtXs = txtX - 25;
          d3.select(".NYnewsdisplay").attr("x",txtX).attr("width",w).attr("fill",newyorkNewsTypeColor[dt]).style("opacity","1");
-         d3.select(".NYstateIndicator").attr("x",txtXs).attr("height",h);
+         d3.select(".NYstateIndicator").attr("x",txtXs).attr("height",h).style("opacity","1");
          d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
          if (narray.length > 1){
             j=1;
