@@ -821,7 +821,7 @@ Suddenly the situations of the two states have flipped.
           var txtXs = txtX - 25;
           console.log("making FLnewsdisplay and FLnewstext opacity 1 ")
           d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).attr("height",h).attr("fill",floridaNewsTypeColor[dt]).style("opacity","1");
-          d3.select(".FLstateIndicator").attr("x",txtXs).attr("height",h).attr("fill",color("Florida")).attr("opacity","1");
+          d3.select(".FLstateIndicator").attr("x",txtXs).attr("height",h).attr("fill",color("Florida")).style("opacity","1");
           d3.select(".FLnewstext").attr("x",txtX1).text(farray[0]).style("opacity","1");
           console.log(farray[0]);
           //console.log(d3.select(".FLnewstext").style("opacity"));
