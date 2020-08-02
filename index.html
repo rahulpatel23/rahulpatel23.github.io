@@ -703,7 +703,7 @@ var myData = "date	Florida	NewYork\n\
         } else {
           farray=fnews.split(":");
           var j=0;
-          fnlen=0;
+          var fnlen=0;
           while ( j < farray.length){
             if (farray[j].length > fnlen){
               fnlen=farray[j].length;
@@ -740,7 +740,18 @@ var myData = "date	Florida	NewYork\n\
           d3.select(".NYnewstext").style("opacity","0");
           nnews="";
         } else {
-          w= 8 * nnews.length;
+          narray=nnews.split(":");
+          var j=0;
+          var nnlen=0;
+          while ( j < narray.length){
+            if (narray[j].length > nnlen){
+              nnlen=farray[j].length;
+            }
+            j = j + 1;
+          }
+          //w= 8 * nnews.length;
+          w= 8 * nnlen;
+          h=22 * narray.length;
           if (width < (2 * posx)) {
           txtX = posx - w;
           txtX1 = txtX + 2;
