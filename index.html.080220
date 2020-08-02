@@ -437,16 +437,6 @@ var myData = "date	Florida	NewYork\n\
       .y(function(d) {
         return y(d.cases);
       });
-
-
-      var clickL = svg.append("g")
-      .attr("class", "line-on-click-effct");
-
-    clickL.append("path") // this is the black vertical line upon click
-      .attr("class", "click-line")
-      .style("stroke", "black")
-      .style("stroke-width", "1px")
-      .style("opacity", "0");
     var data = d3.tsv.parse(myData);
     var cdata = d3.tsv.parse(chapterData);
     var p1data = d3.tsv.parse(part1Data);
@@ -1043,9 +1033,8 @@ Suddenly the situations of the two states have flipped.
      // */
 }
 
-    
-    
-    
+
+
 
 
 
@@ -1210,7 +1199,6 @@ function drawChapter1NewsCircles(){
       elid=+ d3.select(this).attr("class").substring(18);
       y_val = d3.sum([-167,getmultiple(elid)]);
       console.log(c1news);
-
       strarr = c1news[elid].news.split(":");
       lnsgmt=0;
        newsdt=x.invert(d3.select(this).attr("cx"));
@@ -1232,14 +1220,6 @@ function drawChapter1NewsCircles(){
       lnsgmt = lnsgmt + 1;
 
       }
-
-          var lx=select(this).attr("cx");
-      d3.select(".click-line").attr("opacity","1").attr("d", function() {
-        var d = "M" + lx+ "," + height;
-            d += " " + lx + "," + 0;
-            return d;  
-      });
-      d3.select(".click-line").patch
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
       console.log(next_elid);
