@@ -49,26 +49,22 @@ var chapter1News = "date	state	news	type\n\
 
 var chapter2News = "date	state	news	type\n\
 20200515	Florida	The Governor announced Floridas Full Phase 1 begins Monday, May 18.:All 67 counties can now begin re-opening.	Opening\n\
+20200605	Florida	Florida moves into the second of the three-phase re-opening.:Bars,tatoo shops, massage parlors,and movie theaters are allowed to open at half capacity.	Opening\n";
+
+var chapter3News = "date	state	news	type\n\
+20200620	Florida	Florida Daily cases are rising	Restriction\n\
+20200627	NewYork	Daily cases continue to go down	Opening\n\
+20200705	Florida	Broke the dubios record of Daily Restriction\n";
+
+var totalNews = "date	state	news	type\n\
+20200317	Florida	Florida Governor ordered bars and nightclubs in Florida to close for 30 days:Directed restaurents to operate at 50% capacity.	Restriction\n\
+20200320	Florida	Florida state school officials closed K-12 public schools until April 15:and announced the suspension of mass campus gathering.	Restriction\n\
+20200323	Florida	The Governor issued executive order requiring those who travel to Florida: from tri-state to self isolate for 14 days.	Restriction\n\
+20200515	Florida	The Governor announced Floridas Full Phase 1 begins Monday, May 18.:All 67 counties can now begin re-opening.	Opening\n\
 20200605	Florida	Florida moves into the second of the three-phase re-opening.:Bars,tatoo shops, massage parlors,and movie theaters are allowed to open at half capacity.	Opening\n\
-20200527	NewYork	We are not opening trouble\n\
-20200605	Florida	Opened Beaches are not opening trouble\n";
-
-var chapter3News = "date	state	news\n\
-20200620	Florida	Florida Daily cases are rising\n\
-20200627	NewYork	Daily cases continue to go down\n\
-20200705	Florida	Broke the dubios record of Daily cases\n";
-
-var totalNews = "date	state	news\n\
-20200306	Florida	We are great\n\
-20200327	NewYork	We are in trouble; what do we do lott of people dying.: needs to do something\n\
-20200409	Florida	We are in great shape; what do we do lott of partying.: needs to do something: what to do\n\
-20200415	New York 	Seven hundred daily cases\n\
-20200506	Florida	Governor announce we areOpening Up\n\
-20200527	NewYork	We are not opening trouble\n\
-20200605	Florida	Opened Beaches are not opening trouble\n\
-20200620	Florida	Florida Daily cases are rising\n\
-20200627	NewYork	Daily cases continue to go down\n\
-20200705	Florida	Broke the dubios record of Daily cases\n";
+20200620	Florida	Florida Daily cases are rising	Restriction\n\
+20200627	NewYork	Daily cases continue to go down	Opening\n\
+20200705	Florida	Broke the dubios record of Daily Restriction\n";
 
 var actionDataNY = "date	Action\n\
 20200528	'Complete Lockdown'\n\
@@ -391,7 +387,9 @@ var myData = "date	Florida	NewYork\n\
 
     var parseDate = d3.time.format("%Y%m%d").parse;
     var floridaNews = new Object(); //associative array date key news value
+    var floridaNewsTypeColor = new Object();
     var newyorkNews = new Object();
+    var newyorkNewsTypeColor = new Object();
 
     var getmultiple = d3.scale.linear()
     .domain([1,100])
@@ -406,7 +404,7 @@ var myData = "date	Florida	NewYork\n\
     //var color = d3.scale.category10();
     var color = d3.scale.ordinal() // D3 Version 
   .domain(["NewYork", "Florida", "Opening","Restriction"])
-  .range(["#1f9ed4", "#d4c21f" , "#268a12", "#dc143c"]);
+  .range(["#1f9ed4", "#d4c21f" , "#39A91D", "#f99735"]);
 
     /*function color(clrtyp){
       var clr;
@@ -497,11 +495,13 @@ var myData = "date	Florida	NewYork\n\
     while (i < tnews.length ){
       console.log(tnews);
       if (tnews[i].state == 'Florida'){
-        floridaNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news
+        floridaNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news;
+        floridaNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=color(tnews[i].type);
       }
       if (tnews[i].state == 'New York'){
         console.log(tnews);
-        newyorkNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news
+        newyorkNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news;
+        newyorkNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=color(tnews[i].type);
       }
       i=i+1;
     }
@@ -626,7 +626,7 @@ var myData = "date	Florida	NewYork\n\
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
     }
     function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("New York"))
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("NewYork"))
       .attr("stroke-width",".5px");
       svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
@@ -685,7 +685,9 @@ var myData = "date	Florida	NewYork\n\
         var fnews;
         var txtX=posx;
         var txtX1=txtX + 2;
-        fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
+        var dt=x.invert(posx).toDateString().substring(0,10);
+        //fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
+        fnews=floridaNews[dt];
         console.log(fnews);
         var w=0;
         if (typeof fnews === "undefined"){
@@ -699,7 +701,7 @@ var myData = "date	Florida	NewYork\n\
           txtX1 = txtX + 2;
           } 
           
-          d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).style("opacity","1");
+          d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).attr("fill",floridaNewsTypeColor[dt]).style("opacity","1");
           d3.select(".FLnewstext").attr("x",txtX1).text(fnews).style("opacity","1");
         }
         fnews="";
@@ -711,7 +713,9 @@ var myData = "date	Florida	NewYork\n\
         var txtX=posx;
         var txtX1=txtX + 2;
         var w=0;
-        nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
+        var dt=x.invert(posx).toDateString().substring(0,10);
+        //nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
+        nnews=newyorkNews[dt]
         console.log(nnews);
         
         if (typeof nnews === "undefined"){
@@ -725,7 +729,7 @@ var myData = "date	Florida	NewYork\n\
           txtX1 = txtX + 2;
           }  
          
-         d3.select(".NYnewsdisplay").attr("x",txtX).attr("width",w).style("opacity","1");
+         d3.select(".NYnewsdisplay").attr("x",txtX).attr("width",w).attr("fill",newyorkNewsTypeColor[dt]).style("opacity","1");
          d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
         }
         nnews="";
