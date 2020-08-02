@@ -1535,14 +1535,14 @@ function drawChapter1Circle(){
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
       .attr("cx",x(cdata[0].date))
-      .attr("cy","580")
+      .attr("cy","590")
       .attr("class", "Chapter1Circle")
       .attr("stroke", "black")
       .attr("fill", "green")
       .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
-      svg.select(".Chapter1Circle").attr("fill","black");
+      d3.select(".Chapter1Circle").style("opacity",".6");
       d3.select(this).on ('click',null);
       //svg.append("text").attr("x",50).attr("y",0).text(cdata[0].title);
       drawPart0();
@@ -1553,7 +1553,10 @@ function drawChapter1Circle(){
       //drawChapter2Circle();
       //drawLegend();
       //showAxis();
-    }).append("text").attr("cx",x(cdata[0].date)+ 30).attr("cy","580").attr("text","Chapter1");
+    });
+   // }).append("text").attr("cx",x(cdata[0].date)+ 30).attr("cy","580").attr("text","Chapter1");
+   var txtx= x(cdata[0].date) + 30;
+   svg.append("text").attr("cx",txtx).attr("cy","590").attr("text","Chapter1");
 }
 
 
