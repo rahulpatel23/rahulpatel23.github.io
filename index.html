@@ -886,6 +886,20 @@ Suddenly the situations of the two states have flipped.
         nnews="";
         return nnews;
         }
+
+        function hideNewsDisplay(){
+          d3.select(".FLnewsdisplay").style("opacity","0");
+          d3.select(".FLstateIndicator").style("opacity","0");
+          d3.select(".FLnewstext").style("opacity","0");
+          d3.select(".FLnewstext1").style("opacity","0");
+          d3.select(".FLnewstext2").style("opacity","0");
+          d3.select(".NYnewsdisplay").style("opacity","0");
+          d3.select(".NYstateIndicator").style("opacity","0");
+          d3.select(".NYnewstext").style("opacity","0");
+          d3.select(".NYnewstext1").style("opacity","0");
+          d3.select(".NYnewstext2").style("opacity","0");
+          d3.select(".click-line").style("opacity","0");
+        }
       
       function explore(){
     /*color.domain(d3.keys(data[0]).filter(function(key) {
@@ -989,7 +1003,7 @@ Suddenly the situations of the two states have flipped.
           .style("opacity", "0");
         d3.selectAll(".mouse-per-line text")
           .style("opacity", "0");
-        d3.select(".click-line").style("opacity","0");
+        hideNewsDisplay();
         //d3.selectAll(".mouse-per-line rect")
          // .style("opacity", "0");
       })
@@ -1412,6 +1426,7 @@ function drawChapter3Circle(){
     .on ('click', function() {
       svg.select(".Chapter2Circle").attr("fill","grey");
       //svg.append("text").attr("x",290).attr("y",0).text(cdata[2].title);
+      hideNewsDisplay();
       drawPart3();
       showChapter3Box();
       drawChapter3NewsCircles();
@@ -1435,7 +1450,8 @@ function drawChapter2Circle(){
     .on ('click', function() {
       svg.select(".Chapter1Circle").attr("fill","grey");
       //svg.append("text").attr("x",150).attr("y",35).text(cdata[1].title);
-      showChapter2Box()
+      hideNewsDisplay();
+      showChapter2Box();
       drawPart2();
       drawChapter2NewsCircles();
       //drawChapter3Circle();
