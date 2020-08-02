@@ -403,8 +403,12 @@ var myData = "date	Florida	NewYork\n\
 
     //var color = d3.scale.category10();
     var color = d3.scale.ordinal() // D3 Version 
-  .domain(["NewYork", "Florida", "Opening","Restriction"])
-  .range(["#1f9ed4", "#d4c21f" , "#39A91D", "#f99735"]);
+  .domain(["NewYork", "Florida"])
+  .range(["#1f9ed4", "#d4c21f"]);
+
+  var actioncolor = d3.scale.ordinal() // D3 Version 
+  .domain(["Opening","Restriction"])
+  .range([ "#39A91D", "#f99735"]);
 
     /*function color(clrtyp){
       var clr;
@@ -496,12 +500,12 @@ var myData = "date	Florida	NewYork\n\
       console.log(tnews);
       if (tnews[i].state == 'Florida'){
         floridaNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news;
-        floridaNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=color(tnews[i].type);
+        floridaNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=actioncolor(tnews[i].type);
       }
       if (tnews[i].state == 'New York'){
         console.log(tnews);
         newyorkNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news;
-        newyorkNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=color(tnews[i].type);
+        newyorkNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=actioncolor(tnews[i].type);
       }
       i=i+1;
     }
