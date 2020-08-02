@@ -1300,6 +1300,16 @@ function drawChapter2NewsCircles(){
       console.log(c2news);
       //svg.append("text").attr("x",407).attr("y",y_val).text(c2news[elid].news)
       //.attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      var lx=d3.select(this).attr("cx");
+      var stateColor = d3.select(this).style("stroke");
+      console.log("Color is" + stateColor);
+      d3.select(".click-line").style("opacity","1").style("stroke", stateColor).attr("d", function() {
+        var d = "M" + lx+ "," + height;
+            d += " " + lx + "," + 0;
+            return d;  
+      });
+      getFLnews(d3.select(this).attr("cx"));
+      getNYnews(d3.select(this).attr("cx"));
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
       console.log(next_elid);
@@ -1347,6 +1357,16 @@ function drawChapter3NewsCircles(){
       console.log(c3news);
       //svg.append("text").attr("x",812).attr("y",y_val).text(c3news[elid].news)
       //.attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
+      var lx=d3.select(this).attr("cx");
+      var stateColor = d3.select(this).style("stroke");
+      console.log("Color is" + stateColor);
+      d3.select(".click-line").style("opacity","1").style("stroke", stateColor).attr("d", function() {
+        var d = "M" + lx+ "," + height;
+            d += " " + lx + "," + 0;
+            return d;  
+      });
+      getFLnews(d3.select(this).attr("cx"));
+      getNYnews(d3.select(this).attr("cx"));
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
       console.log(next_elid);
