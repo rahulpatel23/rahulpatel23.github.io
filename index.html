@@ -959,9 +959,14 @@ Suddenly the situations of the two states have flipped.
           txtX1 = txtX + 2;
           }  
           var txtXs = txtX - 25;
-         d3.select(".NYnewsdisplay").attr("x",txtX).attr("width",w).attr("fill",newyorkNewsTypeColor[dt]).style("opacity","1");
-         d3.select(".NYstateIndicator").attr("x",txtXs).attr("height",h).style("opacity","1");
-         d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
+          /*
+          d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).attr("height",h).attr("fill",floridaNewsTypeColor[dt]).style("opacity","1");
+          d3.select(".FLstateIndicator").attr("x",txtXs).attr("height",h).attr("fill",color("Florida")).style("opacity","1");
+          d3.select(".FLnewstext").attr("x",txtX1).text(farray[0]).style("opacity","1";
+          */
+         d3.select(".NYnewsdisplay").attr("x",txtX).attr("width",w).attr("height",h).attr("fill",newyorkNewsTypeColor[dt]).style("opacity","1");
+         d3.select(".NYstateIndicator").attr("x",txtXs).attr("height",h).attr("fill",color("NewYork")).style("opacity","1");
+         d3.select(".NYnewstext").attr("x",txtX1).text(narray[0]).style("opacity","1");
          if (narray.length > 1){
             j=1;
             while ( j <= narray.length ) {
