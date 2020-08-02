@@ -1535,7 +1535,7 @@ function drawChapter1Circle(){
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
       .attr("cx",x(cdata[0].date))
-      .attr("cy","562")
+      .attr("cy","580")
       .attr("class", "Chapter1Circle")
       .attr("stroke", "black")
       .attr("fill", "green")
@@ -1553,7 +1553,7 @@ function drawChapter1Circle(){
       //drawChapter2Circle();
       //drawLegend();
       //showAxis();
-    }).append("text").attr("cx",x(cdata[0].date)).attr("cy","560");
+    }).append("text").attr("cx",x(cdata[0].date)+ 30).attr("cy","580").attr("text","Chapter1");
 }
 
 
