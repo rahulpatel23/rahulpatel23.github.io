@@ -416,6 +416,10 @@ var myData = "date	Florida	NewYork\n\
   .domain(["Opening","Restriction"])
   .range([ "#39A91D", "#f99735"]);
 
+  var lcolor = d3.scale.ordinal()
+  .domain(["NewYork", "Florida","Opening","Closing"])
+  .range(["#1f9ed4", "#d4c21f","#39A91D","#f99735"]);
+
     
 
     var xAxis = d3.svg.axis()
