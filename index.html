@@ -410,16 +410,7 @@ var myData = "date	Florida	NewYork\n\
   .domain(["Opening","Restriction"])
   .range([ "#39A91D", "#f99735"]);
 
-    /*function color(clrtyp){
-      var clr;
-      if (clrtyp == "Florida"){
-        clr="#d4c21f";
-      }
-      if (clrtyp == "NewYork"){
-        clr="#1f9ed4";
-      }
-      return clr;
-    }*/
+    
 
     var xAxis = d3.svg.axis()
       .scale(x)
@@ -439,14 +430,7 @@ var myData = "date	Florida	NewYork\n\
       });
 
 
-      var clickL = svg.append("g")
-      .attr("class", "line-on-click-effct");
-
-    clickL.append("path") // this is the black vertical line upon click
-      .attr("class", "click-line")
-      .style("stroke", "black")
-      .style("stroke-width", "1px")
-      .style("opacity", "0");
+      
     var data = d3.tsv.parse(myData);
     var cdata = d3.tsv.parse(chapterData);
     var p1data = d3.tsv.parse(part1Data);
@@ -609,7 +593,14 @@ var myData = "date	Florida	NewYork\n\
        .append("g")
        .attr("transform", "translate(" + margin.left + "," + margin.atop + ")");
 */
+        var clickL = svg.append("g")
+      .attr("class", "line-on-click-effct");
 
+      clickL.append("path") // this is the black vertical line upon click
+      .attr("class", "click-line")
+      .style("stroke", "black")
+      .style("stroke-width", "1px")
+      .style("opacity", "0");
       
       var chap1lasty;
       function showTitle(){
