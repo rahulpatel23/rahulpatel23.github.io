@@ -678,6 +678,43 @@ var myData = "date	Florida	NewYork\n\
     svg.append("rect").attr("class","tvdisplay").attr("id","3").attr("x",810).attr("y",-200).attr("width","390").attr("height","200").attr("fill","#d9e8af"); 
     svg.append("text").attr("x",810).attr("y",-180).text("Chapter 3: Fortune Reversal")
         .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+    svg.append("text").attr("x",810).attr("y",-160).text("Although Florida initially had the lowest numbers and")
+        .attr("font-weight",500).attr("font-family","sans-serif").style("font-size","14px");
+    svg.append("text").attr("x",810).attr("y",-147).text("contained the outbreak, its decision to open up the state")
+        .attr("font-weight",500).attr("font-family","sans-serif").style("font-size","14px");
+    svg.append("text").attr("x",810).attr("y",-133).text("and loosen restrictions caused their efforts to ultimately")
+        .attr("font-weight",500).attr("font-family","sans-serif").style("font-size","14px");
+    svg.append("text").attr("x",810).attr("y",-120).text("go to waste. The cases did a complete turn around and spiked,")
+        .attr("font-weight",500).attr("font-family","sans-serif").style("font-size","14px");
+    svg.append("text").attr("x",810).attr("y",-105).text("ruining their status as a state under control.")
+        .attr("font-weight",500).attr("font-family","sans-serif").style("font-size","14px");
+    svg.append("text").attr("x",810).attr("y",-92).text("Meanwhile, New York’s cautious protocols successfully resulted")
+        .attr("font-weight",500).attr("font-family","sans-serif").style("font-size","14px");
+    svg.append("text").attr("x",810).attr("y",-79).text("in a plunge in new case numbers.")
+        .attr("font-weight",500).attr("font-family","sans-serif").style("font-size","14px");
+    svg.append("text").attr("x",810).attr("y",-64).text("Florida simply opened too soon and New York stayed wary.")
+        .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+    svg.append("text").attr("x",810).attr("y",-51).text("Suddenly the situations of the two states have flipped.")
+        .attr("font-weight",700).attr("font-family","sans-serif").style("font-size","16px");
+    
+
+
+
+/*
+Although Florida initially had the lowest numbers and
+contained the outbreak, its decision to open up the state 
+and loosen restrictions caused their efforts to ultimately
+go to waste. The cases did a complete turn around and spiked, 
+ruining their status as a state under control. 
+Meanwhile, New York’s cautious protocols successfully resulted 
+in a plunge in new case numbers. 
+
+Florida simply opened too soon and New York stayed wary. 
+Suddenly the situations of the two states have flipped.
+
+*/
+
+
     }
     function drawDynNYNewsBox(){
       svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("NewYork"))
