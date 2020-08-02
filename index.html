@@ -1557,13 +1557,13 @@ function drawChapter1Circle(){
 }
 
 
-
+showTitle();
 var startTriangle = svg.append('path')
         .attr("class","start-triangle")
         .attr('d', d3.svg.symbol().type("triangle-up").size(190))
         .style('fill', 'green')
         //.attr("transform",rotate(-90))
-        .attr("transform", function(d) { return "translate(" + 36 + "," + -217 + ")"; })
+        .attr("transform", function(d) { return "translate(" + 36 + "," + -219 + ")"; })
         .on ('click', function() {
       d3.select(this).style("fill","grey");
       //svg.select(".stop-square").attr("opacity","1");
@@ -1598,7 +1598,7 @@ var startTriangle = svg.append('path')
       showAxis();
       drawChapter1Circle();
     });*/
-   showTitle();
+  // showTitle();
 
  
       
