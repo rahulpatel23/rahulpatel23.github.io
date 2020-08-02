@@ -43,9 +43,8 @@ var chapterData = "date	title\n\
 20200615	'Reversal Of Fortune'\n";
 
 var chapter1News = "date	state	news	type\n\
-20200310	NewYork	New York orders nation's first coronavirus containment zone in New Rochelle	Restriction\n\
-20200317	Florida	Florida Governor ordered bars and nightclubs in Florida to close: for 30 days.: Directed restaurents to operate at 50% capacity.:state school officials closed K-12 public schools until April 15:and announced the suspension of mass campus gathering.	Restriction\n\
-20200320	NewYork	Gov. Cuomo orders all nonessential business closed statewide	kRestriction\n\
+20200317	Florida	Florida Governor ordered bars and nightclubs in Florida to close: for 30 days.: Directed restaurents to operate at 50% capacity.	Restriction\n\
+20200320	Florida	Florida state school officials closed K-12 public schools until April 15:and announced the suspension of mass campus gathering.	Restriction\n\
 20200323	Florida	The Governor issued executive order requiring those who travel to Florida: from tri-state to self isolate for 14 days.	Restriction\n";
 
 var chapter2News = "date	state	news	type\n\
@@ -58,9 +57,8 @@ var chapter3News = "date	state	news	type\n\
 20200705	Florida	Broke the dubios record of Daily Restriction\n";
 
 var totalNews = "date	state	news	type\n\
-20200310	NewYork	New York orders nation's first coronavirus containment zone in New Rochelle	Restriction\n\
-20200317	Florida	Florida Governor ordered bars and nightclubs in Florida to close: for 30 days.: Directed restaurents to operate at 50% capacity.:state school officials closed K-12 public schools until April 15:and announced the suspension of mass campus gathering.	Restriction\n\
-20200320	NewYork	Gov. Cuomo orders all nonessential business closed statewide	kRestriction\n\
+20200317	Florida	Florida Governor ordered bars and nightclubs in Florida to close for 30 days:Directed restaurents to operate at 50% capacity.	Restriction\n\
+20200320	Florida	Florida state school officials closed K-12 public schools until April 15:and announced the suspension of mass campus gathering.	Restriction\n\
 20200323	Florida	The Governor issued executive order requiring those who travel to Florida: from tri-state to self isolate for 14 days.	Restriction\n\
 20200515	Florida	The Governor announced Floridas Full Phase 1 begins Monday, May 18.:All 67 counties can now begin re-opening.	Opening\n\
 20200605	Florida	Florida moves into the second of the three-phase re-opening.:Bars,tatoo shops, massage parlors,and movie theaters are allowed to open at half capacity.	Opening\n\
