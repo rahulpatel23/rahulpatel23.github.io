@@ -1491,8 +1491,9 @@ function drawChapter3Circle(){
       .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
-      svg.select(".Chapter2Circle").attr("fill","grey");
+      d3.select(".Chapter2Circle").attr("fill","grey");
       //svg.append("text").attr("x",290).attr("y",0).text(cdata[2].title);
+      d3.select(this).on ('click',null);
       hideNewsDisplay();
       drawPart3();
       showChapter3Box();
@@ -1515,8 +1516,9 @@ function drawChapter2Circle(){
       .style("stroke-width", "1px")
       .style("opacity", "1")
     .on ('click', function() {
-      svg.select(".Chapter1Circle").attr("fill","grey");
+      d3.select(".Chapter1Circle").attr("fill","grey");
       //svg.append("text").attr("x",150).attr("y",35).text(cdata[1].title);
+      d3.select(this).on ('click',null);
       hideNewsDisplay();
       showChapter2Box();
       drawPart2();
@@ -1541,6 +1543,7 @@ function drawChapter1Circle(){
       .style("opacity", "1")
     .on ('click', function() {
       svg.select(".Chapter1Circle").attr("fill","black");
+      d3.select(this).on ('click',null);
       //svg.append("text").attr("x",50).attr("y",0).text(cdata[0].title);
       drawPart0();
       drawPart1();
