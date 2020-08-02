@@ -42,32 +42,32 @@ var chapterData = "date	title\n\
 20200416	'Pivotal Decisions'\n\
 20200615	'Reversal Of Fortune'\n";
 
-var chapter1News = "date	state	news\n\
-20200306	Florida	We are great\n\
-20200327	New York	We are in trouble; what do we do lott of people dying.: needs to do something\n\
-20200409	Florida	We are in great shape; what do we do lott of partying.: needs to do something: what to do\n\
-20200415	New York 	Seven hundred daily cases\n";
+var chapter1News = "date	state	news	type\n\
+20200317	Florida	Florida Governor ordered bars and nightclubs in Florida to close for 30 days:Directed restaurents to operate at 50% capacity.	Restriction\n\
+20200320	Florida	Florida state school officials closed K-12 public schools until April 15:and announced the suspension of mass campus gathering.	Restriction\n\
+20200323	Florida	The Governor issued executive order requiring those who travel to Florida: from tri-state to self isolate for 14 days.	Restriction\n";
 
-var chapter2News = "date	state	news\n\
-20200506	Florida	Governor announce we areOpening Up\n\
-20200527	New York	We are not opening trouble\n\
+var chapter2News = "date	state	news	type\n\
+20200515	Florida	The Governor announced Floridas Full Phase 1 begins Monday, May 18.:All 67 counties can now begin re-opening.	Opening\n\
+20200605	Florida	Florida moves into the second of the three-phase re-opening.:Bars,tatoo shops, massage parlors,and movie theaters are allowed to open at half capacity.	Opening\n\
+20200527	NewYork	We are not opening trouble\n\
 20200605	Florida	Opened Beaches are not opening trouble\n";
 
 var chapter3News = "date	state	news\n\
 20200620	Florida	Florida Daily cases are rising\n\
-20200627	New York	Daily cases continue to go down\n\
+20200627	NewYork	Daily cases continue to go down\n\
 20200705	Florida	Broke the dubios record of Daily cases\n";
 
 var totalNews = "date	state	news\n\
 20200306	Florida	We are great\n\
-20200327	New York	We are in trouble; what do we do lott of people dying.: needs to do something\n\
+20200327	NewYork	We are in trouble; what do we do lott of people dying.: needs to do something\n\
 20200409	Florida	We are in great shape; what do we do lott of partying.: needs to do something: what to do\n\
 20200415	New York 	Seven hundred daily cases\n\
 20200506	Florida	Governor announce we areOpening Up\n\
-20200527	New York	We are not opening trouble\n\
+20200527	NewYork	We are not opening trouble\n\
 20200605	Florida	Opened Beaches are not opening trouble\n\
 20200620	Florida	Florida Daily cases are rising\n\
-20200627	New York	Daily cases continue to go down\n\
+20200627	NewYork	Daily cases continue to go down\n\
 20200705	Florida	Broke the dubios record of Daily cases\n";
 
 var actionDataNY = "date	Action\n\
@@ -80,7 +80,7 @@ var actionDataFL = "date	Action\n\
 20200522	'Open  Lockdown'\n\
 20200605	'Opening'\n";
 
-var part3Data = "date	Florida	New York\n\
+var part3Data = "date	Florida	NewYork\n\
 20200610	1371	664\n\
 20200611	1698	724\n\
 20200612	1902	821\n\
@@ -126,7 +126,7 @@ var part3Data = "date	Florida	New York\n\
 20200722	9785	706\n";
 
 
-var part2Data = "date	Florida	New York\n\
+var part2Data = "date	Florida	NewYork\n\
 20200415	906	11755\n\
 20200416	806	8631\n\
 20200417	1413	7532\n\
@@ -185,7 +185,7 @@ var part2Data = "date	Florida	New York\n\
 20200609	1096	690\n\
 20200610	1371	664\n";
 
-var part1Data = "date	Florida	New York\n\
+var part1Data = "date	Florida	NewYork\n\
 20200301	2	1\n\
 20200302	0	0\n\
 20200303	1	1\n\
@@ -233,7 +233,7 @@ var part1Data = "date	Florida	New York\n\
 20200414	609	7402\n\
 20200415	906	11755\n";
 
-var myData = "date	Florida	New York\n\
+var myData = "date	Florida	NewYork\n\
 20200301	2	1\n\
 20200302	0	0\n\
 20200303	1	1\n\
