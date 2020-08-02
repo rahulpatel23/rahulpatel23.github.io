@@ -633,17 +633,17 @@ var myData = "date	Florida	NewYork\n\
     }
     function drawDynNYNewsBox(){
       svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("NewYork"))
-      .attr("stroke-width",".5px");
+      .attr("stroke-width","1.5px");
       svg.append("text").attr("class","NYnewstext" ).attr("x",350).attr("y",37).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
       svg.append("text").attr("class","NYnewstext1" ).attr("x",350).attr("y",50).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
       svg.append("text").attr("class","NYnewstext2" ).attr("x",350).attr("y",63).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY");
     }
     function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",1).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("Florida"))
-      .attr("stroke-width",".5px");
-      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",14).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
-      svg.append("text").attr("class","FLnewstext1" ).attr("x",350).attr("y",27).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
-      svg.append("text").attr("class","FLnewstext2" ).attr("x",350).attr("y",40).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",4).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("Florida"))
+      .attr("stroke-width","1.5px");
+      svg.append("text").attr("class","FLnewstext" ).attr("x",350).attr("y",17).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
+      svg.append("text").attr("class","FLnewstext1" ).attr("x",350).attr("y",30).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
+      svg.append("text").attr("class","FLnewstext2" ).attr("x",350).attr("y",43).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL");
     }
 
       var legend;
@@ -716,7 +716,7 @@ var myData = "date	Florida	NewYork\n\
           }
           //w=8 * fnews.length;
           w= 8 * fnlen;
-          h=22 * farray.length;
+          h=20 * farray.length;
           if (width < (2 * posx)) {
           txtX = posx - w;
           txtX1 = txtX + 2;
@@ -762,7 +762,7 @@ var myData = "date	Florida	NewYork\n\
           }
           //w= 8 * nnews.length;
           w= 8 * nnlen;
-          h=22 * narray.length;
+          h=20 * narray.length;
           if (width < (2 * posx)) {
           txtX = posx - w;
           txtX1 = txtX + 2;
