@@ -403,7 +403,17 @@ var myData = "date	Florida	NewYork\n\
     var y = d3.scale.linear()
       .range([height, 0]);
 
-    var color = d3.scale.category10();
+    //var color = d3.scale.category10();
+    function color(clrtyp){
+      var clr;
+      if (clrtyp == "Florida"){
+        clr="#d4c21f";
+      }
+      if (clrtyp == "NewYork"){
+        clr="#1f9ed4";
+      }
+      return clr;
+    }
 
     var xAxis = d3.svg.axis()
       .scale(x)
