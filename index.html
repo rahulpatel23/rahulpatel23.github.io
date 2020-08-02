@@ -730,7 +730,7 @@ Suddenly the situations of the two states have flipped.
 
     }
     //function drawDynNYNewsBox(){
-      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("NewYork"))
+      svg.append("rect").attr("class","NYnewsdisplay").attr("x",350).attr("y",24).attr("width","300").attr("height","22").attr("fill","none").attr("stroke",color("NewYork"))
       .attr("stroke-width","1px").style("opacity","0");
       svg.append("rect").attr("class","NYstateIndicator").attr("x",325).attr("y",24).attr("width","25").attr("height","22").attr("fill",color("NewYork")).attr("stroke",color("NewYork"))
       .attr("stroke-width","1px").style("opacity","0");
@@ -739,7 +739,7 @@ Suddenly the situations of the two states have flipped.
       svg.append("text").attr("class","NYnewstext2" ).attr("x",350).attr("y",63).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("NY").style("opacity","0");
     //}
     //function drawDynFLNewsBox(){
-      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",4).attr("width","600").attr("height","22").attr("fill","none").attr("stroke",color("Florida")).style("opacity","0")
+      svg.append("rect").attr("class","FLnewsdisplay").attr("x",350).attr("y",4).attr("width","300").attr("height","22").attr("fill","none").attr("stroke",color("Florida")).style("opacity","0")
       .attr("stroke-width","1px");
       svg.append("rect").attr("class","FLstateIndicator").attr("x",325).attr("y",4).attr("width","25").attr("height","22").attr("fill",color("Florida")).attr("stroke",color("Florida"))
       .attr("stroke-width","1px").style("opacity","0");
@@ -761,7 +761,7 @@ Suddenly the situations of the two states have flipped.
       legend.append('rect')
       .attr('x', width - 20)
       .attr('y', function(d, i) {
-        return (10 + (i * 20));
+        return ( (i * 20));
       })
       .attr('width', 10)
       .attr('height', 10)
