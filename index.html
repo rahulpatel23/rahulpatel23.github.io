@@ -781,6 +781,7 @@ Suddenly the situations of the two states have flipped.
         var fnews;
         var txtX=posx;
         var txtX1=txtX + 2;
+        console.log("getFLnews called with " + posx);
         var dt=x.invert(posx).toDateString().substring(0,10);
         //fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         fnews=floridaNews[dt];
@@ -1226,14 +1227,18 @@ function drawChapter1NewsCircles(){
 
       var lx=d3.select(this).attr("cx");
       var stateColor = d3.select(this).style("stroke");
+      console.log("Color is" + stateColor);
       d3.select(".click-line").style("opacity","1").style("stroke", stateColor).attr("d", function() {
         var d = "M" + lx+ "," + height;
             d += " " + lx + "," + 0;
             return d;  
       });
+
       console.log("Opacity of click-line is 1");
       d3.select(".click-line").style("opacity");
-  
+      console.log("Calling FL & NY news");
+      getFLnews(d3.select(this).attr("cx"));
+      getNYnews(d3.select(this).attr("cx"));
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
       console.log(next_elid);
@@ -1246,8 +1251,7 @@ function drawChapter1NewsCircles(){
         console.log(d3.select(".Chapter1NewsCircle1").style("opacity"));
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter1NewsCircle" + next_elid).style("opacity","1");
-      getFLnews(d3.select(this).attr("cx"));
-      getNYnews(d3.select(this).attr("cx"));
+      
       d3.select(this).on('click',null);
       d3.select(this).style('opacity',".6");
       console.log(d3.select(".Chapter1NewsCircle" + elid).attr("class"));
