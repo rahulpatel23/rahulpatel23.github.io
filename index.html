@@ -1478,7 +1478,8 @@ function drawChapter3NewsCircles(){
 
 }
 function drawExploreCircle(){
-	console.log(cdata[1].date);
+  console.log("Inside drawExploreCircle");
+	console.log(cdata[cdata.length -1].date);
 
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
