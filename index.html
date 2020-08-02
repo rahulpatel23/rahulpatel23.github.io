@@ -673,16 +673,17 @@ var myData = "date	Florida	New York\n\
         var txtX1=txtX + 2;
         fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(fnews);
+        var w=8 * fnews.length;
         if (typeof fnews === "undefined"){
           d3.select(".FLnewsdisplay").style("opacity","0");
           d3.select(".FLnewstext").style("opacity","0");
           fnews="";
         } else {
           if (width < (2 * posx)) {
-          txtX = posx - 500;
+          txtX = posx - w;
           txtX1 = txtX + 2;
           } 
-          var w=8 * fnews.length;
+          
           d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).style("opacity","1");
           d3.select(".FLnewstext").attr("x",txtX1).text(fnews).style("opacity","1");
         }
@@ -696,16 +697,17 @@ var myData = "date	Florida	New York\n\
         var txtX1=txtX + 2;
         nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         console.log(nnews);
+        var w= 8 * nnews.length;
         if (typeof nnews === "undefined"){
           d3.select(".NYnewsdisplay").style("opacity","0");
           d3.select(".NYnewstext").style("opacity","0");
           nnews="";
         } else {
           if (width < (2 * posx)) {
-          txtX = posx - 500;
+          txtX = posx - w;
           txtX1 = txtX + 2;
           }  
-          var w= 8 * nnews.length;
+         
          d3.select(".NYnewsdisplay").attr("x",txtX).attr("width",w).style("opacity","1");
          d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
         }
