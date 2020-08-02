@@ -415,11 +415,11 @@ var myData = "date	Florida	NewYork\n\
 
   var actioncolor = d3.scale.ordinal() // D3 Version 
   .domain(["Opening","Restriction"])
-  .range([ "#80CA7E", "#f99735"]);
+  .range([ "#35E10A", "#f99735"]);
 
   var lcolor = d3.scale.ordinal()
   .domain(["Aplaceholder","Florida","NewYork","Opening","Restriction"])
-  .range(["#fafdf9","#1f9ed4","#d4c21f","#80CA7E","#f99735"]);
+  .range(["#fafdf9","#1f9ed4","#d4c21f","#35E10A","#f99735"]);
 
     
 
