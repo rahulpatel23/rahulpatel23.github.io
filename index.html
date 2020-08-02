@@ -875,6 +875,8 @@ Suddenly the situations of the two states have flipped.
           d3.select(".FLnewstext2").style("opacity","0");
           fnews="";
         } else {
+          d3.select(".FLnewstext1").style("opacity","0");
+          d3.select(".FLnewstext2").style("opacity","0");
           console.log("splitting the message");
           farray=fnews.split(":");
           var j=0;
@@ -930,6 +932,8 @@ Suddenly the situations of the two states have flipped.
           d3.select(".NYnewstext2").style("opacity","0");
           nnews="";
         } else {
+          d3.select(".NYnewstext1").style("opacity","0");
+          d3.select(".NYnewstext2").style("opacity","0");
           narray=nnews.split(":");
           var j=0;
           var nnlen=0;
