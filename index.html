@@ -70,8 +70,8 @@ var legendData = "name\n\
 Aplaceholder\n\
 Florida\n\
 NewYork\n\
-Ristriction\n\
-Opening\n";
+Opening\n\
+Restriction\n";
 
 var actionDataNY = "date	Action\n\
 20200528	'Complete Lockdown'\n\
@@ -623,6 +623,9 @@ var myData = "date	Florida	NewYork\n\
       .attr('width', 10)
       .attr('height', 10)
       .style('fill', function(d) {
+        console.log("legend color filling");
+        console.log(d.name);
+        console.log(lcolor(d.name));
         return lcolor(d.name);
       });
 
