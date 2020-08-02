@@ -404,7 +404,11 @@ var myData = "date	Florida	NewYork\n\
       .range([height, 0]);
 
     //var color = d3.scale.category10();
-    function color(clrtyp){
+    var color = d3.scaleOrdinal() // D3 Version 4
+  .domain(["NewYork", "Florida", "Opening","Restriction"])
+  .range(["#1f9ed4", "#d4c21f" , "#268a12", "#dc143c"]);
+
+    /*function color(clrtyp){
       var clr;
       if (clrtyp == "Florida"){
         clr="#d4c21f";
@@ -413,7 +417,7 @@ var myData = "date	Florida	NewYork\n\
         clr="#1f9ed4";
       }
       return clr;
-    }
+    }*/
 
     var xAxis = d3.svg.axis()
       .scale(x)
