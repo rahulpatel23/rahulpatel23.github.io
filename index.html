@@ -418,8 +418,8 @@ var myData = "date	Florida	NewYork\n\
   .range([ "#39A91D", "#f99735"]);
 
   var lcolor = d3.scale.ordinal()
-  .domain(["Placeholder", "Florida","NewYork","Opening","Closing"])
-  .range(["#1f9ed4", "#d4c21f","#1f9ed4","#39A91D","#f99735"]);
+  .domain(["Placeholder","Florida","NewYork","Opening","Closing"])
+  .range(["#fafdf9", "#d4c21f","#1f9ed4","#39A91D","#f99735"]);
 
     
 
@@ -606,6 +606,56 @@ var myData = "date	Florida	NewYork\n\
        .append("g")
        .attr("transform", "translate(" + margin.left + "," + margin.atop + ")");
 */
+      
+      var legend;
+      function drawLegend(){
+      legend = svg.selectAll('g')
+      .data(ldata)
+      .enter()
+      .append('g')
+      .attr('class', 'legend');
+
+      legend.append('rect')
+      .attr('x', width - 20)
+      .attr('y', function(d, i) {
+        return ( (i * 20));
+      })
+      .attr('width', 10)
+      .attr('height', 10)
+      .style('fill', function(d) {
+        return lcolor(d.name);
+      });
+
+      legend.append('text')
+      .attr('x', width - 8)
+      .attr('y', function(d, i) {
+        return (i * 20) + 9;
+      })
+      .text(function(d) {
+        return d.name;
+      }); 
+      }
+      function showAxis(){
+        svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("New Cases");
+      }
+
+
+
+
+
         var clickL = svg.append("g")
       .attr("class", "line-on-click-effct");
 
@@ -751,7 +801,7 @@ Suddenly the situations of the two states have flipped.
    // }
 
       
-      var legend;
+     /* var legend;
       function drawLegend(){
       legend = svg.selectAll('g')
       .data(ldata)
@@ -795,7 +845,7 @@ Suddenly the situations of the two states have flipped.
       .style("text-anchor", "end")
       .text("New Cases");
       }
-
+*/
       function getFLnews(posx){
         var fnews;
         var txtX=posx;
