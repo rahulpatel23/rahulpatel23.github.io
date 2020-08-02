@@ -680,8 +680,10 @@ var myData = "date	Florida	New York\n\
         } else {
           if (width < (2 * posx)) {
           txtX = posx - 500;
+          txtX1 = txtX + 2;
           } 
-          d3.select(".FLnewsdisplay").attr("x",txtX).style("opacity","1");
+          var w=12 * nnews.length;
+          d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).style("opacity","1");
           d3.select(".FLnewstext").attr("x",txtX1).text(fnews).style("opacity","1");
         }
         fnews="";
@@ -696,13 +698,15 @@ var myData = "date	Florida	New York\n\
         console.log(nnews);
         if (typeof nnews === "undefined"){
           d3.select(".NYnewsdisplay").style("opacity","0");
-          d3.select(".NYnewstext").attr("opacity","0");
+          d3.select(".NYnewstext").style("opacity","0");
           nnews="";
         } else {
           if (width < (2 * posx)) {
           txtX = posx - 500;
+          txtX1 = txtX + 2;
           }  
-         d3.select(".NYnewsdisplay").attr("x",txtX).style("opacity","1");
+          var w=12 * nnews.length;
+         d3.select(".NYnewsdisplay").attr("x",txtX).attr("width",w).style("opacity","1");
          d3.select(".NYnewstext").attr("x",txtX1).text(nnews).style("opacity","1");
         }
         nnews="";
