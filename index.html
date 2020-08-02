@@ -1026,6 +1026,7 @@ Suddenly the situations of the two states have flipped.
 //Rahul  Entire Mouse movement plus verticle line
    //drawDynNYNewsBox();
    //drawDynFLNewsBox();
+   drawExploreCircle();
     var mouseG = svg.append("g")
       .attr("class", "mouse-over-effects");
 
@@ -1068,7 +1069,7 @@ Suddenly the situations of the two states have flipped.
           .style("opacity", "0");
         d3.selectAll(".mouse-per-line text")
           .style("opacity", "0");
-        hideNewsDisplay();
+        //hideNewsDisplay();
         //d3.selectAll(".mouse-per-line rect")
          // .style("opacity", "0");
       })
@@ -1084,6 +1085,7 @@ Suddenly the situations of the two states have flipped.
       })
       .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
+        hideNewsDisplay();
         d3.select(".mouse-line")
           .attr("d", function() {
             var d = "M" + mouse[0] + "," + height;
@@ -1475,7 +1477,20 @@ function drawChapter3NewsCircles(){
       d3.select(".Chapter3NewsCircle0").style("opacity","1");
 
 }
+function drawExploreCircle(){
+	console.log(cdata[1].date);
 
+    svg.append("circle").attr("r", 10)
+     // .attr("cx",function(d){return x(d.date)})
+      .attr("cx",x(cdata[cdata.length -1].date))
+      .attr("cy","590")
+      .attr("class", "ExploreCircle")
+      //.attr("stroke", "black")
+      .attr("fill", "#DA4F2D")
+     // .style("stroke-width", "1px")
+      .style("opacity", "1");
+      d3.select(".Chapter3Circle").attr("fill","grey");
+}
 function drawChapter3Circle(){
 	console.log(cdata[2].date);
 
@@ -1528,7 +1543,8 @@ function drawChapter2Circle(){
       //showAxis();
     });
 }
-      
+
+
 function drawChapter1Circle(){
 	console.log(cdata[1].date);
 
