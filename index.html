@@ -1579,12 +1579,12 @@ function drawChapter1Circle(){
 
 
 showTitle();
-var startTriangle = svg.append('path')
+var startTriangle = svg.append('g').append('path')
         .attr("class","start-triangle")
         .attr('d', d3.svg.symbol().type("triangle-up").size(190))
-        .style('fill', 'DA4F2D')
+        .style('fill', '#DA4F2D')
         //.attr("transform",rotate(-90))
-        .attr("transform", function(d) { return "translate(" + 36 + "," + -219 + ")"; })
+        .attr("transform", function(d) { return "translate(" + 36 + "," + -223 + ")"; })
         .on ('click', function() {
       d3.select(this).style("opacity",.6);
       d3.select(this).on('click',null);
@@ -1594,6 +1594,8 @@ var startTriangle = svg.append('path')
       showAxis();
       drawChapter1Circle();
     });
+    //.append('text')
+    //.attr("text","Start").attr("x","10").attr('y","10")
 /*var stopSquare = svg.append('rect')
         .attr("class","stop-square")
         .attr("x","-26")
