@@ -66,6 +66,12 @@ var totalNews = "date	state	news	type\n\
 20200627	NewYork	Daily cases continue to go down	Opening\n\
 20200705	Florida	Broke the dubios record of Daily Restriction\n";
 
+var legendData = "name\n\
+NewYork\n\
+Florida\n\
+Ristriction\n\
+Opening\n";
+
 var actionDataNY = "date	Action\n\
 20200528	'Complete Lockdown'\n\
 20200602	'Partial Lockdown'\n\
@@ -441,9 +447,11 @@ var myData = "date	Florida	NewYork\n\
     var c1news = d3.tsv.parse(chapter1News);
     var c2news = d3.tsv.parse(chapter2News);
     var c3news = d3.tsv.parse(chapter3News);
+    var ldata = d3.tsv.parse(legendData);
     var tnews = d3.tsv.parse(totalNews);
     console.log(data)
     console.log(cdata);
+    console.log(ldata);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
@@ -737,10 +745,11 @@ Suddenly the situations of the two states have flipped.
       svg.append("text").attr("class","FLnewstext2" ).attr("x",350).attr("y",43).attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px").text("FL").style("opacity","0");
    // }
 
+      
       var legend;
       function drawLegend(){
       legend = svg.selectAll('g')
-      .data(totstates)
+      .data(ldata)
       .enter()
       .append('g')
       .attr('class', 'legend');
@@ -753,7 +762,7 @@ Suddenly the situations of the two states have flipped.
       .attr('width', 10)
       .attr('height', 10)
       .style('fill', function(d) {
-        return color(d.name);
+        return lcolor(d.name);
       });
 
       legend.append('text')
