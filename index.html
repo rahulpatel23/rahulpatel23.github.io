@@ -1225,12 +1225,15 @@ function drawChapter1NewsCircles(){
       }
 
       var lx=d3.select(this).attr("cx");
-      d3.select(".click-line").attr("opacity","1").attr("d", function() {
+      var stateColor = d3.select(this).style("stroke");
+      d3.select(".click-line").style("opacity","1").style("stroke", stateColor).attr("d", function() {
         var d = "M" + lx+ "," + height;
             d += " " + lx + "," + 0;
             return d;  
       });
-      d3.select(".click-line").patch
+      console.log("Opacity of click-line is 1");
+      d3.select(".click-line").style("opacity");
+  
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
       console.log(next_elid);
