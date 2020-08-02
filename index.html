@@ -1224,7 +1224,7 @@ function drawChapter1NewsCircles(){
 
       }
 
-          var lx=select(this).attr("cx");
+      var lx=d3.select(this).attr("cx");
       d3.select(".click-line").attr("opacity","1").attr("d", function() {
         var d = "M" + lx+ "," + height;
             d += " " + lx + "," + 0;
