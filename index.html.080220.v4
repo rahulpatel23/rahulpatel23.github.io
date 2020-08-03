@@ -1604,8 +1604,8 @@ function drawChapter1Circle(){
       //showAxis();
     });
    // }).append("text").attr("cx",x(cdata[0].date)+ 30).attr("cy","580").attr("text","Chapter1");
-   //var txtx= x(cdata[0].date) + 30;
-   //svg.append("text").attr("cx",txtx).attr("cy","590").attr("text","Chapter1");
+   var txtx= x(cdata[0].date) + 30;
+   svg.append("text").attr("cx",txtx).attr("cy","590").attr("text","Chapter1");
 }
 
 
