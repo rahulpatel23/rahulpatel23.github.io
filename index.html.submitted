@@ -473,9 +473,9 @@ var myData = "date	Florida	NewYork\n\
     var c3news = d3.tsv.parse(chapter3News);
     var ldata = d3.tsv.parse(legendData);
     var tnews = d3.tsv.parse(totalNews);
-    //console.log(data)
-    //console.log(cdata);
-    //console.log(ldata);
+    console.log(data)
+    console.log(cdata);
+    console.log(ldata);
 
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
@@ -523,22 +523,22 @@ var myData = "date	Florida	NewYork\n\
     });
     var i=0;
     while (i < tnews.length ){
-      //console.log(tnews);
+      console.log(tnews);
       if (tnews[i].state == 'Florida'){
         floridaNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news;
         floridaNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=actioncolor(tnews[i].type);
       }
       if (tnews[i].state == 'NewYork'){
-        //console.log(tnews);
+        console.log(tnews);
         newyorkNews[tnews[i].date.toDateString().substring(0,10)]=tnews[i].news;
         newyorkNewsTypeColor[tnews[i].date.toDateString().substring(0,10)]=actioncolor(tnews[i].type);
       }
       i=i+1;
     }
-    //console.log(newyorkNewsTypeColor);
-    //console.log(floridaNewsTypeColor);
-   //console.log(floridaNews);
-   //console.log(newyorkNews);
+    console.log(newyorkNewsTypeColor);
+    console.log(floridaNewsTypeColor);
+   console.log(floridaNews);
+   console.log(newyorkNews);
     var cities3 = color.domain().map(function(name) {
       return {
         name: name,
@@ -642,9 +642,9 @@ var myData = "date	Florida	NewYork\n\
       .attr('width', 10)
       .attr('height', 10)
       .style('fill', function(d) {
-        //console.log("legend color filling");
-        //console.log(d.name);
-        //console.log(lcolor(d.name));
+        console.log("legend color filling");
+        console.log(d.name);
+        console.log(lcolor(d.name));
         return lcolor(d.name);
       });
 
@@ -872,11 +872,11 @@ Suddenly the situations of the two states have flipped.
         var fnews;
         var txtX=posx;
         var txtX1=txtX + 2;
-        //console.log("getFLnews called with " + posx);
+        console.log("getFLnews called with " + posx);
         var dt=x.invert(posx).toDateString().substring(0,10);
         //fnews=floridaNews[x.invert(posx).toDateString().substring(0,10)];
         fnews=floridaNews[dt];
-        //console.log(fnews);
+        console.log(fnews);
         var w=0;
         if (typeof fnews === "undefined"){
           d3.select(".FLnewsdisplay").style("opacity","0");
@@ -888,7 +888,7 @@ Suddenly the situations of the two states have flipped.
         } else {
           d3.select(".FLnewstext1").style("opacity","0");
           d3.select(".FLnewstext2").style("opacity","0");
-          //console.log("splitting the message");
+          console.log("splitting the message");
           farray=fnews.split(":");
           var j=0;
           var fnlen=0;
@@ -907,12 +907,12 @@ Suddenly the situations of the two states have flipped.
           txtX1 = txtX + 2;
           } 
           var txtXs = txtX - 25;
-          //console.log("making FLnewsdisplay and FLnewstext opacity 1 ")
+          console.log("making FLnewsdisplay and FLnewstext opacity 1 ")
           d3.select(".FLnewsdisplay").attr("x",txtX).attr("width",w).attr("height",h).attr("fill",floridaNewsTypeColor[dt]).style("opacity","1");
           d3.select(".FLstateIndicator").attr("x",txtXs).attr("height",h).attr("fill",color("Florida")).style("opacity","1");
           d3.select(".FLnewstext").attr("x",txtX1).text(farray[0]).style("opacity","1");
-          //console.log(farray[0]);
-          ////console.log(d3.select(".FLnewstext").style("opacity"));
+          console.log(farray[0]);
+          //console.log(d3.select(".FLnewstext").style("opacity"));
           if (farray.length > 1){
             j=1;
             while ( j <= farray.length ) {
@@ -933,7 +933,7 @@ Suddenly the situations of the two states have flipped.
         var dt=x.invert(posx).toDateString().substring(0,10);
         //nnews=newyorkNews[x.invert(posx).toDateString().substring(0,10)];
         nnews=newyorkNews[dt]
-        //console.log(nnews);
+        console.log(nnews);
         
         if (typeof nnews === "undefined"){
           d3.select(".NYnewsdisplay").style("opacity","0");
@@ -1001,8 +1001,8 @@ Suddenly the situations of the two states have flipped.
       return key !== "date";
     }));*/
 
-    ////console.log(function(adata){return adata.date});
-    ////console.log(function(adata){return x(adata.date)});
+    //console.log(function(adata){return adata.date});
+    //console.log(function(adata){return x(adata.date)});
     /*Rahul circles
     svg.append("g").selectAll("TimeLineCircleNY").data(adata).enter().append("circle").attr("r", 5)
       .attr("cx",function(d){return x(d.date)})
@@ -1067,8 +1067,8 @@ Suddenly the situations of the two states have flipped.
       .style("opacity", "0");
       
     var lines = document.getElementsByClassName('line');
-    //console.log("totstates");
-    //console.log(totstates);
+    console.log("totstates");
+    console.log(totstates);
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
       .data(totstates)
       .enter()
@@ -1125,7 +1125,7 @@ Suddenly the situations of the two states have flipped.
 
         d3.selectAll(".mouse-per-line")
           .attr("transform", function(d, i) {
-            //console.log(width/mouse[0])
+            console.log(width/mouse[0])
             var xDate = x.invert(mouse[0]),
                 bisect = d3.bisector(function(d) { return d.date; }).right;
                 idx = bisect(d.values, xDate);
@@ -1327,12 +1327,12 @@ function drawChapter1NewsCircles(){
       .on ('click', function() {
       elid=+ d3.select(this).attr("class").substring(18);
       y_val = d3.sum([-167,getmultiple(elid)]);
-      //console.log(c1news);
+      console.log(c1news);
 
       strarr = c1news[elid].news.split(":");
       lnsgmt=0;
        newsdt=x.invert(d3.select(this).attr("cx"));
-       //console.log(newsdt);
+       console.log(newsdt);
       while (lnsgmt < strarr.length) {
         if (lnsgmt >= 1){
           addy_c1= 12 + addy_c1;
@@ -1353,38 +1353,38 @@ function drawChapter1NewsCircles(){
 
       var lx=d3.select(this).attr("cx");
       var stateColor = d3.select(this).style("stroke");
-      //console.log("Color is" + stateColor);
+      console.log("Color is" + stateColor);
       d3.select(".click-line").style("opacity","1").style("stroke", stateColor).attr("d", function() {
         var d = "M" + lx+ "," + height;
             d += " " + lx + "," + 0;
             return d;  
       });
 
-      //console.log("Opacity of click-line is 1");
+      console.log("Opacity of click-line is 1");
       d3.select(".click-line").style("opacity");
-      //console.log("Calling FL & NY news");
+      console.log("Calling FL & NY news");
       getFLnews(d3.select(this).attr("cx"));
       getNYnews(d3.select(this).attr("cx"));
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
-      //console.log(next_elid);
+      console.log(next_elid);
       if (next_elid <= c1news.length) {
-        //console.log("I am Inside start");
-        //console.log(d3.select(this).attr("class").substring(3));
-        //console.log(d3.select(this).attr("class"));
-        //console.log(d3.select(this).style("opacity"));
-        //console.log("I am Inside");
-        //console.log(d3.select(".Chapter1NewsCircle1").style("opacity"));
+        console.log("I am Inside start");
+        console.log(d3.select(this).attr("class").substring(3));
+        console.log(d3.select(this).attr("class"));
+        console.log(d3.select(this).style("opacity"));
+        console.log("I am Inside");
+        console.log(d3.select(".Chapter1NewsCircle1").style("opacity"));
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter1NewsCircle" + next_elid).style("opacity","1");
       
       d3.select(this).on('click',null);
       d3.select(this).style('opacity',".6");
-      //console.log(d3.select(".Chapter1NewsCircle" + elid).attr("class"));
-      //console.log(d3.select(".Chapter1NewsCircle" + elid).style("opacity"));
-      //console.log("length:" + c1news.length);
+      console.log(d3.select(".Chapter1NewsCircle" + elid).attr("class"));
+      console.log(d3.select(".Chapter1NewsCircle" + elid).style("opacity"));
+      console.log("length:" + c1news.length);
       if (next_elid  == c1news.length){  //at this point no element with next_elid sio time to draw the next
-        //console.log("I am the last one");
+        console.log("I am the last one");
         drawChapter2Circle();
       }
       }
@@ -1409,12 +1409,12 @@ function drawChapter2NewsCircles(){
       .on ('click', function() {
       elid=+ d3.select(this).attr("class").substring(18);
       y_val = d3.sum([-168,getmultiple(elid)]);
-      //console.log(c2news);
+      console.log(c2news);
       //svg.append("text").attr("x",407).attr("y",y_val).text(c2news[elid].news)
       //.attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
       var lx=d3.select(this).attr("cx");
       var stateColor = d3.select(this).style("stroke");
-      //console.log("Color is" + stateColor);
+      console.log("Color is" + stateColor);
       d3.select(".click-line").style("opacity","1").style("stroke", stateColor).attr("d", function() {
         var d = "M" + lx+ "," + height;
             d += " " + lx + "," + 0;
@@ -1424,23 +1424,23 @@ function drawChapter2NewsCircles(){
       getNYnews(d3.select(this).attr("cx"));
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
-      //console.log(next_elid);
+      console.log(next_elid);
       if (next_elid <= c2news.length) {
-        //console.log("I am Inside start");
-        //console.log(d3.select(this).attr("class").substring(3));
-        //console.log(d3.select(this).attr("class"));
-        //console.log(d3.select(this).style("opacity"));
-        //console.log("I am Inside");
-        //console.log(d3.select(".Chapter2NewsCircle1").style("opacity"));
+        console.log("I am Inside start");
+        console.log(d3.select(this).attr("class").substring(3));
+        console.log(d3.select(this).attr("class"));
+        console.log(d3.select(this).style("opacity"));
+        console.log("I am Inside");
+        console.log(d3.select(".Chapter2NewsCircle1").style("opacity"));
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       d3.select(".Chapter2NewsCircle" + next_elid).style("opacity","1");
       d3.select(this).on('click',null);
       d3.select(this).style("opacity",".6")
-      //console.log(d3.select(".Chapter2NewsCircle" + elid).attr("class"));
-      //console.log(d3.select(".Chapter2NewsCircle" + elid).style("opacity"));
-      //console.log("length:" + c2news.length);
+      console.log(d3.select(".Chapter2NewsCircle" + elid).attr("class"));
+      console.log(d3.select(".Chapter2NewsCircle" + elid).style("opacity"));
+      console.log("length:" + c2news.length);
       if (next_elid  == c2news.length){  //at this point no element with next_elid sio time to draw the next
-        //console.log("I am the last one");
+        console.log("I am the last one");
         drawChapter3Circle();
       }
       }
@@ -1466,12 +1466,12 @@ function drawChapter3NewsCircles(){
       .on ('click', function() {
       elid=+ d3.select(this).attr("class").substring(18);
       y_val = d3.sum([-168,getmultiple(elid)]);
-      //console.log(c3news);
+      console.log(c3news);
       //svg.append("text").attr("x",812).attr("y",y_val).text(c3news[elid].news)
       //.attr("font-weight",600).attr("font-family","sans-serif").style("font-size","14px")
       var lx=d3.select(this).attr("cx");
       var stateColor = d3.select(this).style("stroke");
-      //console.log("Color is" + stateColor);
+      console.log("Color is" + stateColor);
       d3.select(".click-line").style("opacity","1").style("stroke", stateColor).attr("d", function() {
         var d = "M" + lx+ "," + height;
             d += " " + lx + "," + 0;
@@ -1481,25 +1481,25 @@ function drawChapter3NewsCircles(){
       getNYnews(d3.select(this).attr("cx"));
       d3.select(this).attr("r",6);
       next_elid = elid + 1 ;
-      //console.log(next_elid);
+      console.log(next_elid);
       if (next_elid <= c3news.length) {
-        //console.log("I am Inside start");
-        //console.log(d3.select(this).attr("class").substring(3));
-        //console.log(d3.select(this).attr("class"));
-        //console.log(d3.select(this).style("opacity"));
-        //console.log("I am Inside");
-        ////console.log(d3.select(".Chapter3NewsCircle1").style("opacity"));
+        console.log("I am Inside start");
+        console.log(d3.select(this).attr("class").substring(3));
+        console.log(d3.select(this).attr("class"));
+        console.log(d3.select(this).style("opacity"));
+        console.log("I am Inside");
+        //console.log(d3.select(".Chapter3NewsCircle1").style("opacity"));
       //d3.select(".Chapter1NewsCircle1").style("opacity","0");
       if (next_elid < c3news.length){
       d3.select(".Chapter3NewsCircle" + next_elid).style("opacity","1");
       }
       d3.select(this).on('click',null);
       d3.select(this).style("opacity",".6");
-      ////console.log(d3.select(".Chapter3NewsCircle" + elid).attr("class"));
-      ////console.log(d3.select(".Chapter3NewsCircle" + elid).style("opacity"));
-      //console.log("length:" + c3news.length);
+      //console.log(d3.select(".Chapter3NewsCircle" + elid).attr("class"));
+      //console.log(d3.select(".Chapter3NewsCircle" + elid).style("opacity"));
+      console.log("length:" + c3news.length);
       if (next_elid  == c3news.length){  //at this point no element with next_elid sio time to draw the next
-        //console.log("I am the last one");
+        console.log("I am the last one");
         explore();
         //drawChapter3Circle();
       }
@@ -1511,9 +1511,9 @@ function drawChapter3NewsCircles(){
 }
 
 function drawExploreCircle(){
-  //console.log("Inside drawExploreCircle");
-	//console.log(p3data[p3data.length -1].date);
-  //console.log(d3.select(".Chapter3Circle").attr("fill"));
+  console.log("Inside drawExploreCircle");
+	console.log(p3data[p3data.length -1].date);
+  console.log(d3.select(".Chapter3Circle").attr("fill"));
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
       .attr("cx",x(p3data[p3data.length -1].date))
@@ -1526,7 +1526,7 @@ function drawExploreCircle(){
       d3.select(".Chapter3Circle").attr("fill","grey");
 }
 function drawChapter3Circle(){
-	//console.log(cdata[2].date);
+	console.log(cdata[2].date);
 
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
@@ -1552,7 +1552,7 @@ function drawChapter3Circle(){
     });
 }
 function drawChapter2Circle(){
-	//console.log(cdata[1].date);
+	console.log(cdata[1].date);
 
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
@@ -1580,7 +1580,7 @@ function drawChapter2Circle(){
 
 
 function drawChapter1Circle(){
-	//console.log(cdata[1].date);
+	console.log(cdata[1].date);
 
     svg.append("circle").attr("r", 10)
      // .attr("cx",function(d){return x(d.date)})
