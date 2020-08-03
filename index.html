@@ -1614,7 +1614,7 @@ var startTriangle = svg.append('g').append('path')
         .attr('d', d3.svg.symbol().type("triangle-up").size(190))
         .style('fill', '#DA4F2D')
         //.attr("transform",rotate(-90))
-        .attr("transform", function(d) { return "translate(" + 36 + "," + -223 + ")"; })
+        .attr("transform", function(d) { return "translate(" + 36 + "," + -163 + ")"; })
         .on ('click', function() {
       d3.select(this).style("opacity",.6);
       d3.select(this).on('click',null);
